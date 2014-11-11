@@ -54,6 +54,45 @@ function node_basket_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-node_basket-field_node_basket_description'
+  $field_instances['node-node_basket-field_node_basket_description'] = array(
+    'bundle' => 'node_basket',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_node_basket_description',
+    'label' => 'Beskrivelse',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-node_basket-field_node_basket_links'
   $field_instances['node-node_basket-field_node_basket_links'] = array(
     'bundle' => 'node_basket',
@@ -197,6 +236,7 @@ function node_basket_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Beskrivelse');
   t('Body');
   t('Links');
   t('References');
