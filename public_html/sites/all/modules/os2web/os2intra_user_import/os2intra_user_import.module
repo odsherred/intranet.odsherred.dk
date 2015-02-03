@@ -595,7 +595,7 @@ function os2intra_user_import_save_user($user, $uid = ''){
     $termination_date_timestamp = 1;
   }
 
-  list($mm,$dd,$yyyy) = explode('/', $user['birthday']);
+  list($dd,$mm,$yyyy) = explode('-', $user['birthday']);
   $birthday = date('Y-m-d H:i:s', mktime(0, 0, 0, (int)$mm, (int)$dd, (int)$yyyy));
   // User title tid
   $title_tid = os2intra_user_import_user_title($user['job_description']);
@@ -619,7 +619,7 @@ function os2intra_user_import_save_user($user, $uid = ''){
     // Birthday
     'field_os2intra_birthday' => array(LANGUAGE_NONE => array(0 => array('value' => $birthday))),
     // Activate user
-    'status' => 1,
+    'status' => isset($account->status) ? $account->status : 1,
   );
 
   // Handle wether were updating or creating a new user
