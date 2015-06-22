@@ -32,6 +32,7 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[field_base][] = field_os2intra_base_spotboxes
 features[field_base][] = field_os2intra_birthday
+features[field_base][] = field_os2intra_department_id
 features[field_base][] = field_os2intra_grouptype
 features[field_base][] = field_os2intra_organization
 features[field_base][] = field_os2intra_phone
