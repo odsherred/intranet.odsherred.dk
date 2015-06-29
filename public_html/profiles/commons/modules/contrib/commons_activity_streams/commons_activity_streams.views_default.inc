@@ -220,6 +220,7 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -236,7 +237,9 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'This person doesn\'t have any activity on the site yet.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du har ikke nogen aktivitet på denne side 
+
+';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Forbindelse: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_target_nodes_target_id']['id'] = 'field_target_nodes_target_id';
@@ -268,8 +271,8 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['label'] = '';
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['timestamp']['date_format'] = 'time_ago_dynamic';
-  /* Felt: Content: Comment count */
+  $handler->display->display_options['fields']['timestamp']['date_format'] = 'event_datetime';
+  /* Felt: Indhold: Kommentarantal */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
@@ -277,11 +280,12 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['fields']['comment_count']['label'] = '';
   $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['comment_count']['element_wrapper_class'] = 'comment-count-indicator';
-  /* Felt: Votes: Value */
+  /* Felt: MAX(Stemmer: Værdi) */
   $handler->display->display_options['fields']['value']['id'] = 'value';
   $handler->display->display_options['fields']['value']['table'] = 'votingapi_vote';
   $handler->display->display_options['fields']['value']['field'] = 'value';
   $handler->display->display_options['fields']['value']['relationship'] = 'votingapi_vote';
+  $handler->display->display_options['fields']['value']['group_type'] = 'max';
   $handler->display->display_options['fields']['value']['label'] = '';
   $handler->display->display_options['fields']['value']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['value']['element_wrapper_class'] = 'voting-count-indicator';
@@ -354,22 +358,24 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['pane_category']['weight'] = '0';
   $translatables['commons_activity_streams_user_activity'] = array(
     t('Master'),
-    t('Recent site activity'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('This person doesn\'t have any activity on the site yet.'),
-    t('Content entity referenced from field_target_nodes'),
+    t('Seneste aktiviteter'),
+    t('mere'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('Antal elementer'),
+    t('- Alle -'),
+    t('Forskydning'),
+    t('« første'),
+    t('‹ forrige'),
+    t('næste ›'),
+    t('sidste »'),
+    t('Du har ikke nogen aktivitet på denne side 
+
+'),
+    t('Indhold entity refereret fra field_target_nodes'),
     t('Stemmer'),
     t('.'),
     t(','),
