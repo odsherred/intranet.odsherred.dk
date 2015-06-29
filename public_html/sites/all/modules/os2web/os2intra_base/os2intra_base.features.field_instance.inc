@@ -117,15 +117,15 @@ function os2intra_base_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'display_in_partial_form' => 1,
+    'display_in_partial_form' => 0,
     'entity_type' => 'node',
     'field_name' => 'field_os2web_base_field_media',
-    'label' => 'Video',
+    'label' => 'Filer og video',
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'uploads/movies',
-      'file_extensions' => 'mp4',
+      'file_extensions' => 'mp4 pdf doc docm docx xls xlsx ppt pptx jpg png jpeg',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -134,14 +134,15 @@ function os2intra_base_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'private' => 0,
           'public' => 'public',
           'youtube' => 0,
         ),
         'allowed_types' => array(
           'application' => 0,
           'audio' => 0,
-          'document' => 0,
-          'image' => 0,
+          'document' => 'document',
+          'image' => 'image',
           'video' => 'video',
         ),
         'browser_plugins' => array(
@@ -522,6 +523,39 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'
+  $field_instances['taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'] = array(
+    'bundle' => 'os2intra_organizaiton_tax',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_os2intra_department_id',
+    'label' => 'Afdeling',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_os2intra_birthday'
   $field_instances['user-user-field_os2intra_birthday'] = array(
     'bundle' => 'user',
@@ -562,7 +596,7 @@ function os2intra_base_field_default_field_instances() {
         'input_format_custom' => '',
         'label_position' => 'above',
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '1933:+0',
       ),
       'type' => 'date_select',
       'weight' => 14,
@@ -621,15 +655,16 @@ function os2intra_base_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Afdeling');
   t('Billede');
   t('Birthday');
   t('Filer');
   t('Filer og media');
+  t('Filer og video');
   t('Gruppe Type');
   t('Gruppens Organisation');
   t('Phone');
   t('Spotbokse');
-  t('Video');
   t('Vælg forældre til denne gruppe. I hvilken organisation er denne afdeling en del af?');
 
   return $field_instances;

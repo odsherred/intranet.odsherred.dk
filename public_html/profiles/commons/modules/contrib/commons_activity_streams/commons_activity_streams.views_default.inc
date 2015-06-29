@@ -220,6 +220,7 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -248,7 +249,9 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'This person doesn\'t have any activity on the site yet.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du har ikke nogen aktivitet på denne side 
+
+';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Forbindelse: Entity Reference: Refereret entity */
   $handler->display->display_options['relationships']['field_target_nodes_target_id']['id'] = 'field_target_nodes_target_id';
@@ -280,7 +283,7 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['label'] = '';
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['timestamp']['date_format'] = 'time_ago_dynamic';
+  $handler->display->display_options['fields']['timestamp']['date_format'] = 'event_datetime';
   /* Felt: Indhold: Kommentarantal */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
@@ -289,11 +292,12 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['fields']['comment_count']['label'] = '';
   $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['comment_count']['element_wrapper_class'] = 'comment-count-indicator';
-  /* Felt: Stemmer: Værdi */
+  /* Felt: MAX(Stemmer: Værdi) */
   $handler->display->display_options['fields']['value']['id'] = 'value';
   $handler->display->display_options['fields']['value']['table'] = 'votingapi_vote';
   $handler->display->display_options['fields']['value']['field'] = 'value';
   $handler->display->display_options['fields']['value']['relationship'] = 'votingapi_vote';
+  $handler->display->display_options['fields']['value']['group_type'] = 'max';
   $handler->display->display_options['fields']['value']['label'] = '';
   $handler->display->display_options['fields']['value']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['value']['element_wrapper_class'] = 'voting-count-indicator';
@@ -389,7 +393,9 @@ function commons_activity_streams_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('This person doesn\'t have any activity on the site yet.'),
+    t('Du har ikke nogen aktivitet på denne side 
+
+'),
     t('Indhold entity refereret fra field_target_nodes'),
     t('Stemmer'),
     t('.'),

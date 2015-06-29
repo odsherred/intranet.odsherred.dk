@@ -78,7 +78,7 @@ function os2web_intra_user_menu_block_view($delta = ''){
           $items[] = '<a href="/node_basket/basket/view">'.t('Basket').'</a>';
         }
 
-        $items[] = '<a href="/taxonomy/term/'.$top_org_tid.'">'. t('Municipality') . '</a>';
+        $items[] = '<a class="term" style="display:none" href="/taxonomy/term/'.$top_org_tid.'">'. t('Municipality') . '</a>';
 
         $items[] = '<a href="/groups/">' . t('Groups') . '</a>';
 

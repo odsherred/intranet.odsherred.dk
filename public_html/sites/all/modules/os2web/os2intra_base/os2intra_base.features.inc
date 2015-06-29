@@ -54,18 +54,6 @@ function os2intra_base_homebox() {
         'title' => 'Kommende begivenheder',
         'weight' => -43,
       ),
-      'views_os2intra_widgets-block_2' => 
-      array (
-        'module' => 'views',
-        'delta' => 'os2intra_widgets-block_2',
-        'region' => 2,
-        'movable' => 1,
-        'status' => 1,
-        'open' => 1,
-        'closable' => 1,
-        'title' => 'Intern høring',
-        'weight' => -37,
-      ),
       'views_os2intra_widgets-block_1' => 
       array (
         'module' => 'views',
@@ -118,25 +106,13 @@ function os2intra_base_homebox() {
       array (
         'module' => 'views',
         'delta' => 'os2intra_canteen_menu-block',
-        'region' => 1,
+        'region' => 2,
         'movable' => 1,
         'status' => 1,
         'open' => 1,
         'closable' => 1,
         'title' => 'Dagens ret',
         'weight' => -30,
-      ),
-      'user_online' => 
-      array (
-        'module' => 'user',
-        'delta' => 'online',
-        'region' => 2,
-        'movable' => 1,
-        'status' => 1,
-        'open' => 1,
-        'closable' => 1,
-        'title' => '',
-        'weight' => -29,
       ),
       'views_os2intra_users_content-block' => 
       array (
@@ -147,7 +123,7 @@ function os2intra_base_homebox() {
         'status' => 1,
         'open' => 1,
         'closable' => 1,
-        'title' => 'Indlæg du har oprettet.',
+        'title' => 'Indlæg du har oprettet',
         'weight' => -28,
       ),
     ),
