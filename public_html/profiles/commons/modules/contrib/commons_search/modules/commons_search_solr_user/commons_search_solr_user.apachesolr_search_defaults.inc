@@ -16,9 +16,9 @@ function commons_search_solr_user_apachesolr_search_default_searchers() {
   $searcher->page_id = 'user_search';
   $searcher->label = 'User Search';
   $searcher->description = 'User Search';
-  $searcher->search_path = 'people';
-  $searcher->page_title = 'People';
-  $searcher->env_id = apachesolr_default_environment();
+  $searcher->search_path = 'personer';
+  $searcher->page_title = 'Personer';
+  $searcher->env_id = 'solr';
   $searcher->settings = array(
     'fq' => array(
       0 => 'entity_type:user',
@@ -26,10 +26,10 @@ function commons_search_solr_user_apachesolr_search_default_searchers() {
     'apachesolr_search_custom_enable' => 1,
     'apachesolr_search_search_type' => 'custom',
     'apachesolr_search_per_page' => 12,
-    'apachesolr_search_browse' => 'none',
     'apachesolr_search_spellcheck' => 1,
     'apachesolr_search_search_box' => 1,
     'apachesolr_search_allow_user_input' => 0,
+    'apachesolr_search_browse' => 'none',
   );
   $export['user_search'] = $searcher;
 

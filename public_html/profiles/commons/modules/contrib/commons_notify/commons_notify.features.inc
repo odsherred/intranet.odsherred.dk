@@ -7,8 +7,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function commons_notify_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function commons_notify_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -36,36 +35,36 @@ function commons_notify_default_message_type() {
         {
           "value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003ENy kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]"
         },
         {
           "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\r\\n\\r\\n[message:field-target-comments:0:body]\\r\\n\\r\\nBesvar: [message:field-target-comments:0:url]\\r\\nOpdater dine indstillinger: [site:url]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003EHej [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EBesvar: [message:field-target-comments:0:url]\\u003Cbr \\/\\u003E\\nOpdater dine indstillinger: [site:url]\\/notification-settings\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\n\\n[message:field-target-comments:0:body]\\n\\nBesvar: [message:field-target-comments:0:url]\\nOpdater dine indstillinger: [site:url]\\/notification-settings"
         }
       ],
       "en" : [
         {
           "value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003ENy kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]"
         },
         {
           "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\r\\n\\r\\n[message:field-target-comments:0:body]\\r\\n\\r\\nBesvar: [message:field-target-comments:0:url]\\r\\nOpdater dine indstillinger: [site:url]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003EHej [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EBesvar: [message:field-target-comments:0:url]\\u003Cbr \\/\\u003E\\nOpdater dine indstillinger: [site:url]\\/notification-settings\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\n\\n[message:field-target-comments:0:body]\\n\\nBesvar: [message:field-target-comments:0:url]\\nOpdater dine indstillinger: [site:url]\\/notification-settings"
         }
       ],
       "und" : [
         {
           "value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003ENy kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]"
         },
         {
           "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:[message:field-target-comments:0:body]\\r\\n\\r\\nBesvar: [message:field-target-comments:0:url]\\r\\nOpdater dine indstillinger: [site:url]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003EHej [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:[message:field-target-comments:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EBesvar: [message:field-target-comments:0:url]\\u003Cbr \\/\\u003E\\nOpdater dine indstillinger: [site:url]\\/notification-settings\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:[message:field-target-comments:0:body]\\n\\nBesvar: [message:field-target-comments:0:url]\\nOpdater dine indstillinger: [site:url]\\/notification-settings"
         }
       ]
     },
@@ -77,32 +76,35 @@ function commons_notify_default_message_type() {
     "argument_keys" : [],
     "argument" : [],
     "category" : "commons_notify",
-    "data" : { "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" } },
-    "language" : "",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "da",
     "arguments" : null,
     "message_text" : {
       "da" : [
         {
-          "value" : "Ny [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]",
+          "value" : "Nyt [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003ENy [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Nyt [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]"
         },
         {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
+          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\nLink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater e-mail-indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003EHej [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPermalink: [message:field-target-nodes:0:url]\\u003Cbr \\/\\u003E\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\u003C\\/p\\u003E\\n\\u003Cp\\u003EOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\nLink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater e-mail-indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
         }
       ],
       "und" : [
         {
           "value" : "Ny [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003ENy [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Ny [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]"
         },
         {
           "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003EHej [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPermalink: [message:field-target-nodes:0:url]\\u003Cbr \\/\\u003E\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\u003C\\/p\\u003E\\n\\u003Cp\\u003EOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\n\\nPermalink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
         }
       ]
     },
@@ -114,32 +116,35 @@ function commons_notify_default_message_type() {
     "argument_keys" : [],
     "argument" : [],
     "category" : "commons_notify",
-    "data" : { "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" } },
-    "language" : "",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "da",
     "arguments" : null,
     "message_text" : {
       "da" : [
         {
           "value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003ENy [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]"
         },
         {
           "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003EHej [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPermalink: [message:field-target-nodes:0:url]\\u003Cbr \\/\\u003E\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\u003C\\/p\\u003E\\n\\u003Cp\\u003EOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\n\\nPermalink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
         }
       ],
       "und" : [
         {
           "value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003ENy [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]"
         },
         {
           "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003EHej [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPermalink: [message:field-target-nodes:0:url]\\u003Cbr \\/\\u003E\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\u003C\\/p\\u003E\\n\\u003Cp\\u003EOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings\\u003C\\/p\\u003E\\n"
+          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\n\\nPermalink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
         }
       ]
     },

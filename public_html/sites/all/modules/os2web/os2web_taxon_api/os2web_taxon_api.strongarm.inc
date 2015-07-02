@@ -28,7 +28,7 @@ function os2web_taxon_api_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_taxon_taxonomy_ckeditor_field';
-  $strongarm->value = 'edit-body-und-0-value';
+  $strongarm->value = 'cke_edit-body-und-0-value';
   $export['os2web_taxon_taxonomy_ckeditor_field'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -42,7 +42,7 @@ function os2web_taxon_api_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_taxon_taxonomy_not_selected_image';
-  $strongarm->value = '/profiles/os2web/modules/os2web_taxon_taxonomy/images/not_selected_png';
+  $strongarm->value = '/sites/all/modules/os2web/os2web_taxon_taxonomy/images/not_selected_png';
   $export['os2web_taxon_taxonomy_not_selected_image'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -56,7 +56,7 @@ function os2web_taxon_api_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_taxon_taxonomy_selected_image';
-  $strongarm->value = '/profiles/os2web/modules/os2web_taxon_taxonomy/images/selected_png';
+  $strongarm->value = '/sites/all/modules/os2web/os2web_taxon_taxonomy/images/selected_png';
   $export['os2web_taxon_taxonomy_selected_image'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -70,14 +70,14 @@ function os2web_taxon_api_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_taxon_taxonomy_taxon_url';
-  $strongarm->value = '10.1.1.182/Taxon/taxon-ws.php';
+  $strongarm->value = 'http://taxon.odsherred.dk:8080/taxon/web-service/taxon-ws.php';
   $export['os2web_taxon_taxonomy_taxon_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'os2web_taxon_taxonomy_wait_image';
-  $strongarm->value = '/profiles/os2web/modules/os2web_taxon_taxonomy/images/wait.gif';
+  $strongarm->value = '/sites/all/modules/os2web/os2web_taxon_taxonomy/images/wait.gif';
   $export['os2web_taxon_taxonomy_wait_image'] = $strongarm;
 
   return $export;

@@ -335,6 +335,12 @@ function os2web_base_strongarm() {
         'fmenu' => array(
           'weight' => '7',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
     ),
   );
@@ -419,6 +425,9 @@ function os2web_base_strongarm() {
         'custom_settings' => FALSE,
       ),
       'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -608,9 +617,7 @@ function os2web_base_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_os2web_base_contentpage';
   $strongarm->value = array(
-    0 => 'os2web-menu-contentmenu',
-    1 => 'os2web-main-menu',
-    2 => 'main-menu',
+    0 => 'menu-menu-bar-top-menu',
   );
   $export['menu_options_os2web_base_contentpage'] = $strongarm;
 
@@ -673,7 +680,7 @@ function os2web_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_os2web_base_contentpage';
-  $strongarm->value = 'os2web-main-menu:0';
+  $strongarm->value = 'menu-menu-bar-top-menu:0';
   $export['menu_parent_os2web_base_contentpage'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -856,7 +863,7 @@ function os2web_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_os2web_base_contentpage';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['node_submitted_os2web_base_contentpage'] = $strongarm;
 
   $strongarm = new stdClass();

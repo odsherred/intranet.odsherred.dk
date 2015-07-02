@@ -16,7 +16,7 @@ function os2web_base_filter_default_formats() {
     'name' => 'Blokindhold',
     'cache' => 1,
     'status' => 1,
-    'weight' => -7,
+    'weight' => -8,
     'filters' => array(
       'filter_html' => array(
         'weight' => -10,
@@ -53,7 +53,7 @@ function os2web_base_filter_default_formats() {
     'name' => 'PHP code',
     'cache' => 1,
     'status' => 1,
-    'weight' => -6,
+    'weight' => -7,
     'filters' => array(),
   );
 
@@ -63,7 +63,7 @@ function os2web_base_filter_default_formats() {
     'name' => 'Plain text',
     'cache' => 1,
     'status' => 1,
-    'weight' => -8,
+    'weight' => -9,
     'filters' => array(),
   );
 
@@ -73,7 +73,7 @@ function os2web_base_filter_default_formats() {
     'name' => 'Raw',
     'cache' => 1,
     'status' => 1,
-    'weight' => 0,
+    'weight' => -6,
     'filters' => array(),
   );
 

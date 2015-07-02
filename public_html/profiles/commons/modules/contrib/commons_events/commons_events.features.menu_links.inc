@@ -10,14 +10,15 @@
 function commons_events_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu:events
-  $menu_links['main-menu:events'] = array(
+  // Exported menu link: main-menu_events:events
+  $menu_links['main-menu_events:events'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'events',
     'router_path' => 'events',
     'link_title' => 'Events',
     'options' => array(
       'attributes' => array(),
+      'identifier' => 'main-menu_events:events',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -25,11 +26,12 @@ function commons_events_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 2,
+    'customized' => 0,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Events');
-
 
   return $menu_links;
 }

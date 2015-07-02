@@ -62,91 +62,89 @@ function commons_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_address'
-  $field_instances['node-event-field_address'] = array(
+  // Exported field_instance: 'node-event-field_addresse'
+  $field_instances['node-event-field_addresse'] = array(
     'bundle' => 'event',
-    'default_value' => array(
-      0 => array(
-        'element_key' => 'node|event|field_address|und|0',
-        'thoroughfare' => '',
-        'premise' => '',
-        'locality' => '',
-        'administrative_area' => '',
-        'postal_code' => '',
-        'country' => 'DK',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'addressfield_tokens',
-        'settings' => array(
-          'components' => array(
-            'administrative_area' => 'administrative_area',
-            'locality' => 'locality',
-            'postal_code' => 'postal_code',
-            'thoroughfare' => 'thoroughfare',
-          ),
-          'separator' => ', ',
-        ),
-        'type' => 'addressfield_components',
-        'weight' => 3,
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
       ),
       'print' => array(
-        'label' => 'hidden',
-        'module' => 'addressfield_tokens',
-        'settings' => array(
-          'components' => array(
-            'administrative_area' => 'administrative_area',
-            'locality' => 'locality',
-            'postal_code' => 'postal_code',
-            'thoroughfare' => 'thoroughfare',
-          ),
-          'separator' => ', ',
-        ),
-        'type' => 'addressfield_components',
-        'weight' => 2,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'addressfield_tokens',
-        'settings' => array(
-          'components' => array(
-            'administrative_area' => 'administrative_area',
-            'locality' => 'locality',
-            'postal_code' => 'postal_code',
-            'thoroughfare' => 'thoroughfare',
-          ),
-          'separator' => ', ',
-        ),
-        'type' => 'addressfield_components',
-        'weight' => 2,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
+    'display_in_partial_form' => 0,
     'entity_type' => 'node',
-    'field_name' => 'field_address',
-    'label' => 'Address',
+    'field_name' => 'field_addresse',
+    'label' => 'Adresse',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'blokindhold' => 'blokindhold',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'raw' => 'raw',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'blokindhold' => array(
+              'weight' => -8,
+            ),
+            'filtered_html' => array(
+              'weight' => -10,
+            ),
+            'full_html' => array(
+              'weight' => -5,
+            ),
+            'php_code' => array(
+              'weight' => -7,
+            ),
+            'plain_text' => array(
+              'weight' => -9,
+            ),
+            'raw' => array(
+              'weight' => -6,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'addressfield',
+      'module' => 'text',
       'settings' => array(
-        'available_countries' => array(),
-        'format_handlers' => array(
-          'address' => 'address',
-          'address-hide-country' => 0,
-          'organisation' => 0,
-          'name-full' => 0,
-          'name-oneline' => 0,
-        ),
+        'rows' => 5,
       ),
-      'type' => 'addressfield_standard',
-      'weight' => 11,
+      'type' => 'text_textarea',
+      'weight' => 21,
     ),
   );
 
@@ -196,15 +194,16 @@ function commons_events_field_default_field_instances() {
         'weight' => 1,
       ),
     ),
+    'display_in_partial_form' => 0,
     'entity_type' => 'node',
     'field_name' => 'field_date',
     'label' => 'Date',
     'required' => 1,
     'settings' => array(
       'default_value' => 'now',
-      'default_value2' => 'same',
+      'default_value2' => 'strtotime',
       'default_value_code' => '',
-      'default_value_code2' => '',
+      'default_value_code2' => '+1 days',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -212,8 +211,8 @@ function commons_events_field_default_field_instances() {
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => 'd M Y - h:i:s a',
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
         'label_position' => 'above',
         'text_parts' => array(),
         'year_range' => '-3:+3',
@@ -658,7 +657,7 @@ function commons_events_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Address');
+  t('Adresse');
   t('Date');
   t('Description');
   t('Enter 0 for unlimited');

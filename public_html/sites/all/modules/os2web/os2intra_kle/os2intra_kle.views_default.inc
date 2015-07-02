@@ -24,7 +24,6 @@ function os2intra_kle_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'OS2web - KLE Related pages';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '3600';
@@ -33,29 +32,24 @@ function os2intra_kle_views_default_views() {
   $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Kontekstuelt filter: Indhold: KL Emneord (field_os2web_base_field_kle_ref) */
+  /* Kontekstuelt filter: Content: KL Emneord (field_os2web_base_field_kle_ref) */
   $handler->display->display_options['arguments']['field_os2web_base_field_kle_ref_tid']['id'] = 'field_os2web_base_field_kle_ref_tid';
   $handler->display->display_options['arguments']['field_os2web_base_field_kle_ref_tid']['table'] = 'field_data_field_os2web_base_field_kle_ref';
   $handler->display->display_options['arguments']['field_os2web_base_field_kle_ref_tid']['field'] = 'field_os2web_base_field_kle_ref_tid';
@@ -67,7 +61,7 @@ function os2intra_kle_views_default_views() {
   $handler->display->display_options['arguments']['field_os2web_base_field_kle_ref_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_os2web_base_field_kle_ref_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_os2web_base_field_kle_ref_tid']['summary_options']['items_per_page'] = '25';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -102,12 +96,12 @@ function os2intra_kle_views_default_views() {
   $translatables['os2web_kle_related_pages'] = array(
     t('Master'),
     t('OS2web - KLE Related pages'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
     t('Alle'),
     t('Block'),
     t('Content pane'),
