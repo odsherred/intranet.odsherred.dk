@@ -54,7 +54,8 @@ function os2intra_message_notify_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2intra_message_notification-field_os2intra_message_enddate'
+  // Exported field_instance:
+  // 'node-os2intra_message_notification-field_os2intra_message_enddate'
   $field_instances['node-os2intra_message_notification-field_os2intra_message_enddate'] = array(
     'bundle' => 'os2intra_message_notification',
     'deleted' => 0,
@@ -107,7 +108,8 @@ function os2intra_message_notify_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2intra_message_notification-field_os2intra_message_sticky'
+  // Exported field_instance:
+  // 'node-os2intra_message_notification-field_os2intra_message_sticky'
   $field_instances['node-os2intra_message_notification-field_os2intra_message_sticky'] = array(
     'bundle' => 'os2intra_message_notification',
     'default_value' => array(

@@ -73,26 +73,26 @@ function commons_follow_term_views_default_views() {
     ),
   );
   $handler->display->display_options['style_options']['sticky'] = TRUE;
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You aren\'t following any topics.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du følger ingen emner.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Forbindelse: Flag: commons_follow_term */
+  /* Forbindelse: Flags: commons_follow_term */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_term';
-  /* Forbindelse: Flag: email_term */
+  /* Forbindelse: Flags: email_term */
   $handler->display->display_options['relationships']['flag_content_rel_1']['id'] = 'flag_content_rel_1';
   $handler->display->display_options['relationships']['flag_content_rel_1']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['flag_content_rel_1']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel_1']['label'] = 'email_flag';
   $handler->display->display_options['relationships']['flag_content_rel_1']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel_1']['flag'] = 'email_term';
-  /* Felt: Ord i ordforråd: Navn */
+  /* Felt: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -100,20 +100,20 @@ function commons_follow_term_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Felt: Flag: Flag-link */
+  /* Felt: Flags: Flag link */
   $handler->display->display_options['fields']['ops_1']['id'] = 'ops_1';
   $handler->display->display_options['fields']['ops_1']['table'] = 'flag_content';
   $handler->display->display_options['fields']['ops_1']['field'] = 'ops';
   $handler->display->display_options['fields']['ops_1']['relationship'] = 'flag_content_rel_1';
   $handler->display->display_options['fields']['ops_1']['label'] = 'Send email?';
-  /* Felt: Flag: Flag-link */
+  /* Felt: Flags: Flag link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
   $handler->display->display_options['fields']['ops']['table'] = 'flag_content';
   $handler->display->display_options['fields']['ops']['field'] = 'ops';
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
-  /* Sorteringskriterie: Flag: Flagtidspunkt */
+  /* Sorteringskriterie: Flags: Flagged time */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'flag_content';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
@@ -134,7 +134,7 @@ function commons_follow_term_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('You aren\'t following any topics.'),
+    t('Du følger ingen emner.'),
     t('flag'),
     t('email_flag'),
     t('Emne'),

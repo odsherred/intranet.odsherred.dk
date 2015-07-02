@@ -1,7 +1,6 @@
 name = Commons Activity Streams
 core = 7.x
 package = Commons - Building blocks
-php = 5.2.4
 version = 7.x-3.4
 project = commons_activity_streams
 dependencies[] = commons_follow
@@ -19,7 +18,7 @@ dependencies[] = views_load_more
 datestamp = 1376676992
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[field_instance][] = message-commons_activity_streams_comment_created-field_target_comments
 features[field_instance][] = message-commons_activity_streams_comment_created-field_target_nodes
 features[field_instance][] = message-commons_activity_streams_node_created-field_target_nodes

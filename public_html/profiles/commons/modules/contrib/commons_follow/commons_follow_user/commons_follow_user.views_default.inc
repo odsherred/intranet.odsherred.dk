@@ -74,52 +74,52 @@ function commons_follow_user_views_default_views() {
     ),
   );
   $handler->display->display_options['style_options']['sticky'] = TRUE;
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You aren\'t following anyone.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du følger ikke nogen andre personer.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Forbindelse: Flag: commons_follow_user */
+  /* Forbindelse: Flags: commons_follow_user */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'users';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_user';
-  /* Forbindelse: Flag: email_user */
+  /* Forbindelse: Flags: email_user */
   $handler->display->display_options['relationships']['flag_content_rel_1']['id'] = 'flag_content_rel_1';
   $handler->display->display_options['relationships']['flag_content_rel_1']['table'] = 'users';
   $handler->display->display_options['relationships']['flag_content_rel_1']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel_1']['label'] = 'flag_user';
   $handler->display->display_options['relationships']['flag_content_rel_1']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel_1']['flag'] = 'email_user';
-  /* Felt: Bruger: Navn */
+  /* Felt: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = 'Person';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Felt: Flag: Flag-link */
+  /* Felt: Flags: Flag link */
   $handler->display->display_options['fields']['ops_1']['id'] = 'ops_1';
   $handler->display->display_options['fields']['ops_1']['table'] = 'flag_content';
   $handler->display->display_options['fields']['ops_1']['field'] = 'ops';
   $handler->display->display_options['fields']['ops_1']['relationship'] = 'flag_content_rel_1';
   $handler->display->display_options['fields']['ops_1']['label'] = 'Send email?';
-  /* Felt: Flag: Flag-link */
+  /* Felt: Flags: Flag link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
   $handler->display->display_options['fields']['ops']['table'] = 'flag_content';
   $handler->display->display_options['fields']['ops']['field'] = 'ops';
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
-  /* Sorteringskriterie: Flag: Flagtidspunkt */
+  /* Sorteringskriterie: Flags: Flagged time */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'flag_content';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
-  /* Filterkriterie: Bruger: Aktiv */
+  /* Filterkriterie: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -141,7 +141,7 @@ function commons_follow_user_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('You aren\'t following anyone.'),
+    t('Du følger ikke nogen andre personer.'),
     t('flag'),
     t('flag_user'),
     t('Person'),
@@ -165,7 +165,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all followers';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -181,34 +181,34 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Denne bruger har ingen følgere.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Forbindelse: Flag: commons_follow_user */
+  /* Forbindelse: Flags: commons_follow_user */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'users';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'Commons Follow (Users)';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_user';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
-  /* Forbindelse: Flag: Bruger */
+  /* Forbindelse: Flags: User */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'flag_content';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Felt: Bruger: Navn */
+  /* Felt: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Felt: Bruger: Billede */
+  /* Felt: User: Picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
   $handler->display->display_options['fields']['picture']['field'] = 'picture';
@@ -216,13 +216,13 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['fields']['picture']['label'] = '';
   $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['picture']['image_style'] = '50x50_avatar';
-  /* Sorteringskriterie: Flag: Flagtidspunkt */
+  /* Sorteringskriterie: Flags: Flagged time */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'flag_content';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
-  /* Kontekstuelt filter: Flag: Indholds-ID */
+  /* Kontekstuelt filter: Flags: Content ID */
   $handler->display->display_options['arguments']['content_id']['id'] = 'content_id';
   $handler->display->display_options['arguments']['content_id']['table'] = 'flag_content';
   $handler->display->display_options['arguments']['content_id']['field'] = 'content_id';
@@ -236,7 +236,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['arguments']['content_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['content_id']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['content_id']['validate']['type'] = 'flag_flaggable_user';
-  /* Filterkriterie: Bruger: Aktiv */
+  /* Filterkriterie: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -253,14 +253,14 @@ function commons_follow_user_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'People who follow %1';
+  $handler->display->display_options['title'] = 'Personer der følger %1';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all followers';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
   $handler->display->display_options['pager']['options']['items_per_page'] = '40';
@@ -278,7 +278,7 @@ function commons_follow_user_views_default_views() {
   $translatables['commons_follow_user_followers'] = array(
     t('Master'),
     t('Følgere'),
-    t('Show all followers'),
+    t('Vis alle følgere'),
     t('Udfør'),
     t('Gendan'),
     t('Sortér efter'),
@@ -286,13 +286,13 @@ function commons_follow_user_views_default_views() {
     t('Faldende'),
     t('Denne bruger har ingen følgere.'),
     t('Commons Follow (Users)'),
-    t('Sæt flag på bruger'),
+    t('Flag user'),
     t('Alle'),
     t('Content pane'),
-    t('mere'),
+    t('more'),
     t('Commons'),
     t('Page'),
-    t('People who follow %1'),
+    t('Personer der følger %1'),
     t('Antal elementer'),
     t('- Alle -'),
     t('Forskydning'),
@@ -319,7 +319,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all following';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -335,7 +335,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
@@ -344,34 +344,34 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'Denne bruger følger ikke andre.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['empty']['area']['tokenize'] = TRUE;
-  /* Forbindelse: Flag: commons_follow_user */
+  /* Forbindelse: Flags: commons_follow_user */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'users';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'Commons Follow (Users)';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_user';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
-  /* Felt: Bruger: Navn */
+  /* Felt: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Felt: Bruger: Billede */
+  /* Felt: User: Picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
   $handler->display->display_options['fields']['picture']['field'] = 'picture';
   $handler->display->display_options['fields']['picture']['label'] = '';
   $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['picture']['image_style'] = '50x50_avatar';
-  /* Sorteringskriterie: Flag: Flagtidspunkt */
+  /* Sorteringskriterie: Flags: Flagged time */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'flag_content';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
-  /* Kontekstuelt filter: Flag: User uid */
+  /* Kontekstuelt filter: Flags: User uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'flag_content';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -384,7 +384,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uid']['validate']['type'] = 'user';
-  /* Filterkriterie: Bruger: Aktiv */
+  /* Filterkriterie: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -408,7 +408,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all following';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
   $handler->display->display_options['pager']['options']['items_per_page'] = '40';
@@ -426,7 +426,7 @@ function commons_follow_user_views_default_views() {
   $translatables['commons_follow_user_following'] = array(
     t('Master'),
     t('Følger'),
-    t('Show all following'),
+    t('Vis alle følgere'),
     t('Udfør'),
     t('Gendan'),
     t('Sortér efter'),
@@ -437,7 +437,7 @@ function commons_follow_user_views_default_views() {
     t('Commons Follow (Users)'),
     t('Alle'),
     t('Content pane'),
-    t('mere'),
+    t('more'),
     t('Commons'),
     t('Page'),
     t('People %1 fllows'),

@@ -23,11 +23,17 @@ function commons_profile_social_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 5,
+        'weight' => 3,
+      ),
+      'search_results' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'user',
@@ -74,11 +80,17 @@ function commons_profile_social_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 4,
+        'weight' => 2,
+      ),
+      'search_results' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'user',
@@ -126,11 +138,17 @@ function commons_profile_social_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 6,
+        'weight' => 4,
+      ),
+      'search_results' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'user',

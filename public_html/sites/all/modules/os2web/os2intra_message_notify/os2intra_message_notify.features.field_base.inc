@@ -17,7 +17,6 @@ function os2intra_message_notify_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2intra_message_enddate',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -47,7 +46,6 @@ function os2intra_message_notify_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_os2intra_message_sticky',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',

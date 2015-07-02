@@ -55,17 +55,17 @@ function commons_polls_views_default_views() {
   $handler->display->display_options['header']['commons_bw_node_partial_form']['table'] = 'views';
   $handler->display->display_options['header']['commons_bw_node_partial_form']['field'] = 'commons_bw_node_partial_form';
   $handler->display->display_options['header']['commons_bw_node_partial_form']['bundle'] = 'poll';
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['content'] = 'No polls have been added to this group.';
   $handler->display->display_options['empty']['area']['format'] = 'plain_text';
-  /* Forbindelse: OG membership: OG membership from Indholdselement */
+  /* Forbindelse: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Forbindelse: Flag: commons_follow_node */
+  /* Forbindelse: Flags: commons_follow_node */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
@@ -73,25 +73,25 @@ function commons_polls_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'following';
   $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_node';
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterie: Indhold: Klæbrig */
+  /* Sorteringskriterie: Content: Sticky */
   $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
   $handler->display->display_options['sorts']['sticky']['table'] = 'node';
   $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['created']['expose']['label'] = 'most recent';
-  /* Sorteringskriterie: Indhold: Radioactivity (field_radioactivity:radioactivity_energy) */
+  /* Sorteringskriterie: Content: Radioactivity (field_radioactivity:radioactivity_energy) */
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['id'] = 'field_radioactivity_radioactivity_energy';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['table'] = 'field_data_field_radioactivity';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['field'] = 'field_radioactivity_radioactivity_energy';
@@ -108,14 +108,14 @@ function commons_polls_views_default_views() {
   $handler->display->display_options['arguments']['gid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['gid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -139,7 +139,7 @@ function commons_polls_views_default_views() {
   $handler->display->display_options['filters']['flagged']['value'] = '1';
   $handler->display->display_options['filters']['flagged']['exposed'] = TRUE;
   $handler->display->display_options['filters']['flagged']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['flagged']['expose']['label'] = 'Følger';
+  $handler->display->display_options['filters']['flagged']['expose']['label'] = 'Following';
   $handler->display->display_options['filters']['flagged']['expose']['operator'] = 'flagged_op';
   $handler->display->display_options['filters']['flagged']['expose']['identifier'] = 'following';
   $translatables['commons_bw_polls'] = array(
@@ -163,7 +163,7 @@ function commons_polls_views_default_views() {
     t('most recent'),
     t('most active'),
     t('Alle'),
-    t('Følger'),
+    t('Following'),
   );
   $export['commons_bw_polls'] = $view;
 

@@ -25,7 +25,6 @@ function os2intra_canteen_views_default_views() {
   $handler->display->display_options['title'] = 'Dagens ret';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -40,14 +39,14 @@ function os2intra_canteen_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Der blev ikke fundet noget';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Forbindelse: Indhold: Taksonomitermer på node */
+  /* Forbindelse: Content: Taxonomy terms on node */
   $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
   $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
@@ -56,7 +55,7 @@ function os2intra_canteen_views_default_views() {
     'os2intra_organizaiton_tax' => 0,
     'tags' => 0,
   );
-  /* Felt: Indhold: Date */
+  /* Felt: Content: Date */
   $handler->display->display_options['fields']['field_os2intra_canteen_menu_date']['id'] = 'field_os2intra_canteen_menu_date';
   $handler->display->display_options['fields']['field_os2intra_canteen_menu_date']['table'] = 'field_data_field_os2intra_canteen_menu_date';
   $handler->display->display_options['fields']['field_os2intra_canteen_menu_date']['field'] = 'field_os2intra_canteen_menu_date';
@@ -69,32 +68,32 @@ function os2intra_canteen_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterie: Indhold: Date (field_os2intra_canteen_menu_date) */
+  /* Sorteringskriterie: Content: Date (field_os2intra_canteen_menu_date) */
   $handler->display->display_options['sorts']['field_os2intra_canteen_menu_date_value']['id'] = 'field_os2intra_canteen_menu_date_value';
   $handler->display->display_options['sorts']['field_os2intra_canteen_menu_date_value']['table'] = 'field_data_field_os2intra_canteen_menu_date';
   $handler->display->display_options['sorts']['field_os2intra_canteen_menu_date_value']['field'] = 'field_os2intra_canteen_menu_date_value';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'os2intra_canteen_menu' => 'os2intra_canteen_menu',
   );
-  /* Filterkriterie: Indhold: Har taksonomitermer (med dybde) */
+  /* Filterkriterie: Content: Has taxonomy terms (with depth) */
   $handler->display->display_options['filters']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['filters']['term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['filters']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
@@ -117,7 +116,7 @@ function os2intra_canteen_views_default_views() {
   $handler->display->display_options['filters']['term_node_tid_depth']['type'] = 'select';
   $handler->display->display_options['filters']['term_node_tid_depth']['vocabulary'] = 'os2intra_canteen';
   $handler->display->display_options['filters']['term_node_tid_depth']['depth'] = '0';
-  /* Filterkriterie: Indhold: Date (field_os2intra_canteen_menu_date) */
+  /* Filterkriterie: Content: Date (field_os2intra_canteen_menu_date) */
   $handler->display->display_options['filters']['field_os2intra_canteen_menu_date_value']['id'] = 'field_os2intra_canteen_menu_date_value';
   $handler->display->display_options['filters']['field_os2intra_canteen_menu_date_value']['table'] = 'field_data_field_os2intra_canteen_menu_date';
   $handler->display->display_options['filters']['field_os2intra_canteen_menu_date_value']['field'] = 'field_os2intra_canteen_menu_date_value';
@@ -129,7 +128,7 @@ function os2intra_canteen_views_default_views() {
   $translatables['os2intra_canteen_menu'] = array(
     t('Master'),
     t('Dagens ret'),
-    t('mere'),
+    t('more'),
     t('Udfør'),
     t('Gendan'),
     t('Sortér efter'),
