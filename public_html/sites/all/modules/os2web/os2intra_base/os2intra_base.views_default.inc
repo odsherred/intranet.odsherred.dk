@@ -585,7 +585,7 @@ function os2intra_base_views_default_views() {
     'image_style' => 'medium',
     'image_link' => 'content',
   );
-  $handler->display->display_options['fields']['field_os2web_base_field_image']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_os2web_base_field_image']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_os2web_base_field_image']['delta_offset'] = '0';
   /* Felt: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
@@ -845,7 +845,7 @@ function os2intra_base_views_default_views() {
     'image_style' => 'medium',
     'image_link' => 'content',
   );
-  $handler->display->display_options['fields']['field_os2web_base_field_image']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_os2web_base_field_image']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_os2web_base_field_image']['delta_offset'] = '0';
   /* Felt: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
