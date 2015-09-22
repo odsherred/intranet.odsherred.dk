@@ -522,6 +522,39 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'
+  $field_instances['taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'] = array(
+    'bundle' => 'os2intra_organizaiton_tax',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_os2intra_department_id',
+    'label' => 'Afdeling',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_os2intra_birthday'
   $field_instances['user-user-field_os2intra_birthday'] = array(
     'bundle' => 'user',
@@ -621,6 +654,7 @@ function os2intra_base_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Afdeling');
   t('Billede');
   t('Birthday');
   t('Filer');

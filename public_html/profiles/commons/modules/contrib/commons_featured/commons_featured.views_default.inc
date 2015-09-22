@@ -70,7 +70,7 @@ function commons_featured_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold: Address */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
@@ -80,13 +80,6 @@ function commons_featured_views_default_views() {
   $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_address']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_address']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
-  );
   /* Felt: Registration Settings: Spaces used */
   $handler->display->display_options['fields']['capacity_used']['id'] = 'capacity_used';
   $handler->display->display_options['fields']['capacity_used']['table'] = 'node';

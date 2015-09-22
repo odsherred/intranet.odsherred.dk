@@ -16,7 +16,7 @@ function commons_follow_node_views_api() {
  */
 function commons_follow_node_flag_default_flags() {
   $flags = array();
-  // Exported flag: "Other content".
+  // Exported flag: "Andet indhold".
   $flags['commons_follow_node'] = array(
     'content_type' => 'node',
     'title' => 'Other content',

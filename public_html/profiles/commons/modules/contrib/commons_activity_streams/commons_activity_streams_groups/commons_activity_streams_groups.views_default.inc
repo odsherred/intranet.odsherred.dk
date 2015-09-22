@@ -22,7 +22,7 @@ function commons_activity_streams_groups_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Recent activity in this group';
+  $handler->display->display_options['title'] = 'Seneste aktiviteter';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'none';
@@ -136,7 +136,7 @@ function commons_activity_streams_groups_views_default_views() {
   );
   $translatables['activity_group'] = array(
     t('Master'),
-    t('Recent activity in this group'),
+    t('Seneste aktiviteter'),
     t('mere'),
     t('Udfør'),
     t('Gendan'),

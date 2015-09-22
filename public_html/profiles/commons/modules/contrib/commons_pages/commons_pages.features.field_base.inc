@@ -1,22 +1,22 @@
 <?php
 /**
  * @file
- * commons_q_a.features.field_base.inc
+ * commons_pages.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function commons_q_a_field_default_field_bases() {
+function commons_pages_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_related_question'
-  $field_bases['field_related_question'] = array(
-    'active' => '1',
-    'cardinality' => '1',
-    'deleted' => '0',
+  // Exported field_base: 'field_spotbokse'
+  $field_bases['field_spotbokse'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_related_question',
+    'field_name' => 'field_spotbokse',
     'foreign keys' => array(
       'node' => array(
         'columns' => array(
@@ -30,7 +30,7 @@ function commons_q_a_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => '0',
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'handler' => 'base',
@@ -44,12 +44,12 @@ function commons_q_a_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'question' => 'question',
+          'spotboks' => 'spotboks',
         ),
       ),
       'target_type' => 'node',
     ),
-    'translatable' => '0',
+    'translatable' => 0,
     'type' => 'entityreference',
   );
 

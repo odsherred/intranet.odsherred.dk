@@ -242,7 +242,9 @@ function commons_groups_field_default_field_bases() {
         ),
         'membership_type' => 'og_membership_type_default',
         'sort' => array(
-          'type' => 'none',
+          'direction' => 'ASC',
+          'field' => 'title_field:value',
+          'type' => 'field',
         ),
         'target_bundles' => array(),
       ),

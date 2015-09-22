@@ -110,14 +110,35 @@ function spotbox_views_default_views() {
   $handler->display->display_options['fields']['field_spotbox_text']['field'] = 'field_spotbox_text';
   $handler->display->display_options['fields']['field_spotbox_text']['label'] = '';
   $handler->display->display_options['fields']['field_spotbox_text']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_spotbox_text']['alter']['text'] = '<span class="titel"><a href="[field_spotbox_link]">[title]</a></span>
-<span class="resten"><a href="[field_spotbox_link]">[field_spotbox_text]</a></span>';
+  $handler->display->display_options['fields']['field_spotbox_text']['alter']['text'] = '<a href="[field_spotbox_link]"><span class="titel">[title]</span>
+<span class="resten">[field_spotbox_text]</span></a>';
+  $handler->display->display_options['fields']['field_spotbox_text']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_spotbox_text']['alter']['path'] = '[field_spotbox_link]';
   $handler->display->display_options['fields']['field_spotbox_text']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_spotbox_text']['alter']['alt'] = '[field_spotbox_link_1]';
   $handler->display->display_options['fields']['field_spotbox_text']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_spotbox_text']['element_class'] = 'ekstratekst';
   $handler->display->display_options['fields']['field_spotbox_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_spotbox_text']['element_default_classes'] = FALSE;
+  /* Felt: Indhold: Redigér-link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
+  /* Felt: Global: Kontekstuelle links */
+  $handler->display->display_options['fields']['contextual_links']['id'] = 'contextual_links';
+  $handler->display->display_options['fields']['contextual_links']['table'] = 'views';
+  $handler->display->display_options['fields']['contextual_links']['field'] = 'contextual_links';
+  $handler->display->display_options['fields']['contextual_links']['label'] = '';
+  $handler->display->display_options['fields']['contextual_links']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['contextual_links']['fields'] = array(
+    'field_spotbox_link' => 'field_spotbox_link',
+    'title' => 'title',
+    'field_spotbox_text' => 'field_spotbox_text',
+    'edit_node' => 'edit_node',
+    'field_spotbox_link_1' => 0,
+    'field_spotbox_image' => 0,
+  );
   /* Sorteringskriterie: Indhold: Spotbokse (field_os2intra_base_spotboxes:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
   $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_os2intra_base_spotboxes';
@@ -761,11 +782,14 @@ function spotbox_views_default_views() {
     t('URL'),
     t('Titel'),
     t('[field_spotbox_link_1]'),
-    t('<span class="titel"><a href="[field_spotbox_link]">[title]</a></span>
-<span class="resten"><a href="[field_spotbox_link]">[field_spotbox_text]</a></span>'),
+    t('<a href="[field_spotbox_link]"><span class="titel">[title]</span>
+<span class="resten">[field_spotbox_text]</span></a>'),
+    t('Redigér-link'),
     t('Block'),
     t('Content pane'),
     t('Indhold refererer til Indhold fra field_os2intra_base_spotboxes'),
+    t('<span class="titel"><a href="[field_spotbox_link]">[title]</a></span>
+<span class="resten"><a href="[field_spotbox_link]">[field_spotbox_text]</a></span>'),
     t('Alle'),
     t('Spotbox pane'),
     t('Viser de spotboxe der er relateret til en intranetside'),

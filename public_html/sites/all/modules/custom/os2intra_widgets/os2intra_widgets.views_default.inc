@@ -508,7 +508,7 @@ function os2intra_widgets_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Du er ikke tilmeldt nogle fremtidige  events.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du er ikke tilmeldt nogle fremtidige begivenheder';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Forbindelse: Tilmelding: Indholdselement to Registration */
   $handler->display->display_options['relationships']['registration_rel']['id'] = 'registration_rel';
@@ -580,6 +580,41 @@ function os2intra_widgets_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filterkriterie: Indhold: Udgivet */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filterkriterie: Indhold: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'event' => 'event',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filterkriterie: Indhold: Date -  startdato (field_date) */
+  $handler->display->display_options['filters']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['filters']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_date_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_date_value']['default_date'] = 'now';
+  /* Filterkriterie: Indhold: Date - slutdato (field_date:value2) */
+  $handler->display->display_options['filters']['field_date_value2']['id'] = 'field_date_value2';
+  $handler->display->display_options['filters']['field_date_value2']['table'] = 'field_data_field_date';
+  $handler->display->display_options['filters']['field_date_value2']['field'] = 'field_date_value2';
+  $handler->display->display_options['filters']['field_date_value2']['operator'] = '>';
+  $handler->display->display_options['filters']['field_date_value2']['group'] = 2;
+  $handler->display->display_options['filters']['field_date_value2']['default_date'] = 'now';
 
   /* Display: You're attending - pane */
   $handler = $view->new_display('panel_pane', 'You\'re attending - pane', 'panel_pane_1');
@@ -605,19 +640,12 @@ function os2intra_widgets_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Address */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['label'] = '';
   $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
-  );
   /* Felt: Registration Settings: Spaces used */
   $handler->display->display_options['fields']['capacity_used']['id'] = 'capacity_used';
   $handler->display->display_options['fields']['capacity_used']['table'] = 'node';
@@ -674,19 +702,12 @@ function os2intra_widgets_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Address */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['label'] = '';
   $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
-  );
   /* Felt: Registration Settings: Spaces used */
   $handler->display->display_options['fields']['capacity_used']['id'] = 'capacity_used';
   $handler->display->display_options['fields']['capacity_used']['table'] = 'node';
@@ -747,19 +768,12 @@ function os2intra_widgets_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Address */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['label'] = '';
   $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
-  );
   /* Felt: Registration Settings: Spaces used */
   $handler->display->display_options['fields']['capacity_used']['id'] = 'capacity_used';
   $handler->display->display_options['fields']['capacity_used']['table'] = 'node';
@@ -788,7 +802,7 @@ function os2intra_widgets_views_default_views() {
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
-    t('Du er ikke tilmeldt nogle fremtidige  events.'),
+    t('Du er ikke tilmeldt nogle fremtidige begivenheder'),
     t('node being the Registration'),
     t('Bruger'),
     t('Dato'),

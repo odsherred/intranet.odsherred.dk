@@ -70,7 +70,7 @@ function commons_polls_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['ui_name'] = 'Following';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'following';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'følger';
   $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_node';
   /* Felt: Indhold: Titel */
@@ -159,7 +159,7 @@ function commons_polls_views_default_views() {
     t('sidste »'),
     t('No polls have been added to this group.'),
     t('OG membership from node'),
-    t('following'),
+    t('følger'),
     t('most recent'),
     t('most active'),
     t('Alle'),

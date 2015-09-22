@@ -44,6 +44,7 @@ function commons_groups_field_default_field_instances() {
           'blokindhold' => 0,
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
+          'php_code' => 0,
           'plain_text' => 0,
           'raw' => 0,
         ),
@@ -59,6 +60,9 @@ function commons_groups_field_default_field_instances() {
             ),
             'full_html' => array(
               'weight' => 1,
+            ),
+            'php_code' => array(
+              'weight' => -7,
             ),
             'plain_text' => array(
               'weight' => -8,
@@ -95,7 +99,7 @@ function commons_groups_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -148,7 +152,7 @@ function commons_groups_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -190,7 +194,7 @@ function commons_groups_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -215,6 +219,80 @@ function commons_groups_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-group-field_os2intra_department_id'
+  $field_instances['node-group-field_os2intra_department_id'] = array(
+    'bundle' => 'group',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2intra_department_id',
+    'label' => 'Afdeling',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'blokindhold' => 'blokindhold',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+          'raw' => 'raw',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'blokindhold' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 1,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+            'raw' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'node-group-field_os2intra_outdated_date'
   $field_instances['node-group-field_os2intra_outdated_date'] = array(
     'bundle' => 'group',
@@ -223,16 +301,9 @@ function commons_groups_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 16,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -282,7 +353,7 @@ function commons_groups_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -393,7 +464,7 @@ function commons_groups_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -466,6 +537,7 @@ function commons_groups_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Afdeling');
   t('At this date, the content will be flagged expired.');
   t('Description');
   t('Determine if this is an OG group.');

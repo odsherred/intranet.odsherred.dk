@@ -248,7 +248,9 @@ function commons_activity_streams_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'This person doesn\'t have any activity on the site yet.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du har ikke nogen aktivitet på denne side 
+
+';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Forbindelse: Entity Reference: Refereret entity */
   $handler->display->display_options['relationships']['field_target_nodes_target_id']['id'] = 'field_target_nodes_target_id';
@@ -389,7 +391,9 @@ function commons_activity_streams_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('This person doesn\'t have any activity on the site yet.'),
+    t('Du har ikke nogen aktivitet på denne side 
+
+'),
     t('Indhold entity refereret fra field_target_nodes'),
     t('Stemmer'),
     t('.'),

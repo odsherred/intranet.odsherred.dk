@@ -10,4 +10,3 @@ dependencies[] = features
 dependencies[] = field_sql_storage
 datestamp = 1361820327
 features[features_api][] = api:1
-features[field_base][] = field_address

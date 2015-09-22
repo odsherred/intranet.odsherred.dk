@@ -25,6 +25,7 @@ function os2web_base_user_default_permissions() {
     'name' => 'access user contact forms',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'contact',
   );
@@ -52,10 +53,7 @@ function os2web_base_user_default_permissions() {
   // Exported permission: administer filters.
   $permissions['administer filters'] = array(
     'name' => 'administer filters',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'Webmaster' => 'Webmaster',
-    ),
+    'roles' => array(),
     'module' => 'filter',
   );
 
@@ -87,6 +85,7 @@ function os2web_base_user_default_permissions() {
       'Editor' => 'Editor',
       'Kommunikation' => 'Kommunikation',
       'Webmaster' => 'Webmaster',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'filter',
   );
@@ -97,7 +96,7 @@ function os2web_base_user_default_permissions() {
     'roles' => array(
       'Administrator' => 'Administrator',
       'Editor' => 'Editor',
-      'Kommunikation' => 'Kommunikation',
+      'Intramaster' => 'Intramaster',
       'Webmaster' => 'Webmaster',
     ),
     'module' => 'filter',

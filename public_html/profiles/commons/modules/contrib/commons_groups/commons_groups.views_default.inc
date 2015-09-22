@@ -70,7 +70,7 @@ function commons_groups_views_default_views() {
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['ui_name'] = 'Following';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'following';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'følger';
   $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_node';
   /* Felt: Indhold: Titel */
@@ -163,7 +163,7 @@ function commons_groups_views_default_views() {
     t('sidste »'),
     t('Nobody has posted into this group yet.'),
     t('OG membership from node'),
-    t('following'),
+    t('følger'),
     t('most recent'),
     t('most active'),
     t('Alle'),
@@ -1140,14 +1140,16 @@ function commons_groups_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
-  $handler->display->display_options['pager']['type'] = 'load_more';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'lite';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
@@ -1166,7 +1168,7 @@ function commons_groups_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No groups matched the text you entered.';
+  $handler->display->display_options['empty']['area']['content'] = 'Ingen grupper matcher den aktuelle søgning - eller søgningen er tom. Skriv et navn på den gruppe du leder efter.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -1222,7 +1224,70 @@ function commons_groups_views_default_views() {
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filterkriterie: Indhold: Titel */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Søg';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    7 => 0,
+    5 => 0,
+    8 => 0,
+    3 => 0,
+    6 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  /* Filterkriterie: Indhold: Udgivet */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filterkriterie: Indhold: Group (group_group) */
+  $handler->display->display_options['filters']['group_group_value']['id'] = 'group_group_value';
+  $handler->display->display_options['filters']['group_group_value']['table'] = 'field_data_group_group';
+  $handler->display->display_options['filters']['group_group_value']['field'] = 'group_group_value';
+  $handler->display->display_options['filters']['group_group_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['group_group_value']['group'] = 1;
+  /* Filterkriterie: Søg: Søgeord */
+  $handler->display->display_options['filters']['keys']['id'] = 'keys';
+  $handler->display->display_options['filters']['keys']['table'] = 'search_index';
+  $handler->display->display_options['filters']['keys']['field'] = 'keys';
+  $handler->display->display_options['filters']['keys']['group'] = 1;
+  $handler->display->display_options['filters']['keys']['expose']['operator_id'] = 'keys_op';
+  $handler->display->display_options['filters']['keys']['expose']['label'] = 'Begræns til';
+  $handler->display->display_options['filters']['keys']['expose']['operator'] = 'keys_op';
+  $handler->display->display_options['filters']['keys']['expose']['identifier'] = 'groups-keys';
+  $handler->display->display_options['filters']['keys']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+  );
   $handler->display->display_options['pane_category']['name'] = 'Commons';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['inherit_panels_path'] = '1';
@@ -1242,10 +1307,11 @@ function commons_groups_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('No groups matched the text you entered.'),
+    t('Ingen grupper matcher den aktuelle søgning - eller søgningen er tom. Skriv et navn på den gruppe du leder efter.'),
     t('Begræns til'),
     t('Feed'),
     t('Content pane'),
+    t('Søg'),
     t('Commons'),
   );
   $export['commons_groups_directory'] = $view;
@@ -1410,17 +1476,6 @@ function commons_groups_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Group */
-  $handler->display->display_options['fields']['group_group']['id'] = 'group_group';
-  $handler->display->display_options['fields']['group_group']['table'] = 'field_data_group_group';
-  $handler->display->display_options['fields']['group_group']['field'] = 'group_group';
-  $handler->display->display_options['fields']['group_group']['relationship'] = 'og_membership_related_node_group';
-  $handler->display->display_options['fields']['group_group']['label'] = '';
-  $handler->display->display_options['fields']['group_group']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['group_group']['type'] = 'commons_groups_group_subscribe';
-  $handler->display->display_options['fields']['group_group']['settings'] = array(
-    'field_name' => '0',
-  );
   /* Kontekstuelt filter: OG membership: Entity ID */
   $handler->display->display_options['arguments']['etid']['id'] = 'etid';
   $handler->display->display_options['arguments']['etid']['table'] = 'og_membership';

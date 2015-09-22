@@ -599,11 +599,16 @@ function commons_notify_field_default_field_instances() {
     'description' => 'Email option will be checked automatically when subscribing to something.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'list',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 8,
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'search_results' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
     ),
     'display_label' => 1,

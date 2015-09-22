@@ -52,12 +52,12 @@ function commons_groups_image_default_styles() {
 
   // Exported image style: 50x50.
   $styles['50x50'] = array(
-    'label' => '50x50',
     'name' => '50x50',
+    'label' => '50x50',
     'effects' => array(
-      2 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+      9 => array(
+        'label' => 'Skalér og beskær',
+        'help' => 'Skalering og beskæring bevarer billedets højde-bredde-forhold og beskærer derefter den største dimension. Det er nyttigt til at generere kvadratiske thumbnails uden at forvrænge billedet.',
         'effect callback' => 'image_scale_and_crop_effect',
         'dimensions callback' => 'image_resize_dimensions',
         'form callback' => 'image_resize_form',

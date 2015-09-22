@@ -35,8 +35,9 @@ function os2web_base_image_default_styles() {
   // Exported image style: os2web_base_style_content.
   $styles['os2web_base_style_content'] = array(
     'name' => 'os2web_base_style_content',
+    'label' => 'os2web_base_style_content',
     'effects' => array(
-      1 => array(
+      5 => array(
         'label' => 'Skalér',
         'help' => 'Skalering bevarer billedets højde-bredde-forhold. Hvis kun den ene dimension angives vil den anden blive beregnet.',
         'effect callback' => 'image_scale_effect',
@@ -46,13 +47,13 @@ function os2web_base_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 460,
+          'width' => 550,
           'height' => '',
           'upscale' => 1,
         ),
         'weight' => 1,
       ),
-      2 => array(
+      6 => array(
         'label' => 'Beskær',
         'help' => 'Beskæring fjerner dele af billedet for at give det de angivne dimensioner.',
         'effect callback' => 'image_crop_effect',
@@ -62,8 +63,8 @@ function os2web_base_image_default_styles() {
         'module' => 'image',
         'name' => 'image_crop',
         'data' => array(
-          'width' => 460,
-          'height' => 260,
+          'width' => 550,
+          'height' => 310,
           'anchor' => 'center-center',
         ),
         'weight' => 2,
@@ -91,6 +92,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_image',
   );
 
   // Exported image style: os2web_base_style_medium.
@@ -130,6 +132,7 @@ function os2web_base_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'os2web_base_style_medium',
   );
 
   // Exported image style: os2web_base_style_news_big.
@@ -152,6 +155,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_news_big',
   );
 
   // Exported image style: os2web_base_style_news_medium.
@@ -174,6 +178,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_news_medium',
   );
 
   // Exported image style: os2web_base_style_news_small.
@@ -196,6 +201,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_news_small',
   );
 
   // Exported image style: os2web_base_style_rotating.
@@ -218,6 +224,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_rotating',
   );
 
   // Exported image style: os2web_base_style_rotating_small.
@@ -240,6 +247,7 @@ function os2web_base_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'os2web_base_style_rotating_small',
   );
 
   return $styles;

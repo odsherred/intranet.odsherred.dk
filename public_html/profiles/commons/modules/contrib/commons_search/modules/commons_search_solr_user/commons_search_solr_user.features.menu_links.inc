@@ -25,7 +25,6 @@ function commons_search_solr_user_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 5,
-    'customized' => 1,
   );
   // Translatables
   // Included for use with string extractors like potx.

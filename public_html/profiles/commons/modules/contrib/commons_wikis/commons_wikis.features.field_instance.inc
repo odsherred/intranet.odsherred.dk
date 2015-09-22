@@ -104,6 +104,7 @@ function commons_wikis_field_default_field_instances() {
           'blokindhold' => 0,
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
+          'php_code' => 0,
           'plain_text' => 0,
           'raw' => 0,
         ),
@@ -119,6 +120,9 @@ function commons_wikis_field_default_field_instances() {
             ),
             'full_html' => array(
               'weight' => 1,
+            ),
+            'php_code' => array(
+              'weight' => -7,
             ),
             'plain_text' => array(
               'weight' => -8,
@@ -153,16 +157,9 @@ function commons_wikis_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 9,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'print' => array(
         'label' => 'above',
@@ -210,11 +207,10 @@ function commons_wikis_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'file',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 8,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'print' => array(
         'label' => 'above',
@@ -237,7 +233,7 @@ function commons_wikis_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'txt pdf doc docx xls xlsx ppt pptx',
+      'file_extensions' => 'txt pdf doc docx xls xlsx ppt pptx docm',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -286,7 +282,7 @@ function commons_wikis_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'print' => array(
         'label' => 'hidden',

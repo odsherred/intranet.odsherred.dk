@@ -554,7 +554,7 @@ function commons_events_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Du er ikke tilmeldt nogle fremtidige  events.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du er ikke tilmeldt nogle fremtidige begivenheder';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Forbindelse: Tilmelding: Indholdselement to Registration */
   $handler->display->display_options['relationships']['registration_rel']['id'] = 'registration_rel';
@@ -590,6 +590,10 @@ function commons_events_views_default_views() {
   $handler->display->display_options['arguments']['user_uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['user_uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['user_uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -604,6 +608,21 @@ function commons_events_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filterkriterie: Indhold: Date -  startdato (field_date) */
+  $handler->display->display_options['filters']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['filters']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_date_value']['group'] = 2;
+  $handler->display->display_options['filters']['field_date_value']['default_date'] = 'now';
+  /* Filterkriterie: Indhold: Date - slutdato (field_date:value2) */
+  $handler->display->display_options['filters']['field_date_value2']['id'] = 'field_date_value2';
+  $handler->display->display_options['filters']['field_date_value2']['table'] = 'field_data_field_date';
+  $handler->display->display_options['filters']['field_date_value2']['field'] = 'field_date_value2';
+  $handler->display->display_options['filters']['field_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_date_value2']['group'] = 2;
+  $handler->display->display_options['filters']['field_date_value2']['default_date'] = 'now';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -633,19 +652,12 @@ function commons_events_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Address */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['label'] = '';
   $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
-  );
   /* Felt: Registration Settings: Spaces used */
   $handler->display->display_options['fields']['capacity_used']['id'] = 'capacity_used';
   $handler->display->display_options['fields']['capacity_used']['table'] = 'node';
@@ -702,19 +714,12 @@ function commons_events_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Address */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['label'] = '';
   $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
-  );
   /* Felt: Registration Settings: Spaces used */
   $handler->display->display_options['fields']['capacity_used']['id'] = 'capacity_used';
   $handler->display->display_options['fields']['capacity_used']['table'] = 'node';
@@ -748,7 +753,7 @@ function commons_events_views_default_views() {
   /* Display: You follow - pane */
   $handler = $view->new_display('panel_pane', 'You follow - pane', 'panel_pane_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'You follow';
+  $handler->display->display_options['title'] = 'Du følger';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
@@ -775,19 +780,12 @@ function commons_events_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Address */
+  /* Felt: Handler mangler eller er i stykker */
   $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
   $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
   $handler->display->display_options['fields']['field_address']['label'] = '';
   $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
-  $handler->display->display_options['fields']['field_address']['settings'] = array(
-    'use_widget_handlers' => 1,
-    'format_handlers' => array(
-      'address' => 'address',
-    ),
-  );
   /* Felt: Registration Settings: Spaces used */
   $handler->display->display_options['fields']['capacity_used']['id'] = 'capacity_used';
   $handler->display->display_options['fields']['capacity_used']['table'] = 'node';
@@ -815,7 +813,7 @@ function commons_events_views_default_views() {
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
-    t('Du er ikke tilmeldt nogle fremtidige  events.'),
+    t('Du er ikke tilmeldt nogle fremtidige begivenheder'),
     t('node being the Registration'),
     t('Bruger'),
     t('Alle'),
@@ -829,7 +827,7 @@ function commons_events_views_default_views() {
     t('You created - pane'),
     t('You created'),
     t('You follow - pane'),
-    t('You follow'),
+    t('Du følger'),
     t('flag'),
   );
   $export['commons_events_user_upcoming_events'] = $view;

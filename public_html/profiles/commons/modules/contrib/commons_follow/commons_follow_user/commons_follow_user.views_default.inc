@@ -79,7 +79,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You aren\'t following anyone.';
+  $handler->display->display_options['empty']['area']['content'] = 'Du følger ikke nogen andre personer.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Forbindelse: Flag: commons_follow_user */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
@@ -141,7 +141,7 @@ function commons_follow_user_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('You aren\'t following anyone.'),
+    t('Du følger ikke nogen andre personer.'),
     t('flag'),
     t('flag_user'),
     t('Person'),
@@ -165,7 +165,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all followers';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -253,14 +253,14 @@ function commons_follow_user_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'People who follow %1';
+  $handler->display->display_options['title'] = 'Personer der følger %1';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all followers';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
   $handler->display->display_options['pager']['options']['items_per_page'] = '40';
@@ -278,7 +278,7 @@ function commons_follow_user_views_default_views() {
   $translatables['commons_follow_user_followers'] = array(
     t('Master'),
     t('Følgere'),
-    t('Show all followers'),
+    t('Vis alle følgere'),
     t('Udfør'),
     t('Gendan'),
     t('Sortér efter'),
@@ -292,7 +292,7 @@ function commons_follow_user_views_default_views() {
     t('mere'),
     t('Commons'),
     t('Page'),
-    t('People who follow %1'),
+    t('Personer der følger %1'),
     t('Antal elementer'),
     t('- Alle -'),
     t('Forskydning'),
@@ -319,7 +319,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all following';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -408,7 +408,7 @@ function commons_follow_user_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show all following';
+  $handler->display->display_options['use_more_text'] = 'Vis alle følgere';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'load_more';
   $handler->display->display_options['pager']['options']['items_per_page'] = '40';
@@ -426,7 +426,7 @@ function commons_follow_user_views_default_views() {
   $translatables['commons_follow_user_following'] = array(
     t('Master'),
     t('Følger'),
-    t('Show all following'),
+    t('Vis alle følgere'),
     t('Udfør'),
     t('Gendan'),
     t('Sortér efter'),
