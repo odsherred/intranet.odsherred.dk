@@ -4,8 +4,6 @@
  * Code for the OS2intra base feature.
  */
 
-include_once 'os2intra_base.features.inc';
-
 /**
  * Implements hook_init();
  */

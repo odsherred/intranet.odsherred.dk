@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the OS2Intra KLE feature.
- */
-
-include_once 'os2intra_kle.features.inc';

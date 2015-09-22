@@ -4,8 +4,6 @@
  * Code for the OS2Web indholdstyper feature.
  */
 
-include_once('os2web_base.features.inc');
-
 /**
  * Implements hook_date_format_types().
  */

@@ -4,8 +4,6 @@
  * Code for the Taxonomies and taxonomy importers feature.
  */
 
-include_once('os2web_taxonomies.features.inc');
-
 /**
  * Implements hook_os2web_help().
  */
