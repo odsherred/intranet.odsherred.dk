@@ -692,6 +692,21 @@ function install_full_redirect_url($install_state) {
  */
 function install_display_output($output, $install_state) {
   drupal_page_header();
+
+  // Prevent install.php from being indexed when installed in a sub folder.
+  // robots.txt rules are not read if the site is within domain.com/subfolder
+  // resulting in /subfolder/install.php being found through search engines.
+  // When settings.php is writeable this can be used via an external database
+  // leading a malicious user to gain php access to the server.
+  $noindex_meta_tag = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'robots',
+      'content' => 'noindex, nofollow',
+    ),
+  );
+  drupal_add_html_head($noindex_meta_tag, 'install_meta_robots');
+
   // Only show the task list if there is an active task; otherwise, the page
   // request has ended before tasks have even been started, so there is nothing
   // meaningful to show.
@@ -765,6 +780,15 @@ function install_verify_requirements(&$install_state) {
 function install_system_module(&$install_state) {
   // Install system.module.
   drupal_install_system();
+
+  // Call file_ensure_htaccess() to ensure that all of Drupal's standard
+  // directories (e.g., the public and private files directories) have
+  // appropriate .htaccess files. These directories will have already been
+  // created by this point in the installer, since Drupal creates them during
+  // the install_verify_requirements() task. Note that we cannot call
+  // file_ensure_htaccess() any earlier than this, since it relies on
+  // system.module in order to work.
+  file_ensure_htaccess();
 
   // Enable the user module so that sessions can be recorded during the
   // upcoming bootstrap step.
@@ -981,7 +1005,7 @@ function install_settings_form_submit($form, &$form_state) {
     'required' => TRUE,
   );
   $settings['drupal_hash_salt'] = array(
-    'value'    => drupal_hash_base64(drupal_random_bytes(55)),
+    'value'    => drupal_random_key(),
     'required' => TRUE,
   );
   drupal_rewrite_settings($settings);
@@ -1017,20 +1041,7 @@ function install_select_profile(&$install_state) {
   $install_state['profiles'] += install_find_profiles();
   if (empty($install_state['parameters']['profile'])) {
     // Try to find a profile.
-    $profiles = $install_state['profiles'];
-    foreach ($profiles as $key => $profile) {
-      $details = install_profile_info($profile->name);
-      // Remove hidden profiles (such as the testing profile, which only exists
-      // to speed up test runs) from the list. This prevents them from being
-      // displayed in the user interface, and also means that if there is only
-      // one non-hidden profile, _install_select_profile() will choose it
-      // automatically.
-      if (!empty($details['hidden'])) {
-        unset($profiles[$key]);
-      }
-    }
-    $profile = _install_select_profile($profiles);
-    $install_state['profiles'] = $profiles;
+    $profile = _install_select_profile($install_state['profiles']);
     if (empty($profile)) {
       // We still don't have a profile, so display a form for selecting one.
       // Only do this in the case of interactive installations, since this is
@@ -1126,6 +1137,11 @@ function install_select_profile_form($form, &$form_state, $profile_files) {
     include_once DRUPAL_ROOT . '/' . $profile->uri;
 
     $details = install_profile_info($profile->name);
+    // Don't show hidden profiles. This is used by to hide the testing profile,
+    // which only exists to speed up test runs.
+    if ($details['hidden'] === TRUE) {
+      continue;
+    }
     $profiles[$profile->name] = $details;
 
     // Determine the name of the profile; default to file name if defined name

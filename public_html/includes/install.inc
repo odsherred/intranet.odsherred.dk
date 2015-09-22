@@ -1134,7 +1134,6 @@ function st($string, array $args = array(), array $options = array()) {
     }
   }
 
-  require_once DRUPAL_ROOT . '/includes/theme.inc';
   // Transform arguments before inserting them
   foreach ($args as $key => $value) {
     switch ($key[0]) {
@@ -1172,9 +1171,6 @@ function drupal_check_profile($profile) {
   }
 
   $info = install_profile_info($profile);
-
-  // Add the profile as a dependency itself, in order to see if it has requirements as well.
-  $info['dependencies'][] = $profile;
 
   // Collect requirement testing results.
   $requirements = array();
@@ -1293,7 +1289,6 @@ function install_profile_info($profile, $locale = 'en') {
       'version' => NULL,
       'hidden' => FALSE,
       'php' => DRUPAL_MINIMUM_PHP,
-      'php_memory_limit' => DRUPAL_MINIMUM_PHP_MEMORY_LIMIT,
     );
     $info = drupal_parse_info_file("profiles/$profile/$profile.info") + $defaults;
     $info['dependencies'] = array_unique(array_merge(
