@@ -8,6 +8,7 @@ project = commons_wikis
 dependencies[] = commons_body
 dependencies[] = commons_bw
 dependencies[] = commons_groups
+dependencies[] = commons_posts
 dependencies[] = commons_topics
 dependencies[] = ctools
 dependencies[] = date

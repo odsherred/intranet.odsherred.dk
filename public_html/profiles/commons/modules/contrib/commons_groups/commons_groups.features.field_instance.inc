@@ -219,6 +219,52 @@ function commons_groups_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-group-field_os2intra_base_spotboxes'
+  $field_instances['node-group-field_os2intra_base_spotboxes'] = array(
+    'bundle' => 'group',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2intra_base_spotboxes',
+    'label' => 'Spotbokse',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 52,
+    ),
+  );
+
   // Exported field_instance: 'node-group-field_os2intra_department_id'
   $field_instances['node-group-field_os2intra_department_id'] = array(
     'bundle' => 'group',
@@ -293,6 +339,86 @@ function commons_groups_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-group-field_os2intra_grouptype'
+  $field_instances['node-group-field_os2intra_grouptype'] = array(
+    'bundle' => 'group',
+    'default_value' => array(
+      0 => array(
+        'tid' => 5,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+    ),
+    'display_in_partial_form' => 0,
+    'entity_type' => 'node',
+    'field_name' => 'field_os2intra_grouptype',
+    'label' => 'Gruppe Type',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-group-field_os2intra_organization'
+  $field_instances['node-group-field_os2intra_organization'] = array(
+    'bundle' => 'group',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Vælg forældre til denne gruppe. I hvilken organisation er denne afdeling en del af?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+    ),
+    'display_in_partial_form' => 0,
+    'entity_type' => 'node',
+    'field_name' => 'field_os2intra_organization',
+    'label' => 'Gruppens Organisation',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 44,
+    ),
+  );
+
   // Exported field_instance: 'node-group-field_os2intra_outdated_date'
   $field_instances['node-group-field_os2intra_outdated_date'] = array(
     'bundle' => 'group',
@@ -335,6 +461,106 @@ function commons_groups_field_default_field_instances() {
       ),
       'type' => 'date_select',
       'weight' => 55,
+    ),
+  );
+
+  // Exported field_instance: 'node-group-field_os2web_base_field_kle_ref'
+  $field_instances['node-group-field_os2web_base_field_kle_ref'] = array(
+    'bundle' => 'group',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+    ),
+    'display_in_partial_form' => 0,
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_field_kle_ref',
+    'label' => 'KL Emneord',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-group-field_os2web_base_field_media'
+  $field_instances['node-group-field_os2web_base_field_media'] = array(
+    'bundle' => 'group',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_os2web_base_field_media',
+    'label' => 'Filer',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'doc pdf xls xlsx docx ppt pptx docm',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 0,
+          'public' => 'public',
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'application' => 0,
+          'audio' => 0,
+          'document' => 'document',
+          'image' => 0,
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 'media_internet',
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 54,
     ),
   );
 
@@ -535,6 +761,39 @@ function commons_groups_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'
+  $field_instances['taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'] = array(
+    'bundle' => 'os2intra_organizaiton_tax',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_os2intra_department_id',
+    'label' => 'Afdeling',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Afdeling');
@@ -542,15 +801,21 @@ function commons_groups_field_default_field_instances() {
   t('Description');
   t('Determine if this is an OG group.');
   t('Expire date');
+  t('Filer');
   t('Group');
   t('Group Logo');
   t('Group roles and permissions');
   t('Group visibility');
+  t('Gruppe Type');
+  t('Gruppens Organisation');
   t('Hide contributed content from non-members');
+  t('KL Emneord');
   t('Privacy settings');
   t('Request message');
+  t('Spotbokse');
   t('These privacy settings will not change the visibility of content that has already posted into this group. It takes effect only for content created after the group is saved with new privacy settings.');
   t('This is the text a user may send to the group administrators.');
+  t('Vælg forældre til denne gruppe. I hvilken organisation er denne afdeling en del af?');
 
   return $field_instances;
 }
