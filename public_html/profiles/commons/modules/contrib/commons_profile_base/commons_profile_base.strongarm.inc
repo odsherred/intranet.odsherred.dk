@@ -42,7 +42,7 @@ function commons_profile_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_style';
-  $strongarm->value = 'thumbnail';
+  $strongarm->value = 'os2intra_birthday_avatar';
   $export['user_picture_style'] = $strongarm;
 
   return $export;

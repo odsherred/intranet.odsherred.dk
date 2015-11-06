@@ -523,7 +523,9 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'
+
+  // Exported field_instance:
+  // 'taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'
   $field_instances['taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'] = array(
     'bundle' => 'os2intra_organizaiton_tax',
     'default_value' => NULL,

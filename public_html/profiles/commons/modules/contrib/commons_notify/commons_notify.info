@@ -1,7 +1,6 @@
 name = Commons Notify
 core = 7.x
 package = Commons - Building blocks
-php = 5.2.4
 version = 7.x-3.3
 project = commons_notify
 dependencies[] = commons_follow
@@ -19,7 +18,7 @@ dependencies[] = strongarm
 dependencies[] = text
 datestamp = 1376677592
 features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[field_base][] = field_message_rendered_body
 features[field_base][] = field_message_rendered_subject
 features[field_base][] = message_subscribe_email

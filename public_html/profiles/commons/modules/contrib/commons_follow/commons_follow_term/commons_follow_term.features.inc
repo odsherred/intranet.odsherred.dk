@@ -7,7 +7,7 @@
 /**
  * Implements hook_views_api().
  */
-function commons_follow_term_views_api() {
+function commons_follow_term_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -55,9 +55,7 @@ function commons_follow_term_flag_default_flags() {
     'content_type' => 'taxonomy_term',
     'title' => 'Email term',
     'global' => 0,
-    'types' => array(
-      0 => 'topics',
-    ),
+    'types' => array(),
     'flag_short' => 'Send Email',
     'flag_long' => '',
     'flag_message' => '',

@@ -98,29 +98,29 @@ function commons_content_moderation_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['text']['id'] = 'text';
   $handler->display->display_options['empty']['text']['table'] = 'views';
   $handler->display->display_options['empty']['text']['field'] = 'area';
   $handler->display->display_options['empty']['text']['content'] = 'No comments have been reported...';
   $handler->display->display_options['empty']['text']['format'] = 'plain_text';
-  /* Forbindelse: Flag: inappropriate_comment */
+  /* Forbindelse: Flags: inappropriate_comment */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'comment';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'inappropriate_comment';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
-  /* Forbindelse: Kommentar: Indhold */
+  /* Forbindelse: Comment: Content */
   $handler->display->display_options['relationships']['nid']['id'] = 'nid';
   $handler->display->display_options['relationships']['nid']['table'] = 'comment';
   $handler->display->display_options['relationships']['nid']['field'] = 'nid';
   $handler->display->display_options['relationships']['nid']['required'] = TRUE;
-  /* Forbindelse: Flag: inappropriate_comment tæller */
+  /* Forbindelse: Flags: inappropriate_comment counter */
   $handler->display->display_options['relationships']['flag_count_rel']['id'] = 'flag_count_rel';
   $handler->display->display_options['relationships']['flag_count_rel']['table'] = 'comment';
   $handler->display->display_options['relationships']['flag_count_rel']['field'] = 'flag_count_rel';
   $handler->display->display_options['relationships']['flag_count_rel']['flag'] = 'inappropriate_comment';
-  /* Felt: Masse-handlinger: Kommentar */
+  /* Felt: Bulk operations: Comment */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'comment';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -236,32 +236,32 @@ function commons_content_moderation_views_default_views() {
       'postpone_processing' => 0,
     ),
   );
-  /* Felt: Kommentar: Titel */
+  /* Felt: Comment: Title */
   $handler->display->display_options['fields']['subject']['id'] = 'subject';
   $handler->display->display_options['fields']['subject']['table'] = 'comment';
   $handler->display->display_options['fields']['subject']['field'] = 'subject';
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'nid';
   $handler->display->display_options['fields']['title']['label'] = 'Comment on';
-  /* Felt: Kommentar: Forfatter */
+  /* Felt: Comment: Author */
   $handler->display->display_options['fields']['name_2']['id'] = 'name_2';
   $handler->display->display_options['fields']['name_2']['table'] = 'comment';
   $handler->display->display_options['fields']['name_2']['field'] = 'name';
   $handler->display->display_options['fields']['name_2']['label'] = 'Comment Author';
-  /* Felt: Kommentar: Comment */
+  /* Felt: Comment: Comment */
   $handler->display->display_options['fields']['entity_id']['id'] = 'entity_id';
   $handler->display->display_options['fields']['entity_id']['table'] = 'field_data_comment_body';
   $handler->display->display_options['fields']['entity_id']['field'] = 'comment_body';
   $handler->display->display_options['fields']['entity_id']['label'] = 'Kommentar';
-  /* Sorteringskriterie: Flag: Flagtidspunkt */
+  /* Sorteringskriterie: Flags: Flagged time */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'flag_content';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['relationship'] = 'flag_content_rel';
-  /* Filterkriterie: Kommentar: Godkendt */
+  /* Filterkriterie: Comment: Approved */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'comment';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -296,13 +296,15 @@ function commons_content_moderation_views_default_views() {
     t('sidste »'),
     t('No comments have been reported...'),
     t('flag'),
-    t('Indhold'),
-    t('tæller'),
-    t('Kommentar'),
-    t('Titel'),
+    t('Content'),
+    t('counter'),
+    t('Comment'),
+    t('Title'),
     t('Comment on'),
     t('Comment Author'),
+    t('Kommentar'),
     t('Page: Reported comments'),
+    t('more'),
   );
   $export['commons_content_moderation_reported_comments'] = $view;
 
@@ -395,30 +397,30 @@ function commons_content_moderation_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['text']['id'] = 'area';
   $handler->display->display_options['empty']['text']['table'] = 'views';
   $handler->display->display_options['empty']['text']['field'] = 'area';
   $handler->display->display_options['empty']['text']['content'] = 'No content has been reported.';
   $handler->display->display_options['empty']['text']['format'] = '1';
-  /* Forbindelse: Flag: inappropriate_node */
+  /* Forbindelse: Flags: inappropriate_node */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'abuse_node';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'inappropriate_node';
   $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
-  /* Forbindelse: Indhold: Forfatter */
+  /* Forbindelse: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Forbindelse: Flag: inappropriate_node tæller */
+  /* Forbindelse: Flags: inappropriate_node counter */
   $handler->display->display_options['relationships']['flag_count_rel']['id'] = 'flag_count_rel';
   $handler->display->display_options['relationships']['flag_count_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_count_rel']['field'] = 'flag_count_rel';
   $handler->display->display_options['relationships']['flag_count_rel']['flag'] = 'inappropriate_node';
-  /* Felt: Masse-handlinger: Indhold */
+  /* Felt: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -569,35 +571,35 @@ function commons_content_moderation_views_default_views() {
       'postpone_processing' => 0,
     ),
   );
-  /* Felt: Indhold: Type */
+  /* Felt: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  /* Felt: Flag: Flagtæller */
+  /* Felt: Flags: Flag counter */
   $handler->display->display_options['fields']['count']['id'] = 'count';
   $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
   $handler->display->display_options['fields']['count']['field'] = 'count';
   $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
   $handler->display->display_options['fields']['count']['label'] = 'Antal';
-  /* Felt: Flag: Time last flagged */
+  /* Felt: Flags: Time last flagged */
   $handler->display->display_options['fields']['last_updated']['id'] = 'last_updated';
   $handler->display->display_options['fields']['last_updated']['table'] = 'flag_counts';
   $handler->display->display_options['fields']['last_updated']['field'] = 'last_updated';
   $handler->display->display_options['fields']['last_updated']['relationship'] = 'flag_count_rel';
   $handler->display->display_options['fields']['last_updated']['label'] = 'Seneste';
   $handler->display->display_options['fields']['last_updated']['date_format'] = 'time ago';
-  /* Felt: Bruger: Navn */
+  /* Felt: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Forfatter';
-  /* Felt: Indhold: Body */
+  /* Felt: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -606,7 +608,7 @@ function commons_content_moderation_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '600',
   );
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -636,11 +638,11 @@ function commons_content_moderation_views_default_views() {
     t('Faldende'),
     t('No content has been reported.'),
     t('abuse_node'),
-    t('forfatter'),
-    t('tæller'),
-    t('Indhold'),
+    t('author'),
+    t('counter'),
+    t('Content'),
     t('Type'),
-    t('Titel'),
+    t('Title'),
     t('Antal'),
     t('.'),
     t(','),
@@ -648,6 +650,7 @@ function commons_content_moderation_views_default_views() {
     t('Forfatter'),
     t('Brødtekst'),
     t('Page'),
+    t('more'),
   );
   $export['commons_content_moderation_reported_nodes'] = $view;
 
