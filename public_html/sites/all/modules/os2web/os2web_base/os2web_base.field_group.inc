@@ -23,19 +23,20 @@ function os2web_base_field_group_info() {
     'label' => 'Indstillinger',
     'weight' => '8',
     'children' => array(
-      0 => 'field_os2web_base_field_spotbox',
-      1 => 'field_os2web_base_field_contact',
-      2 => 'field_os2web_base_field_selfserv',
-      3 => 'field_os2web_base_field_rotate',
-      4 => 'field_os2web_base_field_hidlinks',
-      5 => 'group_os2web_base_group_hidden',
+      0 => 'field_os2web_base_field_contact',
+      1 => 'field_os2web_base_field_hidlinks',
+      2 => 'field_os2web_base_field_rotate',
+      3 => 'field_os2web_base_field_selfserv',
+      4 => 'field_os2web_base_field_spotbox',
+      5 => 'field_os2intra_outdated_date',
+      6 => 'group_os2web_base_group_hidden',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-3 field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -65,7 +66,7 @@ function os2web_base_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-content field-group-htabs',
       ),
     ),
   );
@@ -91,7 +92,7 @@ function os2web_base_field_group_info() {
     'format_settings' => array(
       'label' => 'Hentet fra kommunens sagssystem',
       'instance_settings' => array(
-        'classes' => 'attached-documents',
+        'classes' => 'attached-documents group-os2web-base-group-document field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -120,7 +121,7 @@ function os2web_base_field_group_info() {
       'label' => 'Sager og dokumenter',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-esdh field-group-htab',
         'description' => '',
       ),
       'formatter' => 'closed',
@@ -141,17 +142,17 @@ function os2web_base_field_group_info() {
     'label' => 'Emneord',
     'weight' => '7',
     'children' => array(
-      0 => 'field_os2web_base_field_edi_tags',
+      0 => 'field_os2web_base_field_loca_ref',
       1 => 'field_os2web_base_field_organiz',
       2 => 'field_os2web_base_field_politics',
-      3 => 'field_os2web_base_field_loca_ref',
+      3 => 'field_stikord',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-extras field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -179,7 +180,7 @@ function os2web_base_field_group_info() {
       'label' => 'Tekst',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-general field-group-htab',
         'description' => '',
       ),
       'formatter' => 'closed',
@@ -198,17 +199,18 @@ function os2web_base_field_group_info() {
   $field_group->parent_name = 'group_os2web_base_group_3';
   $field_group->data = array(
     'label' => 'Skjult',
-    'weight' => '18',
+    'weight' => '12',
     'children' => array(
-      0 => 'field_os2web_base_field_struct',
+      0 => 'field_os2web_base_field_edi_tags',
       1 => 'field_os2web_base_field_sourceid',
+      2 => 'field_os2web_base_field_struct',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-hidden field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -237,7 +239,7 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-hidden field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -267,7 +269,7 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-hidden field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -296,7 +298,7 @@ function os2web_base_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-images field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -319,6 +321,9 @@ function os2web_base_field_group_info() {
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Billede',
+      'instance_settings' => array(
+        'classes' => ' group-os2web-base-group-image field-group-div',
+      ),
     ),
   );
   $export['group_os2web_base_group_image|node|os2web_base_news|form'] = $field_group;
@@ -347,7 +352,7 @@ function os2web_base_field_group_info() {
       'label' => 'Indstillinger',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-settings field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -379,7 +384,7 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-taxono field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -410,7 +415,7 @@ function os2web_base_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-taxono field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -441,7 +446,7 @@ function os2web_base_field_group_info() {
       'label' => 'Emneord',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-taxono field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -474,7 +479,7 @@ function os2web_base_field_group_info() {
       'label' => 'Tekst',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-os2web-base-group-text field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -503,7 +508,7 @@ function os2web_base_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-os2web-base-news-tabs field-group-htabs',
       ),
     ),
   );

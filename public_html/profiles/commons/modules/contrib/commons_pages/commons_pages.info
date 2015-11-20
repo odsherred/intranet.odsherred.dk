@@ -1,7 +1,6 @@
 name = Commons Pages
 core = 7.x
 package = Commons - Content types
-php = 5.2.4
 version = 7.x-3.0
 project = commons_pages
 dependencies[] = commons_body
@@ -14,7 +13,8 @@ dependencies[] = strongarm
 dependencies[] = text
 datestamp = 1361820339
 features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
+features[features_api][] = api:2
+features[field_base][] = field_spotbokse
 features[field_instance][] = node-page-body
 features[field_instance][] = node-page-field_spotbokse
 features[node][] = page
