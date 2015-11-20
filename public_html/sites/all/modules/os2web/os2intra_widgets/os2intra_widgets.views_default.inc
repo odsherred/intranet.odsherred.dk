@@ -211,6 +211,7 @@ function os2intra_widgets_views_default_views() {
   /* Display: Bilag */
   $handler = $view->new_display('attachment', 'Bilag', 'attachment_1');
   $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: File: Content using Filer */
   $handler->display->display_options['relationships']['reverse_field_os2web_base_field_media_node']['id'] = 'reverse_field_os2web_base_field_media_node';
