@@ -22,35 +22,29 @@ function commons_activity_streams_groups_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Recent activity in this group';
+  $handler->display->display_options['title'] = 'Seneste aktiviteter';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Forbindelse: Entity Reference: Refereret entity */
+  /* Forbindelse: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_target_nodes_target_id']['id'] = 'field_target_nodes_target_id';
   $handler->display->display_options['relationships']['field_target_nodes_target_id']['table'] = 'field_data_field_target_nodes';
   $handler->display->display_options['relationships']['field_target_nodes_target_id']['field'] = 'field_target_nodes_target_id';
   $handler->display->display_options['relationships']['field_target_nodes_target_id']['required'] = TRUE;
-  /* Forbindelse: OG membership: OG membership from Indholdselement */
+  /* Forbindelse: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['relationship'] = 'field_target_nodes_target_id';
   $handler->display->display_options['relationships']['og_membership_rel']['required'] = TRUE;
-  /* Felt: Meddelelse: Rendered Meddelelse */
+  /* Felt: Message: Rendered Message */
   $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
   $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_message';
   $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
@@ -59,14 +53,14 @@ function commons_activity_streams_groups_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'full';
-  /* Felt: Meddelelse: Timestamp */
+  /* Felt: Message: Timestamp */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'message';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['label'] = '';
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time_ago_dynamic';
-  /* Sorteringskriterie: Meddelelse: Timestamp */
+  /* Sorteringskriterie: Message: Timestamp */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['table'] = 'message';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
@@ -77,24 +71,23 @@ function commons_activity_streams_groups_views_default_views() {
   $handler->display->display_options['arguments']['gid']['field'] = 'gid';
   $handler->display->display_options['arguments']['gid']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['arguments']['gid']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['gid']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['gid']['default_argument_type'] = 'raw';
   $handler->display->display_options['arguments']['gid']['default_argument_options']['index'] = '1';
   $handler->display->display_options['arguments']['gid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['gid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['gid']['validate']['type'] = 'og';
-  /* Filterkriterie: Indholdsadgang: Adgang */
+  /* Filterkriterie: Content access: Access */
   $handler->display->display_options['filters']['nid']['id'] = 'nid';
   $handler->display->display_options['filters']['nid']['table'] = 'node_access';
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
   $handler->display->display_options['filters']['nid']['relationship'] = 'field_target_nodes_target_id';
-  /* Filterkriterie: Indhold: Udgivet eller administrator */
+  /* Filterkriterie: Content: Published or admin */
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['relationship'] = 'field_target_nodes_target_id';
-  /* Filterkriterie: Meddelelse: Message category */
+  /* Filterkriterie: Message: Message category */
   $handler->display->display_options['filters']['type_category']['id'] = 'type_category';
   $handler->display->display_options['filters']['type_category']['table'] = 'message';
   $handler->display->display_options['filters']['type_category']['field'] = 'type_category';
@@ -136,16 +129,16 @@ function commons_activity_streams_groups_views_default_views() {
   );
   $translatables['activity_group'] = array(
     t('Master'),
-    t('Recent activity in this group'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
-    t('Indhold entity refereret fra field_target_nodes'),
+    t('Seneste aktiviteter'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Content entity referenced from field_target_nodes'),
     t('OG membership from node'),
-    t('Alle'),
+    t('All'),
     t('Content pane'),
     t('Commons'),
   );

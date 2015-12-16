@@ -50,35 +50,35 @@ function commons_site_homepage_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'teaser';
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No content matched the filters you selected.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sorteringskriterie: Indhold: Opdateringsdato */
+  /* Sorteringskriterie: Content: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
   $handler->display->display_options['sorts']['changed']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['changed']['expose']['label'] = 'last updated first';
-  /* Sorteringskriterie: Indhold: Radioactivity (field_radioactivity:radioactivity_energy) */
+  /* Sorteringskriterie: Content: Radioactivity (field_radioactivity:radioactivity_energy) */
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['id'] = 'field_radioactivity_radioactivity_energy';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['table'] = 'field_data_field_radioactivity';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['field'] = 'field_radioactivity_radioactivity_energy';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['order'] = 'DESC';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['expose']['label'] = 'most active';
-  /* Kontekstuelt filter: Indhold: Nid */
+  /* Kontekstuelt filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -91,7 +91,7 @@ function commons_site_homepage_views_default_views() {
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'empty';
   $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -107,14 +107,14 @@ function commons_site_homepage_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: User Follow */
+  /* Filterkriterie: Content: User Follow */
   $handler->display->display_options['filters']['cf_user_follow']['id'] = 'cf_user_follow';
   $handler->display->display_options['filters']['cf_user_follow']['table'] = 'node';
   $handler->display->display_options['filters']['cf_user_follow']['field'] = 'cf_user_follow';
@@ -131,7 +131,7 @@ function commons_site_homepage_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
   $handler->display->display_options['filters']['type_1']['table'] = 'node';
   $handler->display->display_options['filters']['type_1']['field'] = 'type';
@@ -178,6 +178,7 @@ function commons_site_homepage_views_default_views() {
     t('Showing'),
     t('I\'m'),
     t('Content pane'),
+    t('more'),
     t('What\'s going on?'),
     t('Commons'),
   );

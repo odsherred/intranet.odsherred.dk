@@ -10,7 +10,8 @@
 function os2intra_canteen_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-os2intra_canteen_menu-field_os2intra_canteen_canteen'
+  // Exported field_instance:
+  // 'node-os2intra_canteen_menu-field_os2intra_canteen_canteen'
   $field_instances['node-os2intra_canteen_menu-field_os2intra_canteen_canteen'] = array(
     'bundle' => 'os2intra_canteen_menu',
     'default_value' => NULL,
@@ -49,7 +50,8 @@ function os2intra_canteen_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-os2intra_canteen_menu-field_os2intra_canteen_menu_date'
+  // Exported field_instance:
+  // 'node-os2intra_canteen_menu-field_os2intra_canteen_menu_date'
   $field_instances['node-os2intra_canteen_menu-field_os2intra_canteen_menu_date'] = array(
     'bundle' => 'os2intra_canteen_menu',
     'deleted' => 0,

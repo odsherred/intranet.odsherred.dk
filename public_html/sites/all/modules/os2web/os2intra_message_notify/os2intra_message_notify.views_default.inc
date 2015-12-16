@@ -38,39 +38,39 @@ function os2intra_message_notify_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Sidefod: Global: Tekstområde */
+  /* Sidefod: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['empty'] = TRUE;
   $handler->display->display_options['footer']['area']['content'] = '<a href="/important-messages" title="Arkiv over vigtige meddelelser">Arkiv</a>';
   $handler->display->display_options['footer']['area']['format'] = 'plain_text';
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Oprettelsesdato */
+  /* Felt: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = '';
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  /* Felt: Indhold: Body */
+  /* Felt: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Kontekstuelt filter: Indhold: Groups (og_group_ref) */
+  /* Kontekstuelt filter: Content: Groups (og_group_ref) */
   $handler->display->display_options['arguments']['og_group_ref_target_id']['id'] = 'og_group_ref_target_id';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['field'] = 'og_group_ref_target_id';
@@ -82,21 +82,21 @@ function os2intra_message_notify_views_default_views() {
   $handler->display->display_options['arguments']['og_group_ref_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['og_group_ref_target_id']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['og_group_ref_target_id']['validate']['type'] = 'og';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'os2intra_message_notification' => 'os2intra_message_notification',
   );
-  /* Filterkriterie: Indhold: Vis indtil (field_os2intra_message_enddate) */
+  /* Filterkriterie: Content: Vis indtil (field_os2intra_message_enddate) */
   $handler->display->display_options['filters']['field_os2intra_message_enddate_value']['id'] = 'field_os2intra_message_enddate_value';
   $handler->display->display_options['filters']['field_os2intra_message_enddate_value']['table'] = 'field_data_field_os2intra_message_enddate';
   $handler->display->display_options['filters']['field_os2intra_message_enddate_value']['field'] = 'field_os2intra_message_enddate_value';
@@ -111,11 +111,36 @@ function os2intra_message_notify_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'OS2Intra message notifications group';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Forbindelse: OG membership: OG membership from Indholdselement */
+  /* Forbindelse: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Felt: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  /* Felt: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '300',
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Kontekstuelt filter: OG membership: Group ID */
   $handler->display->display_options['arguments']['gid']['id'] = 'gid';
@@ -130,21 +155,21 @@ function os2intra_message_notify_views_default_views() {
   $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'os2intra_message_notification' => 'os2intra_message_notification',
   );
-  /* Filterkriterie: Indhold: Vis indtil (field_os2intra_message_enddate) */
+  /* Filterkriterie: Content: Vis indtil (field_os2intra_message_enddate) */
   $handler->display->display_options['filters']['field_os2intra_message_enddate_value']['id'] = 'field_os2intra_message_enddate_value';
   $handler->display->display_options['filters']['field_os2intra_message_enddate_value']['table'] = 'field_data_field_os2intra_message_enddate';
   $handler->display->display_options['filters']['field_os2intra_message_enddate_value']['field'] = 'field_os2intra_message_enddate_value';
@@ -181,6 +206,7 @@ function os2intra_message_notify_views_default_views() {
     t('<a href="/important-messages" title="Arkiv over vigtige meddelelser">Arkiv</a>'),
     t('Alle'),
     t('Block'),
+    t('more'),
     t('Content pane'),
     t('OS2Intra message notifications group'),
     t('OG membership from node'),
@@ -237,39 +263,39 @@ function os2intra_message_notify_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Forbindelse: OG membership: OG membership from Indholdselement */
+  /* Forbindelse: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Forbindelse: OG membership: Group Indholdselement from OG membership */
+  /* Forbindelse: OG membership: Group Node from OG membership */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['relationship'] = 'og_membership_rel';
-  /* Forbindelse: OG membership: OG membership from Indholdselement group */
+  /* Forbindelse: OG membership: OG membership from Node group */
   $handler->display->display_options['relationships']['og_membership_rel_group']['id'] = 'og_membership_rel_group';
   $handler->display->display_options['relationships']['og_membership_rel_group']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel_group']['field'] = 'og_membership_rel_group';
   $handler->display->display_options['relationships']['og_membership_rel_group']['relationship'] = 'og_membership_related_node_group';
-  /* Forbindelse: OG membership: Bruger from OG membership */
+  /* Forbindelse: OG membership: User from OG membership */
   $handler->display->display_options['relationships']['og_membership_related_user']['id'] = 'og_membership_related_user';
   $handler->display->display_options['relationships']['og_membership_related_user']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_user']['field'] = 'og_membership_related_user';
   $handler->display->display_options['relationships']['og_membership_related_user']['relationship'] = 'og_membership_rel_group';
   $handler->display->display_options['relationships']['og_membership_related_user']['required'] = TRUE;
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Overskrift';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Body */
+  /* Felt: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'Indhold';
-  /* Felt: Indhold: Vis indtil */
+  /* Felt: Content: Vis indtil */
   $handler->display->display_options['fields']['field_os2intra_message_enddate']['id'] = 'field_os2intra_message_enddate';
   $handler->display->display_options['fields']['field_os2intra_message_enddate']['table'] = 'field_data_field_os2intra_message_enddate';
   $handler->display->display_options['fields']['field_os2intra_message_enddate']['field'] = 'field_os2intra_message_enddate';
@@ -280,7 +306,7 @@ function os2intra_message_notify_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold: Groups */
+  /* Felt: Content: Groups */
   $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
   $handler->display->display_options['fields']['og_group_ref']['table'] = 'og_membership';
   $handler->display->display_options['fields']['og_group_ref']['field'] = 'og_group_ref';
@@ -290,12 +316,12 @@ function os2intra_message_notify_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['og_group_ref']['delta_offset'] = '0';
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Kontekstuelt filter: Bruger: Uid */
+  /* Kontekstuelt filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'users';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -306,14 +332,14 @@ function os2intra_message_notify_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -351,6 +377,7 @@ function os2intra_message_notify_views_default_views() {
     t('Grupper'),
     t('Alle'),
     t('Page'),
+    t('more'),
   );
   $export['os2intra_message_notify_archive'] = $view;
 

@@ -120,7 +120,7 @@ function os2intra_user_import_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Felt: Masse-handlinger: Bruger */
+  /* Felt: Bulk operations: User */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'users';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
@@ -215,33 +215,33 @@ function os2intra_user_import_views_default_views() {
       'label' => '',
     ),
   );
-  /* Felt: Bruger: MedarbejderID */
+  /* Felt: User: MedarbejderID */
   $handler->display->display_options['fields']['field_os2intra_employee_id']['id'] = 'field_os2intra_employee_id';
   $handler->display->display_options['fields']['field_os2intra_employee_id']['table'] = 'field_data_field_os2intra_employee_id';
   $handler->display->display_options['fields']['field_os2intra_employee_id']['field'] = 'field_os2intra_employee_id';
   $handler->display->display_options['fields']['field_os2intra_employee_id']['label'] = 'Medarbejder nr.';
-  /* Felt: Bruger: First Name */
+  /* Felt: User: First Name */
   $handler->display->display_options['fields']['field_name_first']['id'] = 'field_name_first';
   $handler->display->display_options['fields']['field_name_first']['table'] = 'field_data_field_name_first';
   $handler->display->display_options['fields']['field_name_first']['field'] = 'field_name_first';
   $handler->display->display_options['fields']['field_name_first']['label'] = 'Fornavn';
-  /* Felt: Bruger: Last Name */
+  /* Felt: User: Last Name */
   $handler->display->display_options['fields']['field_name_last']['id'] = 'field_name_last';
   $handler->display->display_options['fields']['field_name_last']['table'] = 'field_data_field_name_last';
   $handler->display->display_options['fields']['field_name_last']['field'] = 'field_name_last';
   $handler->display->display_options['fields']['field_name_last']['label'] = 'Efternavn';
-  /* Felt: Bruger: Navn */
+  /* Felt: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Felt: Bruger: E-mail */
+  /* Felt: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
-  /* Felt: Bruger: os2intra_termination_date */
+  /* Felt: User: os2intra_termination_date */
   $handler->display->display_options['fields']['field_os2intra_termination_date']['id'] = 'field_os2intra_termination_date';
   $handler->display->display_options['fields']['field_os2intra_termination_date']['table'] = 'field_data_field_os2intra_termination_date';
   $handler->display->display_options['fields']['field_os2intra_termination_date']['field'] = 'field_os2intra_termination_date';
@@ -253,29 +253,29 @@ function os2intra_user_import_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Bruger: Seneste login */
+  /* Felt: User: Last login */
   $handler->display->display_options['fields']['login']['id'] = 'login';
   $handler->display->display_options['fields']['login']['table'] = 'users';
   $handler->display->display_options['fields']['login']['field'] = 'login';
   $handler->display->display_options['fields']['login']['empty'] = 'aldrig';
   $handler->display->display_options['fields']['login']['date_format'] = 'os2web_base_date_only';
-  /* Felt: Bruger: Aktiv */
+  /* Felt: User: Active */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'users';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Sorteringskriterie: Bruger: Oprettelsesdato */
+  /* Sorteringskriterie: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filterkriterie: Bruger: MedarbejderID (field_os2intra_employee_id) */
+  /* Filterkriterie: User: MedarbejderID (field_os2intra_employee_id) */
   $handler->display->display_options['filters']['field_os2intra_employee_id_value']['id'] = 'field_os2intra_employee_id_value';
   $handler->display->display_options['filters']['field_os2intra_employee_id_value']['table'] = 'field_data_field_os2intra_employee_id';
   $handler->display->display_options['filters']['field_os2intra_employee_id_value']['field'] = 'field_os2intra_employee_id_value';
   $handler->display->display_options['filters']['field_os2intra_employee_id_value']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_os2intra_employee_id_value']['group'] = 1;
-  /* Filterkriterie: Realname: Navn */
+  /* Filterkriterie: Realname: Name */
   $handler->display->display_options['filters']['realname']['id'] = 'realname';
   $handler->display->display_options['filters']['realname']['table'] = 'realname';
   $handler->display->display_options['filters']['realname']['field'] = 'realname';
@@ -300,7 +300,7 @@ function os2intra_user_import_views_default_views() {
     11 => 0,
     12 => 0,
   );
-  /* Filterkriterie: Bruger: MedarbejderID (field_os2intra_employee_id) */
+  /* Filterkriterie: User: MedarbejderID (field_os2intra_employee_id) */
   $handler->display->display_options['filters']['field_os2intra_employee_id_value_1']['id'] = 'field_os2intra_employee_id_value_1';
   $handler->display->display_options['filters']['field_os2intra_employee_id_value_1']['table'] = 'field_data_field_os2intra_employee_id';
   $handler->display->display_options['filters']['field_os2intra_employee_id_value_1']['field'] = 'field_os2intra_employee_id_value';
@@ -344,17 +344,18 @@ function os2intra_user_import_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('Bruger'),
+    t('User'),
     t('Medarbejder nr.'),
     t('Fornavn'),
     t('Efternavn'),
     t('E-mail'),
     t('Fratrædelsesdato'),
-    t('Seneste login'),
+    t('Last login'),
     t('aldrig'),
-    t('Aktiv'),
+    t('Active'),
     t('Navn'),
     t('Over overview'),
+    t('more'),
   );
   $export['os2intra_user_import'] = $view;
 

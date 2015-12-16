@@ -184,13 +184,15 @@ function commons_search_strongarm() {
   $strongarm->name = 'custom_search_node_types';
   $strongarm->value = array(
     'poll' => 0,
-    'node_basket' => 0,
     'event' => 0,
     'os2web_base_rotating_image' => 0,
+    'os2intra_canteen_menu' => 0,
     'os2web_base_gallery' => 0,
     'group' => 0,
+    'node_basket' => 0,
     'os2web_base_contentpage' => 0,
     'post' => 0,
+    'os2intra_message_notification' => 0,
     'os2intra_base_page' => 0,
     'media' => 0,
     'os2web_base_news' => 0,
@@ -201,9 +203,6 @@ function commons_search_strongarm() {
     'webform' => 0,
     'wiki' => 0,
     'os2web_base_iframe' => 0,
-    'os2intra_canteen_menu' => 0,
-    'os2intra_message_notification' => 0,
-    'slettes' => 0,
     'spotbox' => 0,
   );
   $export['custom_search_node_types'] = $strongarm;
@@ -214,13 +213,15 @@ function commons_search_strongarm() {
   $strongarm->name = 'custom_search_node_types_excluded';
   $strongarm->value = array(
     'poll' => 0,
-    'node_basket' => 0,
     'event' => 0,
     'os2web_base_rotating_image' => 0,
+    'os2intra_canteen_menu' => 0,
     'os2web_base_gallery' => 0,
     'group' => 0,
+    'node_basket' => 0,
     'os2web_base_contentpage' => 0,
     'post' => 0,
+    'os2intra_message_notification' => 0,
     'os2intra_base_page' => 0,
     'media' => 0,
     'os2web_base_news' => 0,
@@ -231,9 +232,6 @@ function commons_search_strongarm() {
     'webform' => 0,
     'wiki' => 0,
     'os2web_base_iframe' => 0,
-    'os2intra_canteen_menu' => 0,
-    'os2intra_message_notification' => 0,
-    'slettes' => 0,
     'spotbox' => 0,
   );
   $export['custom_search_node_types_excluded'] = $strongarm;

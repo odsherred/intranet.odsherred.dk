@@ -54,33 +54,33 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['header']['commons_bw_node_partial_form']['table'] = 'views';
   $handler->display->display_options['header']['commons_bw_node_partial_form']['field'] = 'commons_bw_node_partial_form';
   $handler->display->display_options['header']['commons_bw_node_partial_form']['bundle'] = 'wiki';
-  /* Opførsel ved ingen resultater: Global: Tekstområde */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No wikis have been added to this group.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Forbindelse: OG membership: OG membership from Indholdselement */
+  /* Forbindelse: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Forbindelse: Flag: commons_follow_node */
+  /* Forbindelse: Flags: commons_follow_node */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['ui_name'] = 'Following';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'følger';
+  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'following';
   $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_node';
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Body */
+  /* Felt: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -90,7 +90,7 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '600',
   );
-  /* Felt: Indhold: Kommentarantal */
+  /* Felt: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
@@ -101,18 +101,18 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['fields']['comment_count']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['comment_count']['separator'] = '';
   $handler->display->display_options['fields']['comment_count']['suffix'] = 'kommentarer';
-  /* Sorteringskriterie: Indhold: Klæbrig */
+  /* Sorteringskriterie: Content: Sticky */
   $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
   $handler->display->display_options['sorts']['sticky']['table'] = 'node';
   $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['created']['expose']['label'] = 'most recent';
-  /* Sorteringskriterie: Indhold: Radioactivity (field_radioactivity:radioactivity_energy) */
+  /* Sorteringskriterie: Content: Radioactivity (field_radioactivity:radioactivity_energy) */
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['id'] = 'field_radioactivity_radioactivity_energy';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['table'] = 'field_data_field_radioactivity';
   $handler->display->display_options['sorts']['field_radioactivity_radioactivity_energy']['field'] = 'field_radioactivity_radioactivity_energy';
@@ -129,14 +129,14 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['arguments']['gid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['gid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -160,7 +160,7 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['filters']['flagged']['value'] = '1';
   $handler->display->display_options['filters']['flagged']['exposed'] = TRUE;
   $handler->display->display_options['filters']['flagged']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['flagged']['expose']['label'] = 'Følger';
+  $handler->display->display_options['filters']['flagged']['expose']['label'] = 'Following';
   $handler->display->display_options['filters']['flagged']['expose']['operator'] = 'flagged_op';
   $handler->display->display_options['filters']['flagged']['expose']['identifier'] = 'following';
   $translatables['commons_bw_wikis'] = array(
@@ -180,14 +180,14 @@ function commons_wikis_views_default_views() {
     t('sidste »'),
     t('No wikis have been added to this group.'),
     t('OG membership from node'),
-    t('følger'),
+    t('following'),
     t('Ingen kommentarer'),
     t('.'),
     t('kommentarer'),
     t('most recent'),
     t('most active'),
     t('Alle'),
-    t('Følger'),
+    t('Following'),
   );
   $export['commons_bw_wikis'] = $view;
 
@@ -222,11 +222,11 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Forbindelse: Indholdsversion: Bruger */
+  /* Forbindelse: Content revision: User */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node_revision';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Felt: Bruger: Billede */
+  /* Felt: User: Picture */
   $handler->display->display_options['fields']['picture']['id'] = 'picture';
   $handler->display->display_options['fields']['picture']['table'] = 'users';
   $handler->display->display_options['fields']['picture']['field'] = 'picture';
@@ -235,7 +235,7 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['fields']['picture']['exclude'] = TRUE;
   $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['picture']['image_style'] = '50x50';
-  /* Felt: Bruger: Navn */
+  /* Felt: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -243,7 +243,7 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Felt: Bruger: Uid */
+  /* Felt: User: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
@@ -252,7 +252,7 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Felt: Global: Tilpasset tekst */
+  /* Felt: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -262,7 +262,7 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['path'] = 'user/[uid]';
   $handler->display->display_options['fields']['nothing']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Kontekstuelt filter: Indholdsversion: Nid */
+  /* Kontekstuelt filter: Content revision: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node_revision';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -272,7 +272,7 @@ function commons_wikis_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filterkriterie: Bruger: Aktiv */
+  /* Filterkriterie: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -303,10 +303,11 @@ function commons_wikis_views_default_views() {
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
-    t('revision bruger'),
+    t('revision user'),
     t('[picture]<span>[name]</span>'),
     t('Alle'),
     t('Content pane'),
+    t('more'),
     t('Commons'),
   );
   $export['commons_wikis_contributor_list'] = $view;

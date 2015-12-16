@@ -98,28 +98,28 @@ function commons_radioactivity_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Forbindelse: Indhold: Forfatter */
+  /* Forbindelse: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Felt: Indhold: Titel */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Felt: Indhold: Type */
+  /* Felt: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Felt: Bruger: Navn */
+  /* Felt: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Forfatter';
-  /* Felt: Indhold: Radioactivity */
+  /* Felt: Content: Radioactivity */
   $handler->display->display_options['fields']['field_radioactivity']['id'] = 'field_radioactivity';
   $handler->display->display_options['fields']['field_radioactivity']['table'] = 'field_data_field_radioactivity';
   $handler->display->display_options['fields']['field_radioactivity']['field'] = 'field_radioactivity';
@@ -128,31 +128,31 @@ function commons_radioactivity_views_default_views() {
     'energy' => '0',
     'type' => 'energy',
   );
-  /* Felt: Indhold: Oprettelsesdato */
+  /* Felt: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'Oprettet';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  /* Felt: Indhold: Opdateret/kommenteret dato */
+  /* Felt: Content: Updated/commented date */
   $handler->display->display_options['fields']['last_updated']['id'] = 'last_updated';
   $handler->display->display_options['fields']['last_updated']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['last_updated']['field'] = 'last_updated';
   $handler->display->display_options['fields']['last_updated']['label'] = 'Seneste opdatering/kommentar';
   $handler->display->display_options['fields']['last_updated']['date_format'] = 'short';
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filterkriterie: Indhold: Radioactivity (field_radioactivity:radioactivity_energy) */
+  /* Filterkriterie: Content: Radioactivity (field_radioactivity:radioactivity_energy) */
   $handler->display->display_options['filters']['field_radioactivity_radioactivity_energy']['id'] = 'field_radioactivity_radioactivity_energy';
   $handler->display->display_options['filters']['field_radioactivity_radioactivity_energy']['table'] = 'field_data_field_radioactivity';
   $handler->display->display_options['filters']['field_radioactivity_radioactivity_energy']['field'] = 'field_radioactivity_radioactivity_energy';
@@ -179,14 +179,15 @@ function commons_radioactivity_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('forfatter'),
-    t('Titel'),
+    t('author'),
+    t('Title'),
     t('Type'),
     t('Forfatter'),
     t('Radioactivity'),
     t('Oprettet'),
     t('Seneste opdatering/kommentar'),
     t('Page'),
+    t('more'),
   );
   $export['commons_radioactivity_admin'] = $view;
 
