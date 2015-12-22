@@ -542,6 +542,10 @@ function os2intra_user_import_save_user($user, $uid = ''){
   $query->entityCondition('entity_type', 'node');
   $query->fieldCondition('field_os2intra_department_id', 'value', $user['department'], '=');
   $result = $query->execute();
+  print "brugeren er: " . $uid;
+  print_r($user); 
+  print_r($result); 
+
   $new_group_nid = key(array_shift($result));
 
   // Attach new group.
