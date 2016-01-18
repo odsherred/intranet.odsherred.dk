@@ -5580,9 +5580,12 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
   padding: 0;
   font-size: 10px;
 }
+.voting-count-indicator {
+  margin-top: -0.5em;
+}
 .comment-count-indicator:before,
-.attendee-count-indicator:before,
-.voting-count-indicator:before {
+.attendee-count-indicator:before
+/*.voting-count-indicator:before */{
   content: "";
   display: inline-block;
   position: relative;
@@ -5597,11 +5600,27 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 }
 
 .voting-count-indicator:before {
-  background: url('../images/icons-s0eb3728c55.png') 0 -599px no-repeat;
-  width: 10px;
-  height: 14px;
+  /*background: url('../images/icons-s0eb3728c55.png') 0 -599px no-repeat;
+   width: 10px;
+   height: 14px;*/
 }
 
+.voting-count-indicator .action-item-small{
+    margin: 0;
+     border: none;
+    background: transparent;  
+    padding-right: 0.2em;
+}
+
+.voting-count-indicator .action-item-small-append{
+   border: none;
+   background: transparent;
+   top: 5px;
+}
+.voting-count-indicator .rate-commons-like-count.action-item-small-append:before,
+.voting-count-indicator .rate-commons-like-count.action-item-small-append:after{
+    content: none;
+}
 .attendee-count-indicator:before {
   background: url('../images/icons-s0eb3728c55.png') 0 -851px no-repeat;
   width: 13px;

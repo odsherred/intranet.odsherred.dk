@@ -817,6 +817,7 @@ function os2intra_base_views_default_views() {
   $handler->display->display_options['fields']['value_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['value_1']['element_wrapper_class'] = 'voting-count-indicator';
   $handler->display->display_options['fields']['value_1']['precision'] = '0';
+  $handler->display->display_options['fields']['value_1']['appearance'] = 'rate_views_widget';
   /* Felt: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
