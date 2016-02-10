@@ -25,6 +25,7 @@ function commons_wikis_user_default_permissions() {
     'name' => 'delete own wiki content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -34,6 +35,7 @@ function commons_wikis_user_default_permissions() {
     'name' => 'edit any wiki content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );

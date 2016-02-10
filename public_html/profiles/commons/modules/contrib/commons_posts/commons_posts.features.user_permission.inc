@@ -25,6 +25,7 @@ function commons_posts_user_default_permissions() {
     'name' => 'delete any post content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );
@@ -44,6 +45,7 @@ function commons_posts_user_default_permissions() {
     'name' => 'edit any post content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Webmaster' => 'Webmaster',
     ),
     'module' => 'node',
   );

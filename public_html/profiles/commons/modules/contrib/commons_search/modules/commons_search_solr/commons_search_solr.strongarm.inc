@@ -50,6 +50,7 @@ function commons_search_solr_strongarm() {
     'apachesolr_search' => 'apachesolr_search',
     'file_entity' => 0,
     'node' => 0,
+    'user' => 0,
   );
   $export['search_active_modules'] = $strongarm;
 
