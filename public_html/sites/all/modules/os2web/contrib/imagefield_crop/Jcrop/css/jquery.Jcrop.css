@@ -33,3 +33,12 @@
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+img.jcrop-preview {
+  max-width: none;
+}
+/* Fix for several themes and normalize.css
+ * see https://www.drupal.org/node/1779494
+ */
+div.imagefield-crop-widget img {
+  max-width:none !important;
+}
