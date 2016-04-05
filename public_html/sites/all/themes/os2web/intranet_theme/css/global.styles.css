@@ -2603,7 +2603,7 @@ ul.node-action-links a {
  * ========================================================================== */
 a {
   text-decoration: none;
-  color: #2783b9;
+  color: #1D60AA;
 }
 a:hover, a:focus {
   text-decoration: underline;
@@ -3395,113 +3395,152 @@ ul.nice-menu ul li:last-child {
 nav#block-menu-block-1 {
 	display: block;
 	background-color: #1D60AA;
-	line-height: 16px;
 	margin-bottom: 0 !important;
 	margin-top: 0 !important;
 	padding-left: 5px; }
 
 nav#block-menu-block-1 div.menu-block-wrapper ul.menu {
-	padding: 15px 0 15px 0 !important;
+	padding: 5px 0 0px 0 !important;
 	margin-top: 0;
 	margin-bottom: 0;
 }
 
 nav#block-menu-block-1 div.menu-block-wrapper ul.menu li {
 	display: inline;
-	padding: 10px 0 10px 10px;
 }
 
 nav#block-menu-block-1 div.menu-block-wrapper ul.menu li a {
-	color: #ffffff !important;
-	background: none !important;
-	padding-left: 5px !important;
-	padding-right: 15px;
+	color: #ffffff;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	line-height: 30px;
+	display: inline-block;
 }
 
 nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail a.menu_icon {
 	font-weight: bold;
 }
 
+nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail a {
+	background-color: #508FD5;
+	padding-left: 12px;
+	padding-right: 12px; 
+}
+
 nav#block-menu-block-2 {
 	display: block;
 	background-color: #508FD5;
-	line-height: 14px;
 	margin-top: 0 !important;
 	margin-bottom: 0 !important;
 }
 
 nav#block-menu-block-2 div.menu-block-wrapper ul.menu {
-	padding: 10px 0 10px 10px !important;
+	padding: 4px 0 0px 0 !important;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 nav#block-menu-block-2 div.menu-block-wrapper ul.menu li {
 	display: inline;
-	padding: 10px 0 10px 10px;
 }
 
-nav#block-menu-block-2 div.menu-block-wrapper ul.menu li.menu-depth-2 a {
-	color: #ffffff !important;
-	background: none !important;
-	padding-right: 15px;
+nav#block-menu-block-2 div.menu-block-wrapper ul.menu li a {
+	color: #ffffff;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 4px;
+	line-height: 25px;
+	display: inline-block;
+}
+
+nav#block-menu-block-2 div.menu-block-wrapper ul.menu li.active-trail a {
+	background-color: #74A1D5;
+	padding-left: 10px;
+	padding-right: 10px; 
 }
 
 nav#block-menu-block-2 div.menu-block-wrapper ul.menu li.active-trail a.active-trail {
 	font-weight: bold !important;
 }
 
+
 nav#block-menu-block-3 {
 	display: block;
 	background-color: #74A1D5;
-	line-height: 30px;
 	margin-top: 0 !important;
-	margin-bottom: 0 !important;}
+	margin-bottom: 0 !important;
+}
 
 nav#block-menu-block-3 div.menu-block-wrapper ul.menu {
-	padding: 0 0 0 10px !important; }
+	padding: 4px 0 0px 0 !important;
+	margin-top: 0;
+	margin-bottom: 0;
+}
 
 nav#block-menu-block-3 div.menu-block-wrapper ul.menu li {
 	display: inline;
-	padding: 0 0 0 10px;
 }
 
-nav#block-menu-block-3 div.menu-block-wrapper ul.menu li.menu-depth-3 a {
-	color: #ffffff !important;
-	background: none !important;
-	padding-right: 15px;
-	font-weight: normal;
-}
-
-nav#block-menu-block-3 div.menu-block-wrapper ul.menu li.active-trail a.active-trail {
-	font-weight: bold !important;}
-
-/* niveau 4 */
-
-nav#block-menu-block-4	 {
-	display: block;
-	background-color: rgba(143, 175, 213, 1);
+nav#block-menu-block-3 div.menu-block-wrapper ul.menu li a {
+	color: #ffffff;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 4px;
 	line-height: 25px;
-	margin-top: 0 !important;
-	margin-bottom: 0 !important;}
+	display: inline-block;
+}
 
-nav#block-menu-block-4 div.menu-block-wrapper ul.menu {
-	padding: 0 0 0 10px !important;}
-
-nav#block-menu-block-4 div.menu-block-wrapper ul.menu li {
-	display: inline;
-	padding: 0 0 0 10px;}
-
-nav#block-menu-block-4 div.menu-block-wrapper ul.menu li.menu-depth-4 a {
-	color: #ffffff !important;
-	background: none !important;
-	/* padding-left: 5px !important; */
-	padding-right: 15px;
-	font-weight: normal;
-	
+nav#block-menu-block-3 div.menu-block-wrapper ul.menu li.active-trail a {
+	background-color: rgba(143, 175, 213, 1);
+	padding-left: 10px;
+	padding-right: 10px; 
 }
 
 nav#block-menu-block-3 div.menu-block-wrapper ul.menu li.active-trail a.active-trail {
 	font-weight: bold !important;
 }
+
+
+/* niveau 4 */
+nav#block-menu-block-4 {
+	display: block;
+	background-color: rgba(143, 175, 213, 1);
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+nav#block-menu-block-4 div.menu-block-wrapper ul.menu {
+	padding: 4px 0 0px 0 !important;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+nav#block-menu-block-4 div.menu-block-wrapper ul.menu li {
+	display: inline;
+}
+
+nav#block-menu-block-4 div.menu-block-wrapper ul.menu li a {
+	color: #FFF;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 4px;
+	line-height: 25px;
+	display: inline-block;
+}
+
+nav#block-menu-block-4 div.menu-block-wrapper ul.menu li.active-trail a {
+	background-color: #FFF;
+	padding-left: 10px;
+	padding-right: 10px; 
+}
+
+nav#block-menu-block-4 div.menu-block-wrapper ul.menu li.active-trail a.active-trail {
+	font-weight: normal !important;
+	color: #333;
+}
+
+
 
 nav#block-menu-block-4 div.menu-block-wrapper ul.menu li ul.menu { padding: 0 0 0 0 !important; border-top: 1px solid #FFF;}
 nav#block-menu-block-4 div.menu-block-wrapper ul.menu li ul.menu a { font-style: italic; }
@@ -3541,8 +3580,6 @@ nav#block-menu-block-4 div.menu-block-wrapper ul.menu li ul.menu a { font-style:
   clear: left;
 }
 
-#homebox #homebox-column-1 { margin-right: 7px !important}
-#homebox #homebox-column-2 { margin-left: 7px !important}
 #homebox .homebox-portlet div.views-exposed-widgets { padding: 0;}
 #homebox-block-homebox_custom { background-color: #FCE449 !important; }
 #homebox-block-views_os2intra_group_members-block, #homebox-block-views_os2intra_users_search-block-1 { 
@@ -3556,6 +3593,10 @@ nav#block-menu-block-4 div.menu-block-wrapper ul.menu li ul.menu a { font-style:
 .pane-title {
   font-weight: normal;
   font-size: 1.25em;
+}
+.page-node h3.node-title {
+  font-size: 2.75em;
+  color: #333;
 }
 
 .panel-display {
@@ -5347,34 +5388,23 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
    background: #3e84c5 !important;
    color: #ffffff !important;
    margin: 0;
-   padding: 2px 8px;
+   padding: 2px 5px;
    background: #e4f0f8;
    color: #494949;
-   min-height: 18px;
-   font-size: 1em;
+   min-height: 33px;
+   font-size: 13px;
    line-height: 1.25em;
  }
 
 .intraboxes h3 a {
   color: #FFF;
   line-height: 1.25em;
-  font-weight: 700; 
-}
-
-.intrabox-single {
-  background-color: #EAECDF;
-  margin: 5px 0px 15px;
-  padding: 0 0 0 0;
-  line-height: 0.75;
-}
-.views-row-first.intrabox-single { margin-top: 0;
-}
-.views-row-last.intrabox-single { margin-bottom: 0;
+  font-weight: normal; 
 }
 
 .intrabox-single .billede img {
-  width: 100%;
   max-width: 100%;
+  height: auto;
 }
 
 .front h2#page-title {display: none}
@@ -5396,7 +5426,7 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 .inner5 .block-inner { padding: 5px}
 .marginbot0 { margin-bottom: 0;}
 
-.os2intra-actions { background-color: #FF8F53; color: #FFAD81;}
+.os2intra-actions { background-color: #0b417e; color: #fff; margin-bottom: 20px;}
 .os2intra-actions a { color: #FFF; text-decoration: none; font-weight: 700;}
 .os2intra-actions h2, .os2intra-actions h2 a, .os2intra-actions h2.block-title { color: #FF6919; font-weight: 700;}
 
@@ -5429,9 +5459,8 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 .pane-os2intra-message-notifications,
 .pane-os2intra-message-notifications-panel-pane-1, 
 .node-type-group #node-basket { 
-  background-color: #FF6919;
+  background-color: #333;
   color: #FFF;
-  margin-top: 23px;
   padding: 10px;
 }
 .node-type-group #node-basket { margin-top: 0}
@@ -5949,3 +5978,25 @@ line-height: 19px}
 .page-personer .associated-groups.profile-groups {display: none}
 
 .view-id-os2intra_group_wiki_pages a.active { font-weight: 700;}
+
+.view-os2intra-group-term-activity .views-field-field-os2web-base-field-image img {
+  max-width: 220px; height: auto; float: left; margin-right: 20px; 
+}
+
+.front .view-spotbox .panels-flexible-region-inside { padding-left: 0;}
+.front .view-spotbox .views-row {
+  max-width: 50%; margin-right: 0px; margin-left: 0px; float: left; display: block;
+}
+
+.front .view-spotbox .views-row.views-row-even h3,
+.front .view-spotbox .views-row.views-row-even .billede {
+  margin-left: 5px;
+  margin-right: 0;
+  display: block;
+}
+.front .view-spotbox .views-row.views-row-odd h3,
+.front .view-spotbox .views-row.views-row-odd .billede {
+  margin-right: 5px;
+  margin-left: 0;
+  display: block;
+}
