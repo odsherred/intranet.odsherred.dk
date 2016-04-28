@@ -1841,12 +1841,6 @@ h1.node-title a:hover {
   top: 1px;
 }
 
-/* Titles fields */
-.views-field-title {
-  font-weight: 500;
-  line-height: 1.4em;
-}
-
 /* Meta data */
 .views-field-field-date,
 .views-field-timestamp,
@@ -5333,7 +5327,6 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 .view-os2intra-group-term-activity .view-content,
 .view-os2intra-group-term-activity .view-header,
 .view-os2intra-group-term-activity .view-filters {
-  margin: 10px 0;
   padding: 5px 10px 0 10px;
 }
 .view-os2intra-group-term-activity .view-filters {
@@ -5347,7 +5340,7 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
   display: inline-block; vertical-align: bottom;
 }
 .view-os2intra-message-notifications .view-content {
-  padding-left: 20px;
+  padding-left: 1em;
 }
 
 #edit-title-wrapper input[type="text"] { width: 100px}
@@ -5447,7 +5440,7 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 
 .pane-print-print-links { text-align: right; float: right;}
 .region-three-50-25-25-second .region-inner { background-color: #fefefe; padding: 5px; }
-.content-inner {min-height: 1px; padding: 0 10px 0 20px;}
+.content-inner {min-height: 1px; padding: 0 0 0 1em;}
  #main-content-header { padding-left: 20px;}
 
 .breadcrumb { padding-bottom: 0.5em; padding-top: 0.5em; }
@@ -5483,7 +5476,8 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 
 #homebox-add-link {
   position: absolute;
-  top: -20px;
+  top: -17px;
+  font-size: 10px;
 }
 
 /* =============================================================================
@@ -5493,7 +5487,7 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 .pane-os2intra-message-notifications,
 .pane-os2intra-message-notifications-panel-pane-1, 
 .node-type-group #node-basket { 
-  background-color: #333;
+  background-color: #4d4d4d;
   color: #FFF;
   padding: 10px;
 }
@@ -6014,23 +6008,52 @@ line-height: 19px}
 .view-id-os2intra_group_wiki_pages a.active { font-weight: 700;}
 
 .view-os2intra-group-term-activity .views-field-field-os2web-base-field-image img {
-  max-width: 220px; height: auto; float: left; margin-right: 20px; 
+  max-width: 130px; height: auto; float: left; margin-right: 20px; 
 }
 
 .front .view-spotbox .panels-flexible-region-inside { padding-left: 0;}
 .front .view-spotbox .views-row {
-  max-width: 50%; margin-right: 0px; margin-left: 0px; float: left; display: block;
+ margin-right: 0px; margin-left: 0px; float: left; display: block;
 }
-
+.front .view-spotbox .views-row {
+  width: 50%;
+  padding-bottom: 0;
+}
+.front .view-spotbox .views-row.views-row-odd .table-wrapper {
+  margin-right: 0.5em;
+}
+.front .view-spotbox .views-row.views-row-even .table-wrapper {
+  margin-left: 0.5em;
+}
+.front .view-spotbox .table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.front .view-spotbox .views-row h3 {
+  height: 3em; line-height: 3em; vertical-align: middle; 
+}
+.front .view-spotbox .views-row h3 a {
+  padding: 0.25em 0.5em;
+  display: table-cell;
+  line-height: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  vertical-align: middle;
+  width: 100%;
+}
 .front .view-spotbox .views-row.views-row-even h3,
 .front .view-spotbox .views-row.views-row-even .billede {
   margin-left: 5px;
   margin-right: 0;
-  display: block;
+  display: table-row;
+    width: 100%;
 }
 .front .view-spotbox .views-row.views-row-odd h3,
 .front .view-spotbox .views-row.views-row-odd .billede {
   margin-right: 5px;
   margin-left: 0;
-  display: block;
+  display: table-row;
+  width: 100%;
 }
+
