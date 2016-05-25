@@ -6007,9 +6007,24 @@ line-height: 19px}
 
 .view-id-os2intra_group_wiki_pages a.active { font-weight: 700;}
 
-.view-os2intra-group-term-activity .views-field-field-os2web-base-field-image img {
-  max-width: 130px; height: auto; float: left; margin-right: 20px; 
+@media screen and (max-width: 480px) {
+  .view-os2intra-group-term-activity .views-field-field-os2web-base-field-image img {
+    max-width: 220px; height: auto; float: none;
+  }
 }
+
+@media screen and (min-width: 481px) and (max-width: 768px) { 
+  .view-os2intra-group-term-activity .views-field-field-os2web-base-field-image img {
+    max-width: 50%; height: auto; float: left; margin-right: 20px; 
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .view-os2intra-group-term-activity .views-field-field-os2web-base-field-image img {
+    max-width: 25%; height: auto; float: left; margin-right: 20px; 
+  }
+}
+
 
 .front .view-spotbox .panels-flexible-region-inside { padding-left: 0;}
 .front .view-spotbox .views-row {
