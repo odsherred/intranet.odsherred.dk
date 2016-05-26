@@ -5412,22 +5412,25 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
    background: #178F3B !important;
    color: #ffffff !important;
    margin: 0;
-   padding: 2px 5px;
+   padding: 0 0.9em;
    background: #e4f0f8;
    color: #494949;
-   min-height: 33px;
-   font-size: 13px;
-   line-height: 1.25em;
+   min-height: 3em;
+   font-size: 1em;
+   line-height: 3em;
+   font-weight: bold;
+   vertical-align: middle;
  }
 
 .intraboxes h3 a {
   color: #FFF;
-  line-height: 1.25em;
+  line-height: 3em;
   font-weight: normal; 
 }
 
 .intrabox-single .billede img {
   max-width: 100%;
+  min-width: 100%;
   height: auto;
 }
 
@@ -5684,14 +5687,6 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
   height: 14px;
 }
 
-/* =============================================================================
- *  Spotbokse
- * ========================================================================== */
-.view-spotbox .intrabox-single { position: relative}
-.view-spotbox .intrabox-single span.ekstratekst { position: absolute; bottom: 0; width: 100%; left: 0px;}
-.view-spotbox .intrabox-single span.ekstratekst .titel { display: none}
-.view-spotbox .intrabox-single span.ekstratekst .resten { display: block ;max-width: 100%; background-color:rgba(0,0,0,0.5); }
-.view-spotbox .intrabox-single span.ekstratekst .resten a { color: #FFF; text-decoration: none; display: block; padding: 10px; line-height: 1.1em; }
 /* =============================================================================
  *  OS2intra left menu.
  * ========================================================================== */
@@ -6025,6 +6020,15 @@ line-height: 19px}
   }
 }
 
+/* =============================================================================
+ *  Spotbokse
+ * ========================================================================== */
+.view-spotbox .intrabox-single { position: relative}
+.view-spotbox .intrabox-single span.ekstratekst { position: absolute; bottom: 0; width: 100%; left: 0px;}
+.view-spotbox .intrabox-single span.ekstratekst .titel { display: none}
+.view-spotbox .intrabox-single span.ekstratekst .resten { display: block ;max-width: 100%; background-color:rgba(0,0,0,0.5); }
+.view-spotbox .intrabox-single span.ekstratekst .resten a { color: #FFF; text-decoration: none; display: block; padding: 10px; line-height: 1.1em; }
+
 
 .front .view-spotbox .panels-flexible-region-inside { padding-left: 0;}
 .front .view-spotbox .views-row {
@@ -6071,4 +6075,7 @@ line-height: 19px}
   display: table-row;
   width: 100%;
 }
+
+
+
 
