@@ -5527,8 +5527,12 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 .pane-os2intra-message-notifications .views-field-created,
 .pane-os2intra-message-notifications-panel-pane-1 .views-field-created {
   font-size: 10px;
+  margin-bottom: 4px;
 }
-
+.pane-os2intra-message-notifications .views-field-title,
+.pane-os2intra-message-notifications-panel-pane-1 .views-field-title {
+  font-size: 1.5em;
+}
 /* =============================================================================
  *   OS2intra group menu.
  * ========================================================================== */
