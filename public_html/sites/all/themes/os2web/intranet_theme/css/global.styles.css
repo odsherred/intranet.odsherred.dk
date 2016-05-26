@@ -6027,7 +6027,7 @@ line-height: 19px}
 /* =============================================================================
  *  Spotbokse
  * ========================================================================== */
-.view-spotbox .intrabox-single { position: relative}
+.view-spotbox .intrabox-single { position: relative; max-width: 280px;}
 .view-spotbox .intrabox-single span.ekstratekst { position: absolute; bottom: 0; width: 100%; left: 0px;}
 .view-spotbox .intrabox-single span.ekstratekst .titel { display: none}
 .view-spotbox .intrabox-single span.ekstratekst .resten { display: block ;max-width: 100%; background-color:rgba(0,0,0,0.5); }
