@@ -65,7 +65,11 @@ function os2intra_message_notify_init(){
         if ($changed < $last_access) {
           continue;
         }
-          // Collect all target nids.
+        if (!$node->status) {
+          continue;
+        }
+
+        // Collect all target nids.
         $targets = array();
         if (isset($node->og_group_ref[LANGUAGE_NONE])) {
           foreach($node->og_group_ref[LANGUAGE_NONE] as $reference) {
