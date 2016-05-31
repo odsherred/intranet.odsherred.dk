@@ -6086,3 +6086,9 @@ line-height: 19px}
 #homebox .homebox-column-wrapper-2 .homebox-column {
   padding-left: 15px;
 }
+
+.three-inset-left > .region-three-inset-left-sidebar {
+  width: 25%;
+  max-width: 220px;
+  padding-top: 50px;
+}
