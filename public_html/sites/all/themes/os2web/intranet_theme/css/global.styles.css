@@ -6083,6 +6083,6 @@ line-height: 19px}
   display: table-row;
   width: 100%;
 }
-.homebox-column-wrapper-2 .homebox-column {
+#homebox .homebox-column-wrapper-2 .homebox-column {
   padding-left: 15px;
 }
