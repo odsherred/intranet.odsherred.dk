@@ -6093,4 +6093,4 @@ line-height: 19px}
   padding-top: 50px;
 }
 
-.region-inner .block-menu-block a {background-image: none !important; height: 32px;}
+.region-inner .block-menu-block a {background-image: none !important; max-height: 25px;}
