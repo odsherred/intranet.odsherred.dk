@@ -3421,13 +3421,6 @@ nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail a.menu_ico
 	font-weight: bold;
 }
 
-nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail a {
-	background-color: #FFF;
-	color: #000;
-	padding-left: 12px;
-	padding-right: 12px; 
-}
-
 nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail.has-children a {
 	background-color: #1b74c6;
 	padding-left: 12px;
