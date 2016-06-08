@@ -3262,6 +3262,11 @@ ul.nice-menu {
   background-position-x: 5px;
   height: initial;
 }
+
+.menu-bar-menu.narrow a.menu_icon {
+  background-position: center center;
+}
+
 .menu-bar-menu .block {
   margin: 0;
 }
