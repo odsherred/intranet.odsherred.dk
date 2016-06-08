@@ -3421,6 +3421,13 @@ nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail a.menu_ico
 	font-weight: bold;
 }
 
+nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail a {
+	background-color: #1b74c6;
+	color: #fff;
+	padding-left: 12px;
+	padding-right: 12px; 
+}
+
 nav#block-menu-block-1 div.menu-block-wrapper ul.menu li.active-trail.has-children a {
 	background-color: #1b74c6;
 	padding-left: 12px;
@@ -3463,10 +3470,10 @@ nav#block-menu-block-2 div.menu-block-wrapper ul.menu li a {
 }
 
 nav#block-menu-block-2 div.menu-block-wrapper ul.menu li.active-trail a {
-	background-color: #fff;
+	background-color: #508FD5;
 	padding-left: 10px;
 	padding-right: 10px;
-	color: #000;
+	color: #fff;
 }
 
 nav#block-menu-block-2 div.menu-block-wrapper ul.menu li.active-trail.has-children a {
@@ -3508,10 +3515,10 @@ nav#block-menu-block-3 div.menu-block-wrapper ul.menu li a {
 }
 
 nav#block-menu-block-3 div.menu-block-wrapper ul.menu li.active-trail a {
-	background-color: #FFF;
+	background-color: #65A6EF;
 	padding-left: 10px;
 	padding-right: 10px;
-	color: #000;
+	color: #FFF;
 }
 nav#block-menu-block-3 div.menu-block-wrapper ul.menu li.active-trail.has-children a {
 	background-color: #65A6EF;
@@ -3550,12 +3557,6 @@ nav#block-menu-block-4 div.menu-block-wrapper ul.menu li a {
 	padding-bottom: 4px;
 	line-height: 25px;
 	display: inline-block;
-}
-
-nav#block-menu-block-4 div.menu-block-wrapper ul.menu li.active-trail a {
-	background-color: #FFF;
-	padding-left: 10px;
-	padding-right: 10px; 
 }
 
 nav#block-menu-block-4 div.menu-block-wrapper ul.menu li.active-trail a.active-trail {
