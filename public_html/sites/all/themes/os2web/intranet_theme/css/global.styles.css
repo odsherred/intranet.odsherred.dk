@@ -6055,6 +6055,7 @@ line-height: 19px}
   display: table;
   table-layout: fixed;
   width: 100%;
+  position: relative;
 }
 .front .view-spotbox .views-row h3 {
   height: 3em; line-height: 3em; vertical-align: middle; 
