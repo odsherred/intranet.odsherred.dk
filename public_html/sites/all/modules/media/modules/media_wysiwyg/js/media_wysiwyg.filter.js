@@ -44,12 +44,6 @@
           if (!media && media_definition.fid) {
             Drupal.media.filter.ensureSourceMap();
             var source = Drupal.settings.mediaSourceMap[media_definition.fid];
-
-            // Skip unknown items.
-            if (!source) {
-              continue;
-            }
-
             media = document.createElement(source.tagName);
             media.src = source.src;
             media.innerHTML = source.innerHTML;
@@ -76,6 +70,9 @@
     replacePlaceholderWithToken: function(content) {
       Drupal.media.filter.ensure_tagmap();
 
+      // Rewrite the tagmap in case any of the macros have changed.
+      Drupal.settings.tagmap = {};
+
       // Replace all media placeholders with their JSON macro representations.
       //
       // There are issues with using jQuery to parse the WYSIWYG content (see
@@ -98,7 +95,6 @@
       // \S\s catches any character, including a linebreak; JavaScript does not
       // have a dotall flag.
       regex += '|<span[^>]+' + classRegex + '[^>]*?>[\\S\\s]+?</span>';
-
       var matches = content.match(RegExp(regex, 'gi'));
       if (matches) {
         for (i = 0; i < matches.length; i++) {
