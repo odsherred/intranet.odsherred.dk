@@ -13,10 +13,10 @@
  * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) http://ckeditor.com/builder/51772cf3b2b22b69c8cb3c9768b1f7a4
+ * (2) http://ckeditor.com/builder/56430b9a95e82a6c15be10047f69dfc2
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) http://ckeditor.com/builder/download/51772cf3b2b22b69c8cb3c9768b1f7a4
+ * (3) http://ckeditor.com/builder/download/56430b9a95e82a6c15be10047f69dfc2
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -25,7 +25,7 @@
  */
 
 var CKBUILDER_CONFIG = {
-	skin: 'flat',
+	skin: 'moono',
 	preset: 'full',
 	ignore: [
 		'.bender',
@@ -53,17 +53,22 @@ var CKBUILDER_CONFIG = {
 		'a11ychecker' : 1,
 		'a11yhelp' : 1,
 		'about' : 1,
+		'autogrow' : 1,
+		'basewidget' : 1,
 		'basicstyles' : 1,
 		'bidi' : 1,
 		'blockquote' : 1,
 		'bootstrapVisibility' : 1,
 		'chart' : 1,
+		'btgrid' : 1,
 		'clipboard' : 1,
 		'colorbutton' : 1,
 		'colordialog' : 1,
 		'contextmenu' : 1,
+		'custimage' : 1,
 		'dialogadvtab' : 1,
 		'div' : 1,
+		'divarea' : 1,
 		'elementspath' : 1,
 		'enterkey' : 1,
 		'entities' : 1,
@@ -75,9 +80,11 @@ var CKBUILDER_CONFIG = {
 		'format' : 1,
 		'forms' : 1,
 		'horizontalrule' : 1,
+		'html5validation' : 1,
 		'htmlwriter' : 1,
 		'iframe' : 1,
 		'image' : 1,
+		'imageresponsive' : 1,
 		'indentblock' : 1,
 		'indentlist' : 1,
 		'justify' : 1,
@@ -87,15 +94,18 @@ var CKBUILDER_CONFIG = {
 		'list' : 1,
 		'liststyle' : 1,
 		'magicline' : 1,
+		'markdown' : 1,
 		'maximize' : 1,
 		'newpage' : 1,
 		'oembed' : 1,
 		'pagebreak' : 1,
+		'pastefromexcel' : 1,
 		'pastefromword' : 1,
 		'pastetext' : 1,
 		'preview' : 1,
 		'print' : 1,
 		'removeformat' : 1,
+		'removespan' : 1,
 		'resize' : 1,
 		'save' : 1,
 		'scayt' : 1,
@@ -109,13 +119,13 @@ var CKBUILDER_CONFIG = {
 		'stylescombo' : 1,
 		'tab' : 1,
 		'table' : 1,
+		'tableresize' : 1,
 		'tabletools' : 1,
+		'tabletoolstoolbar' : 1,
 		'templates' : 1,
 		'toolbar' : 1,
 		'undo' : 1,
-		'widgetbootstrap' : 1,
 		'widgetcommon' : 1,
-		'widgettemplatemenu' : 1,
 		'wsc' : 1,
 		'wysiwygarea' : 1
 	},
