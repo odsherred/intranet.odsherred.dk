@@ -13,10 +13,10 @@
  * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) http://ckeditor.com/builder/19760c1e7695c2caa5e9fffe60720bc1
+ * (2) http://ckeditor.com/builder/51772cf3b2b22b69c8cb3c9768b1f7a4
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) http://ckeditor.com/builder/download/19760c1e7695c2caa5e9fffe60720bc1
+ * (3) http://ckeditor.com/builder/download/51772cf3b2b22b69c8cb3c9768b1f7a4
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -25,7 +25,7 @@
  */
 
 var CKBUILDER_CONFIG = {
-	skin: 'moono',
+	skin: 'flat',
 	preset: 'full',
 	ignore: [
 		'.bender',
@@ -50,13 +50,14 @@ var CKBUILDER_CONFIG = {
 		'tests'
 	],
 	plugins : {
+		'a11ychecker' : 1,
 		'a11yhelp' : 1,
 		'about' : 1,
-		'autogrow' : 1,
-		'balloonpanel' : 1,
 		'basicstyles' : 1,
 		'bidi' : 1,
 		'blockquote' : 1,
+		'bootstrapVisibility' : 1,
+		'chart' : 1,
 		'clipboard' : 1,
 		'colorbutton' : 1,
 		'colordialog' : 1,
@@ -73,7 +74,6 @@ var CKBUILDER_CONFIG = {
 		'font' : 1,
 		'format' : 1,
 		'forms' : 1,
-		'gg' : 1,
 		'horizontalrule' : 1,
 		'htmlwriter' : 1,
 		'iframe' : 1,
@@ -82,13 +82,14 @@ var CKBUILDER_CONFIG = {
 		'indentlist' : 1,
 		'justify' : 1,
 		'language' : 1,
-		'lineutils' : 1,
+		'leaflet' : 1,
 		'link' : 1,
 		'list' : 1,
 		'liststyle' : 1,
 		'magicline' : 1,
 		'maximize' : 1,
 		'newpage' : 1,
+		'oembed' : 1,
 		'pagebreak' : 1,
 		'pastefromword' : 1,
 		'pastetext' : 1,
@@ -103,16 +104,18 @@ var CKBUILDER_CONFIG = {
 		'showborders' : 1,
 		'smiley' : 1,
 		'sourcearea' : 1,
+		'sourcedialog' : 1,
 		'specialchar' : 1,
 		'stylescombo' : 1,
 		'tab' : 1,
 		'table' : 1,
-		'tableresize' : 1,
 		'tabletools' : 1,
 		'templates' : 1,
 		'toolbar' : 1,
 		'undo' : 1,
-		'widget' : 1,
+		'widgetbootstrap' : 1,
+		'widgetcommon' : 1,
+		'widgettemplatemenu' : 1,
 		'wsc' : 1,
 		'wysiwygarea' : 1
 	},
