@@ -5846,7 +5846,8 @@ div.view-os2intra-group-members {
 
 .view-os2intra-random-user div.views-row, 
 .view-os2intra-group-members div.views-row, 
-.view-os2intra-users-search div.views-row {
+.view-os2intra-users-search div.views-row,
+.view-os2intra-users-elastic-search div.views-row {
 	display: block;
 	clear: both;
 	font-size: 11px;
@@ -5860,7 +5861,8 @@ div.view-os2intra-group-members {
 }
 .view-os2intra-random-user div.views-field-picture,
 .view-os2intra-group-members div.views-field-picture,
-.view-os2intra-users-search div.views-field-picture {
+.view-os2intra-users-search div.views-field-picture,
+.view-os2intra-users-elastic-search div.views-field-picture {
 	max-width: 60px;
 	height: auto;
     float: left;
