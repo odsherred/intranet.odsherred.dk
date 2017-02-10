@@ -17,7 +17,7 @@ function bellcom_elasticsearch_api_index_open($client, $index_id) {
   $client->indices()->open($params);
 }
 
-function bellcom_elasticsearch_api_add_analyzer($client, $index_id, $synonyms_file_path) {
+function bellcom_elasticsearch_api_add_analyzer_as_file($client, $index_id, $synonyms_file_path) {
   $params = [
     'index' => $index_id,
     'body' => [
@@ -33,6 +33,40 @@ function bellcom_elasticsearch_api_add_analyzer($client, $index_id, $synonyms_fi
             'synonym' => [
               'type' => 'synonym',
               'synonyms_path' => $synonyms_file_path,
+              'ignore_case' => TRUE
+            ],
+            'lowercase' => [
+              'type' => 'lowercase',
+            ],
+            'stopwords' => [
+              'type' => 'stop',
+              'stopwords' => '_danish_'
+            ],
+          ]
+        ]
+      ]
+    ]
+  ];
+
+  $client->indices()->putSettings($params);
+}
+
+function bellcom_elasticsearch_api_add_analyzer_as_plaintext($client, $index_id, $synonyms) {
+  $params = [
+    'index' => $index_id,
+    'body' => [
+      'settings' => [
+        'analysis' => [
+          'analyzer' => [
+            'bellcom_elasticsearch_analyser' => [
+              'tokenizer' => 'whitespace',
+              'filter' => ['synonym_plainttext', 'lowercase', 'stopwords']
+            ]
+          ],
+          'filter' => [
+            'synonym_plainttext' => [
+              'type' => 'synonym',
+              'synonyms' => [$synonyms],
               'ignore_case' => TRUE
             ],
             'lowercase' => [
