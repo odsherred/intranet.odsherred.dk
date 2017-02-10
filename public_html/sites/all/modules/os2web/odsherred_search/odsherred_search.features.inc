@@ -176,7 +176,12 @@ function odsherred_search_default_search_api_index() {
       "fields" : {
         "field_name_first" : { "type" : "text" },
         "field_name_last" : { "type" : "text" },
+        "field_os2intra_department_ref" : { "type" : "integer", "entity_type" : "node" },
+        "field_os2intra_import_groups" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_os2intra_user_interests" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_os2intra_user_titles" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "name" : { "type" : "text" },
+        "roles" : { "type" : "list\\u003Cinteger\\u003E" },
         "search_api_language" : { "type" : "string" },
         "status" : { "type" : "integer" },
         "uid" : { "type" : "integer" }
