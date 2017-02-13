@@ -69,6 +69,9 @@ function bellcom_elasticsearch_api_add_analyzer_as_plaintext($client, $index_id,
               'synonyms' => [$synonyms],
               'ignore_case' => TRUE
             ],
+            'synonym' => [
+              'synonyms_path' => NULL,
+            ],
             'lowercase' => [
               'type' => 'lowercase',
             ],
