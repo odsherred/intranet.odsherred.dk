@@ -200,7 +200,7 @@ function _bellcom_elasticsearch_get_query($query_string, $query_fields) {
       'should' => array(
         array(
           'query_string' => array(
-            'query' => $query_string,
+            'query' => $query_string . '*',
             'fields' => $query_fields,
             'analyzer' => 'bellcom_elasticsearch_analyser'
           )

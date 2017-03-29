@@ -62,12 +62,12 @@ function odsherred_search_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'two_33_66_first';
     $pane->type = 'block';
-    $pane->subtype = 'facetapi-MjQO1KMKl7YvB5819a4uyHU2xNvJ2C4R';
+    $pane->subtype = 'facetapi-3spP7tIdDqA3E4QKnKmjTinsXu04o757';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Groups',
+      'override_title_text' => 'Grupper',
     );
     $pane->cache = array();
     $pane->style = array(
