@@ -4993,6 +4993,7 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 .search-results-title,
 .search-results-wrapper > h2 {
   margin-top: .2em;
+  margin-bottom: 1em;
 }
 
 .search-results {
@@ -5004,11 +5005,12 @@ body.front.logged-in .view-commons-homepage-content .article.node.node-page .lin
 }
 
 .search-result {
-  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
   list-style-type: none;
+  padding-top: .5em;
 }
 .search-result, .block-content .search-result {
-  padding-bottom: .7em;
+  padding-bottom: .2em;
   margin-bottom: .7em;
 }
 .search-result:last-child, .block-content .search-result:last-child {
