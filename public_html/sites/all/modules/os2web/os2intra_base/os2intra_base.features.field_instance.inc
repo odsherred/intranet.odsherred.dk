@@ -569,6 +569,12 @@ function os2intra_base_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
+      'search_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'search_results' => array(
         'label' => 'above',
         'settings' => array(),
@@ -621,6 +627,17 @@ function os2intra_base_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'search_preview' => array(
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '',
+        ),
+        'type' => 'title_linked',
+        'weight' => 2,
       ),
       'search_results' => array(
         'label' => 'hidden',

@@ -1,0 +1,46 @@
+<?php
+
+
+include_once 'odsherred_search.features.inc';
+
+function odsherred_search_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-odsherred-search-panel-pane-menu') {
+    $form['#action'] = 	base_path() . 'soeg';
+  }
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function odsherred_search_entity_info_alter(&$entity_info) {
+  $entity_info['user']['view modes']['search_preview'] = array(
+    'label' => t('Search (preview)'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements template_preprocess_user_profile()
+ */
+function odsherred_search_preprocess_user_profile(&$variables) {
+  if ($variables['elements']['#view_mode'] == 'search_preview') {
+    $variables['theme_hook_suggestions'][] = 'user_profile__search_preview';
+  }
+}
+
+function odsherred_search_page_alter(&$page) {
+  //dpm($page);
+}
+
+function odsherred_search_preprocess_page(&$vars) {
+  //dpm($vars);
+}
+
+function odsherred_search_preprocess_block(&$variables) {
+  //$variables['theme_hook_suggestions'][] = 'block__' . $variables['block']->region . '__' . $variables['block']->context;
+}
+
+function odsherred_search_preprocess_views_exposed_form(&$variables) {
+}
+
+
