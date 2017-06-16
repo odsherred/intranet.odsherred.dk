@@ -43,7 +43,7 @@ function odsherred_search_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'two_33_66';
+  $display->layout = 'flexible:os2intra_80_20';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -52,6 +52,10 @@ function odsherred_search_default_page_manager_pages() {
       'two_33_66_first' => NULL,
       'two_33_66_second' => NULL,
       'two_33_66_bottom' => NULL,
+      'top' => NULL,
+      'spots' => NULL,
+      'indhold' => NULL,
+      'bund' => NULL,
     ),
   );
   $display->cache = array();
@@ -60,133 +64,7 @@ function odsherred_search_default_page_manager_pages() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'two_33_66_first';
-    $pane->type = 'block';
-    $pane->subtype = 'facetapi-3spP7tIdDqA3E4QKnKmjTinsXu04o757';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Grupper',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['two_33_66_first'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'two_33_66_first';
-    $pane->type = 'block';
-    $pane->subtype = 'facetapi-egab6PS0Ih18uNkzxMsdYKDAR9rw19ZH';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Topics',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['two_33_66_first'][1] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'two_33_66_first';
-    $pane->type = 'block';
-    $pane->subtype = 'facetapi-ls3k20X0jHn9C3cn5c0uiCZHSop53V9S';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Type',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['two_33_66_first'][2] = 'new-3';
-    $pane = new stdClass();
-    $pane->pid = 'new-4';
-    $pane->panel = 'two_33_66_first';
-    $pane->type = 'block';
-    $pane->subtype = 'facetapi-4vFH9vLVBcYme3vc7cnlfOvxVT8X7pXp';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Author',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['two_33_66_first'][3] = 'new-4';
-    $pane = new stdClass();
-    $pane->pid = 'new-5';
-    $pane->panel = 'two_33_66_first';
-    $pane->type = 'block';
-    $pane->subtype = 'facetapi-wiVw1fHAlJWTkBLF0mN0HrMb6yVZpwY1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Date created',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 4;
-    $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['two_33_66_first'][4] = 'new-5';
-    $pane = new stdClass();
-    $pane->pid = 'new-6';
-    $pane->panel = 'two_33_66_first';
-    $pane->type = 'block';
-    $pane->subtype = 'facetapi-Yc4CWpV1VFYtMBTtOXrSy0DnXj3NtaPL';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Date changed',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 5;
-    $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['two_33_66_first'][5] = 'new-6';
-    $pane = new stdClass();
-    $pane->pid = 'new-7';
-    $pane->panel = 'two_33_66_second';
+    $pane->panel = 'indhold';
     $pane->type = 'block';
     $pane->subtype = 'views-a99efaa692dcd5286d0df5011c93974e';
     $pane->shown = TRUE;
@@ -204,11 +82,11 @@ function odsherred_search_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['two_33_66_second'][0] = 'new-7';
+    $display->content['new-1'] = $pane;
+    $display->panels['indhold'][0] = 'new-1';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
-    $pane->panel = 'two_33_66_second';
+    $pane->pid = 'new-2';
+    $pane->panel = 'indhold';
     $pane->type = 'views_panes';
     $pane->subtype = 'odsherred_search-panel_pane';
     $pane->shown = TRUE;
@@ -222,8 +100,134 @@ function odsherred_search_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
+    $display->content['new-2'] = $pane;
+    $display->panels['indhold'][1] = 'new-2';
+    $pane = new stdClass();
+    $pane->pid = 'new-3';
+    $pane->panel = 'spots';
+    $pane->type = 'block';
+    $pane->subtype = 'facetapi-3spP7tIdDqA3E4QKnKmjTinsXu04o757';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Grupper',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-3'] = $pane;
+    $display->panels['spots'][0] = 'new-3';
+    $pane = new stdClass();
+    $pane->pid = 'new-4';
+    $pane->panel = 'spots';
+    $pane->type = 'block';
+    $pane->subtype = 'facetapi-egab6PS0Ih18uNkzxMsdYKDAR9rw19ZH';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Topics',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['spots'][1] = 'new-4';
+    $pane = new stdClass();
+    $pane->pid = 'new-5';
+    $pane->panel = 'spots';
+    $pane->type = 'block';
+    $pane->subtype = 'facetapi-ls3k20X0jHn9C3cn5c0uiCZHSop53V9S';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Type',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['spots'][2] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'spots';
+    $pane->type = 'block';
+    $pane->subtype = 'facetapi-4vFH9vLVBcYme3vc7cnlfOvxVT8X7pXp';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Author',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['spots'][3] = 'new-6';
+    $pane = new stdClass();
+    $pane->pid = 'new-7';
+    $pane->panel = 'spots';
+    $pane->type = 'block';
+    $pane->subtype = 'facetapi-wiVw1fHAlJWTkBLF0mN0HrMb6yVZpwY1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Date created',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['spots'][4] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
+    $pane->panel = 'spots';
+    $pane->type = 'block';
+    $pane->subtype = 'facetapi-Yc4CWpV1VFYtMBTtOXrSy0DnXj3NtaPL';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Date changed',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
     $display->content['new-8'] = $pane;
-    $display->panels['two_33_66_second'][1] = 'new-8';
+    $display->panels['spots'][5] = 'new-8';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
