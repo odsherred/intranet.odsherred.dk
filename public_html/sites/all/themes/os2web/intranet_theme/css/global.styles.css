@@ -4262,7 +4262,9 @@ nav#block-menu-block-4 div.menu-block-wrapper ul.menu li ul.menu a { font-style:
   background-color: #FFF;
 }
 .block-search .form-submit {
+  position: relative;
   text-indent: -9999em;
+  z-index: 10;
 }
 .block-search .form-submit, .block-search .form-submit:hover {
   background: transparent url('../images/icons/ico_search_bla.png?1375207738') no-repeat top center;
