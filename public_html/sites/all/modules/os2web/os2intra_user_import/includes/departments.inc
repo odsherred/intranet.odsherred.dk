@@ -134,7 +134,7 @@ function os2intra_user_import_create_department($tid, $department, $department_n
 
   // Title and type
   $node->title = $name;
-  $node->type = 'os2intra_org_group_unit';
+  $node->type = 'group';
 
   // Generic node stuff
   node_object_prepare($node);
@@ -148,21 +148,21 @@ function os2intra_user_import_create_department($tid, $department, $department_n
   node_save($node);
 
   // Set organization term
-  $node->field_os2intra_organisation[LANGUAGE_NONE][]['target_id'] = $tid;
+  $node->field_os2intra_organization[LANGUAGE_NONE][]['tid'] = $tid;
 
   // Save department id on node
-  if (field_info_instance('taxonomy_term', 'field_os2intra_department_id', 'os2intra_org_group_unit')) {
+  if (field_info_instance('taxonomy_term', 'field_os2intra_department_id', 'group')) {
     $node->field_os2intra_department_id[LANGUAGE_NONE][0]['value'] = $department;
   }
 
   // Group type "Organisation"
   // Todo: make more generic
-  if (field_info_instance('node', 'field_os2intra_grouptype', 'os2intra_org_group_unit')) {
+  if (field_info_instance('node', 'field_os2intra_grouptype', 'group')) {
     $node->field_os2intra_grouptype[LANGUAGE_NONE][0]['tid'] = 6;
   }
 
   // Closed group, require invitation
-  if (field_info_instance('node', 'field_og_subscribe_settings', 'os2intra_org_group_unit')) {
+  if (field_info_instance('node', 'field_og_subscribe_settings', 'group')) {
     $node->field_og_subscribe_settings[LANGUAGE_NONE][0]['value'] = 'invitation';
   }
 
@@ -180,7 +180,7 @@ function os2intra_user_import_add_user_to_parent_departments($account) {
   if (empty($og_department_node)) {
     return;
   }
-  $organisation_tid = field_get_items('node', $og_department_node, 'field_os2intra_organisation')[0]['target_id'];
+  $organisation_tid = field_get_items('node', $og_department_node, 'field_os2intra_organization')[0]['tid'];
 
   // Add user to their primary department and give them the 'medarbejder' role
   $values = array(
@@ -200,8 +200,8 @@ function os2intra_user_import_add_user_to_parent_departments($account) {
   // Find the node ID for each department in parent terms
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', 'os2intra_org_group_unit');
-  $query->fieldCondition('field_os2intra_organisation', 'target_id', $parent_tids, 'IN');
+  $query->entityCondition('bundle', 'group');
+  $query->fieldCondition('field_os2intra_organization', 'target_id', $parent_tids, 'IN');
   $results = $query->execute();
 
   if (isset($results['node'])) {

@@ -238,7 +238,7 @@ function os2intra_user_import_settings_validate(&$form, &$form_state) {
     $default_groups = explode(',', $form_state['values']['os2intra_user_default_groups']);
     foreach ($default_groups as $group) {
       $node = node_load($group);
-      if (!$node || $node->type != 'os2intra_org_group_unit') {
+      if (!$node || $node->type != 'group') {
         form_set_error('os2intra_user_default_groups', t('Must be a valid NID of type organic groups (OG)'));
       }
     }

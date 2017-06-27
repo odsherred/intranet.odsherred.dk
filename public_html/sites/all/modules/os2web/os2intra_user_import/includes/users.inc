@@ -219,6 +219,10 @@ function os2intra_user_import_save_user($user, $uid = '') {
       'init' => $user['email'],
       'timezone' => 'Europe/Copenhagen',
   );
+  
+  print_r('User fields:');
+  print_r($fields);
+  print_r('\r\n');
 
   // For some reason, the first zero is chopped somewhere. Let's add it.
   if (strlen($user['birthdate']) < 6) {
