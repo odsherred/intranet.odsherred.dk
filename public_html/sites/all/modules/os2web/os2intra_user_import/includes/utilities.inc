@@ -50,8 +50,10 @@ function os2intra_user_import_query_term_by_department($department_id) {
   }
   // Returning the array if exists and FALSE if not. 
   if ($term) {
+    print_r("\r\n" . 'os2intra_user_import_query_term_by_department: result' . "\r\n");
     return $result;
   } else {
+    print_r("\r\n" . 'os2intra_user_import_query_term_by_department: false' . "\r\n");
     return FALSE;
   }
 }

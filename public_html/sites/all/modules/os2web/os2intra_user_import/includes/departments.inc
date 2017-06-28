@@ -47,10 +47,11 @@ function os2intra_user_import_groups($users) {
 
     // Term already exists
     if (!empty($result)) {
-
       // Rename group term if needed
       $term = taxonomy_term_load(key($result['taxonomy_term']));
 
+      print_r("\r\n" . 'found term: ' . $term->tid . "\r\n");
+      
       $department_name = empty($user['department_name']) ? $user['department'] : $user['department_name'];
       if (empty($user['department_name'])) {
         os2intra_user_import_save_log('', 'Department name is missing. AD_ID:' . $user['department'] . ' User ' . $user['first_name'] . ' ' . $user['last_name']);
@@ -61,15 +62,18 @@ function os2intra_user_import_groups($users) {
 
       // Search for parent tid for department
       $result_parent = os2intra_user_import_query_term_by_department($user['centre']);
-
-      if (!empty($result_parent)) {
-        $parent_term = taxonomy_term_load(key($result_parent['taxonomy_term']));
-        $parent_tid = $parent_term->tid;
-        $term->parent = $parent_tid;
-      }
+      
+//      if (!empty($result_parent)) {
+//        $parent_term = taxonomy_term_load(key($result_parent['taxonomy_term']));
+//        $parent_tid = $parent_term->tid;
+//        $term->parent = $parent_tid;
+//        print_r("\r\n" . 'found parent' .  $parent_tid . "\r\n");
+//      }
+      print_r("\r\n" . print_r($term,1) . ' ' .  "\r\n");
       taxonomy_term_save($term);
+      print_r("\r\n" . 'term saved' .  $parent_tid . "\r\n");
     } else {
-
+      print_r("\r\n" . '2' . "\r\n");
       // Create taxonomy terms
       os2intra_user_import_save_log('', 'Create department: ' . $group);
 
@@ -77,6 +81,7 @@ function os2intra_user_import_groups($users) {
       $result = os2intra_user_import_query_term_by_department($user['centre']);
 
       if (!empty($result)) {
+        print_r("\r\n" . 'os2intra_user_import_query_term_by_department: result' . "\r\n");
         $parent_term = taxonomy_term_load(key($result['taxonomy_term']));
         $parent_tid = $parent_term->tid;
       }
@@ -99,7 +104,7 @@ function os2intra_user_import_groups($users) {
       os2intra_user_import_create_department($term->tid, $user['department'], $department_name);
     }
   }
-
+  print_r("\r\n" . '3' . "\r\n");
   os2intra_user_import_save_log('', 'Finished importing groups');
 
   // Send email that new groups has been created

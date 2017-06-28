@@ -102,7 +102,7 @@ function os2intra_user_import_form_alter(&$form, &$form_state, $form_id) {
   // Use os2intra_user_import_add_managers_to_departments() for submits
   if ($form_id == 'taxonomy_form_term') {
     if ($form['#term']['vocabulary_machine_name'] == 'os2intra_organizaiton_tax') {
-      $form['#submit'][] = "os2intra_user_import_add_managers_to_departments";
+      //$form['#submit'][] = "os2intra_user_import_add_managers_to_departments";
     }
   }
 
