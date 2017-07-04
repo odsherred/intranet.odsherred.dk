@@ -4229,7 +4229,7 @@ nav#block-menu-block-4 div.menu-block-wrapper ul.menu li ul.menu a { font-style:
 }
 .block-search .form-item-search-block-form {
   position: relative;
-  z-index: 1;
+  //z-index: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
