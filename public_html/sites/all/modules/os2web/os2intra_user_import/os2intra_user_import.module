@@ -21,6 +21,14 @@ module_load_include('inc', 'os2intra_user_import', 'includes/utilities');
 /**
  * Implements hook_menu()
  */
+function _os2intra_user_import_o($text, $value = NULL) {
+print("\r\n" . $text . ': ' . "\r\n");
+print_r($value);
+print("\r\n");
+}
+/**
+ * Implements hook_menu()
+ */
 function os2intra_user_import_menu() {
   $items = array();
 
@@ -65,13 +73,6 @@ function os2intra_user_import_menu() {
     'file'            => 'includes/activation_form.inc',
   );
 
-  $items['admin/config/os2intra/dwe'] = array(
-    'title' => t('Departments without employees'),
-    'description' => t('A list of departments without employees'),
-    'page callback' => 'os2intra_user_import_departments_without_employees',
-    'access arguments' => array('administer os2intra'),
-  );
-
   return $items;
 }
 
@@ -100,11 +101,11 @@ function os2intra_user_import_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Use os2intra_user_import_add_managers_to_departments() for submits
-  if ($form_id == 'taxonomy_form_term') {
-    if ($form['#term']['vocabulary_machine_name'] == 'os2intra_organizaiton_tax') {
+ // if ($form_id == 'taxonomy_form_term') {
+   //if ($form['#term']['vocabulary_machine_name'] == 'os2intra_organizaiton_tax') {
       //$form['#submit'][] = "os2intra_user_import_add_managers_to_departments";
-    }
-  }
+    //}
+ // }
 
   // Settings form
   if ($form_id == 'os2intra_settings_settings') {
@@ -244,14 +245,17 @@ function os2intra_user_import_run_with_drush() {
         // variable_set('os2intra_user_import_epoch', time());
         // exit();
        }
+ 
        // Check and update users
        if($last_import_temp != $last_import_temp_users or TRUE) {
          os2intra_user_import_save_log('', 'Starting User Loop');
-         $update_users = os2intra_user_import_check_users($users, $dup_emails, $dup_id);
-         // Loop over users and create
+         $update_users = os2intra_user_import_check_users($users, $dup_emails, $dup_id);        
+
+// Loop over users and create
          os2intra_user_import_save_log('', 'Start Creating Users');
         foreach ($users as $user) {
-           os2intra_user_import_save_user($user);
+          _os2intra_user_import_o('save user = = = = = = = = = = = = = = = = = = = = = =', $user); 
+          os2intra_user_import_save_user($user);
          }
         os2intra_user_import_save_log('', 'End Creating Users');
          // Update users
@@ -283,7 +287,7 @@ function os2intra_user_import_run_with_drush() {
       // Logging
       //os2intra_user_import_save_log('', 'User import finished');
       os2intra_user_import_save_log('', 'Import finished');
-      if (time() >= $last_import_epoch + 86400) {
+      if (time() >= $last_import_epoch + 86400 or TRUE) {
          os2intra_user_import_save_log('', 'Last import updated changed - older than one day:');
          // Timestamp to check if import has run successfully
          variable_set('os2intra_user_import_epoch', time());
@@ -295,69 +299,4 @@ function os2intra_user_import_run_with_drush() {
     }
   }
 
-}
-/**
- * Returns a list of all departments without users with role 14 and role 16
- */
-function os2intra_user_import_departments_without_employees() {
-    print_r("\r\n" . 'os2intra_user_import_departments_without_employees' . "\r\n");
-  
-  $departments_without_employees = array();
-  $gid_arrays_with = array();
-  $gid_arrays_without = array();
-  $gids_with = array();
-  $gids_without = array();
-
-  // Select all distinct group ID's where role ID is 14 and 16
-  $results_with = db_query('SELECT DISTINCT gid FROM og_users_roles WHERE rid=14 OR rid=16;');
-
-  // Select all group ID's where role ID is not 14 and not 16
-  $results_without = db_query('SELECT DISTINCT gid FROM og_users_roles WHERE rid != 14 AND rid != 16;');
-
-  while ($result_with = $results_with->fetchAssoc()) {
-    $gid_arrays_with[] = $result_with;
-  }
-
-  while ($result_without = $results_without->fetchAssoc()) {
-    $gid_arrays_without[] = $result_without;
-  }
-
-  // Create array with group ID's for those with rid 14 and 16
-  foreach ($gid_arrays_with as $key => $value) {
-    foreach ($value as $key => $gid) {
-      $gids_with[] = $gid;
-    }
-  }
-
-  // Create array with group ID's for those without rid 14 and 16
-  foreach ($gid_arrays_without as $key => $value) {
-    foreach ($value as $key => $gid) {
-      $gids_without[] = $gid;
-    }
-  }
-
-  // Load all nodes
-  $nids = array_diff($gids_without, $gids_with);
-  $nodes = node_load_multiple($nids);
-
-  // Loop through and return only ID's of type 'group' / department nodes
-  foreach ($nodes as $node) {
-    if ($node->type == 'group') {
-      $node_link = '/node/' . $node->nid;
-      $rows[] = array(
-        l($node->nid, $node_link),
-        l($node->title, $node_link),
-        l(t('Edit'), $node_link . '/edit'),
-      );
-    }
-  }
-
-  // Return render array with NID and title
-  $table['departments_without_employees'] = array(
-    '#theme' => 'table',
-    '#header' => array(t('ID'), t('Department'), t('Operations')),
-    '#rows' => $rows,
-  );
-
-  return $table;
 }
