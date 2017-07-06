@@ -180,49 +180,49 @@ function os2intra_user_import_create_department($tid, $department, $department_n
  */
 function os2intra_user_import_add_user_to_parent_departments($account) {
   print_r("\r\n" . 'os2intra_user_import_add_user_to_parent_departments' . "\r\n");
+//
+//  $og_department_node = node_load(field_get_items('user', $account, 'og_user_node')[0]['target_id']);
+//  if (empty($og_department_node)) {
+//    return;
+//  }
+//  $organisation_tid = field_get_items('node', $og_department_node, 'field_os2intra_organization')[0]['tid'];
+//
+//  // Add user to their primary department and give them the 'medarbejder' role
+//  $values = array(
+//      'entity' => $account,
+//      'field_name' => 'og_org_ref',
+//  );
+//  og_group('node', $og_department_node->nid, $values);
+//  og_role_grant('node', $og_department_node->nid, $account->uid, variable_get('os2intra_user_import_og_role_id_primary', 16));
+//
+//  // Add user to all parent departments and give 'organisatorisk' role on them.
+//  $parent_terms = taxonomy_get_parents_all($organisation_tid);
+//
+//  foreach ($parent_terms as $parent_term) {
+//    $parent_tids[] = $parent_term->tid;
+//  }
+//
+//  // Find the node ID for each department in parent terms
+//  $query = new EntityFieldQuery;
+//  $query->entityCondition('entity_type', 'node');
+//  $query->entityCondition('bundle', 'group');
+//  $query->fieldCondition('field_os2intra_organization', 'target_id', $parent_tids, 'IN');
+//  $results = $query->execute();
 
-  $og_department_node = node_load(field_get_items('user', $account, 'og_user_node')[0]['target_id']);
-  if (empty($og_department_node)) {
-    return;
-  }
-  $organisation_tid = field_get_items('node', $og_department_node, 'field_os2intra_organization')[0]['tid'];
-
-  // Add user to their primary department and give them the 'medarbejder' role
-  $values = array(
-      'entity' => $account,
-      'field_name' => 'og_org_ref',
-  );
-  og_group('node', $og_department_node->nid, $values);
-  og_role_grant('node', $og_department_node->nid, $account->uid, variable_get('os2intra_user_import_og_role_id_primary', 16));
-
-  // Add user to all parent departments and give 'organisatorisk' role on them.
-  $parent_terms = taxonomy_get_parents_all($organisation_tid);
-
-  foreach ($parent_terms as $parent_term) {
-    $parent_tids[] = $parent_term->tid;
-  }
-
-  // Find the node ID for each department in parent terms
-  $query = new EntityFieldQuery;
-  $query->entityCondition('entity_type', 'node');
-  $query->entityCondition('bundle', 'group');
-  $query->fieldCondition('field_os2intra_organization', 'target_id', $parent_tids, 'IN');
-  $results = $query->execute();
-
-  if (isset($results['node'])) {
-    foreach ($results['node'] as $result) {
-      $og_group_node_ids[] = $result->nid;
-    }
-
-    $values = array(
-        'entity' => $account,
-        'field_name' => 'og_org_ref',
-    );
-
-    foreach ($og_group_node_ids as $nid) {
-      // Add the user to the group and set role.
-      og_group('node', $nid, $values);
-      og_role_grant('node', $nid, $account->uid, variable_get('os2intra_user_import_og_role_id_parent', 14));
-    }
-  }
+//  if (isset($results['node'])) {
+//    foreach ($results['node'] as $result) {
+//      $og_group_node_ids[] = $result->nid;
+//    }
+//
+//    $values = array(
+//        'entity' => $account,
+//        'field_name' => 'og_org_ref',
+//    );
+//
+//    foreach ($og_group_node_ids as $nid) {
+//      // Add the user to the group and set role.
+//      og_group('node', $nid, $values);
+//      og_role_grant('node', $nid, $account->uid, variable_get('os2intra_user_import_og_role_id_parent', 14));
+//    }
+//  }
 }

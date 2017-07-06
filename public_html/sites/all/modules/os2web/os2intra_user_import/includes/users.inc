@@ -120,7 +120,7 @@ function os2intra_user_import_save_user($user, $uid = '') {
       }
       }
     // And organisation and centre nid from last import
-    if ( $import_group_field = field_get_items('user', $account, 'og_org_ref') )
+    if ( $import_group_field = field_get_items('user', $account, 'field_os2intra_import_groups') )
       { // afdeling
       foreach ($import_group_field as $key => $field) {
         $import_groups[$field['target_id']] = $field['target_id'];
@@ -143,8 +143,9 @@ function os2intra_user_import_save_user($user, $uid = '') {
   // Get node id for group
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node');
-  $query->propertyCondition('title', $user['department']);
+  $query->fieldCondition('field_os2intra_department_id', 'value', $user['centre'], '=');
   $result = $query->execute();
+  
   if ( !empty($result['node']) )
     {
     $new_group_nid = key(array_shift($result));
@@ -237,11 +238,12 @@ function os2intra_user_import_save_user($user, $uid = '') {
       // Set birthdate
       'field_os2intra_birthday' => array(LANGUAGE_NONE => array(0 => array('value' => $user['birthdate']))),
       // Set department membership
-      'og_user_node' => array(LANGUAGE_NONE => array(0 => array('target_id' => array($department_nid)))),
+      'og_user_node1' => array(LANGUAGE_NONE => array(0 => array('target_id' => array($department_nid)))),
+      'og_user_node' => $user_groups,
       // Activate user
       'status' => ($account->uid != 0) ? $account->status : 1,
       //'mail' => $user['email'],
-      'init' => $user['email'],
+      //'init' => $user['email'],
       'timezone' => 'Europe/Copenhagen',
       // The organisational ids from this import
       'field_os2intra_import_groups' => $import_groups,
