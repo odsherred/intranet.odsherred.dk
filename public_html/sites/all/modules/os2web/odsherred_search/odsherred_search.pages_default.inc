@@ -132,7 +132,7 @@ function odsherred_search_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Topics',
+      'override_title_text' => 'Emner',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -174,7 +174,7 @@ function odsherred_search_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Author',
+      'override_title_text' => 'Forfatter',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -195,7 +195,7 @@ function odsherred_search_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Date created',
+      'override_title_text' => 'Dato oprettet',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -216,7 +216,7 @@ function odsherred_search_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Date changed',
+      'override_title_text' => 'Dato ændret',
     );
     $pane->cache = array();
     $pane->style = array(
