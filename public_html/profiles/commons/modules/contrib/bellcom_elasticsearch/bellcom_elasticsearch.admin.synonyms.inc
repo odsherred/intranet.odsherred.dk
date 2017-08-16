@@ -5,18 +5,15 @@
  * @return string
  */
 function bellcom_elasticsearch_synonyms_indices() {
-  $header = array(t('Name'), t('Synonyms'));
-
-  $default_cluster = elasticsearch_connector_get_default_connector();
-  $cluster_indicies = elasticsearch_connector_get_indices_options($default_cluster);
-
   $rows = array();
-  foreach ($cluster_indicies as $row) {
+  foreach (bellcom_elastic_search_get_used_indices() as $row) {
     $rows[] = array(
       $row,
       l(t('Set up synonyms'), "admin/config/search/synonyms_index/$row")
     );
   }
+
+  $header = array(t('Name'), t('Synonyms'));
   $output = theme('table', array('header' => $header, 'rows' => $rows));
   $output .= theme('pager');
 
@@ -34,6 +31,15 @@ function bellcom_elasticsearch_synonyms_indices() {
 function bellcom_elasticsearch_synonyms_index($form, &$form_state, $index_name) {
   drupal_set_title(drupal_get_title() . ' ' . $index_name);
 
+  $used_indices = bellcom_elastic_search_get_used_indices();
+  if (!isset($used_indices[$index_name])) {
+    $form[] = array(
+      '#markup' => t('This index is either read-only or not enabled for that installation')
+    );
+    return $form;
+  }
+
+  //normal form
   $form['index'] = array(
     '#type' => 'hidden',
     '#value' => $index_name,
@@ -112,6 +118,12 @@ function bellcom_elasticsearch_synonyms_index_submit($form, &$form_state) {
     if ($cluster_loaded) {
       $client = elasticsearch_connector_load_library($cluster_loaded);
       $index_name = $form_state['values']['index'];
+
+      $used_indices = bellcom_elastic_search_get_used_indices();
+      if (!isset($used_indices[$index_name])) {
+        drupal_set_message(('This index is either read-only or not enabled for that installation'), 'warning');
+        return;
+      }
 
       if ($form_state['values']['active']) {
         //saving file
