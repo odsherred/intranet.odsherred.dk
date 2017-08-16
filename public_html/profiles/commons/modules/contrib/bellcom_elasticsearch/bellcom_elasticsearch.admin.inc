@@ -286,3 +286,24 @@ function bellcom_elasticsearch_get_js_date_format(){
     }
     return $jqueryui_format;
   }
+
+/**
+ * This function returns the list of active and not read-only indices from elasticsearch default cluster.
+ * @return array
+ */
+function bellcom_elastic_search_get_used_indices() {
+  $default_cluster = elasticsearch_connector_get_default_connector();
+  $cluster_indicies = elasticsearch_connector_get_indices_options($default_cluster);
+
+  $conditions = array(
+    'enabled' => TRUE,
+    'read_only' => 0
+  );
+  $indices = search_api_index_load_multiple(FALSE, $conditions);
+  $used_indices = array();
+  foreach($indices as $index) {
+    $used_indices[$index->options['index_name']['index']] = $index->options['index_name']['index'];
+  }
+
+  return array_intersect($used_indices, $cluster_indicies);
+}
