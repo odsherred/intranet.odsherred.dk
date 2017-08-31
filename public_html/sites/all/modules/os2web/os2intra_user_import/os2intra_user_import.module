@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the OS2Intra User import feature.
@@ -439,7 +440,7 @@ function os2intra_user_import_process_file($file){
 
   // Load data from file
   foreach($data as $row_str){
-    $row = str_getcsv($row_str, ",");
+    $row = str_getcsv($row_str, ";");
 
     // Parse mapping
     foreach($row as $key => $field){
@@ -592,12 +593,25 @@ function os2intra_user_import_save_user($user, $uid = ''){
 
   // Create unix timestamp for termination date
   // @todo: check that timestamp is not today
-  $termination_date_timestamp = strtotime($user['termination_date']);
-  // Check if the timestamp supplied from the import is larger than
-  // what unix timestamps can be.
-  if($termination_date_timestamp > 2147483647){
-    $termination_date_timestamp = 1;
+  //$termination_date_timestamp = strtotime($user['termination_date']);
+  
+// Normal date 10.05.2017 = 10 symbols
+  if (strlen($user['termination_date']) == 10){
+  $user_term_date = $user['termination_date'] . ' ' . '00:00:00';
+    
+//  print('UserTerminationDATE:');
+//  print($user_term_date);
+//  print("\r\n");
+  
+  $termination_date = DateTime::createFromFormat('d-m-Y h:i:s', $user_term_date);
+  @$termination_date_timestamp = $termination_date->getTimestamp();
   }
+   // Check if the timestamp supplied from the import is larger than
+  // what unix timestamps can be or false.
+  if($termination_date_timestamp == FALSE or $termination_date_timestamp > 2147483647 ){
+    $termination_date_timestamp = 1;
+    }
+  
 
   list($dd,$mm,$yyyy) = explode('-', $user['birthday']);
   $birthday = date('Y-m-d H:i:s', mktime(0, 0, 0, (int)$mm, (int)$dd, (int)$yyyy));
