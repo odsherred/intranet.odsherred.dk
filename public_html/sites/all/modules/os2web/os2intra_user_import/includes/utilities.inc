@@ -9,7 +9,8 @@ function _os2intra_user_import_sanitize_int($str) {
   if (is_numeric($str)) {
     return (int) $str;
   }
-  return utf8_encode($str);
+  //return utf8_encode($str);
+  return (mb_detect_encoding($str, "UTF-8, ISO-8859-1")!="UTF-8")?  utf8_encode($str) : $str;
 }
 
 /**

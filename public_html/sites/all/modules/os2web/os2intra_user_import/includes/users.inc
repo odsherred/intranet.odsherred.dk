@@ -201,9 +201,12 @@ function os2intra_user_import_save_user($user, $uid = '') {
 
   // Add back the groups we want to keep.
   foreach ($keep_groups as $group_id) {
-    $user_groups[LANGUAGE_NONE][]['target_id'] = $group_id;
+     $user_groups[LANGUAGE_NONE][]['target_id'] = $group_id;
   }
-
+foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
+  if (node_load($value['target_id']) === FALSE )
+    unset($user_groups[LANGUAGE_NONE][$key]);
+}
   // @todo: check that timestamp is not today
   $termination_date_timestamp = date_timestamp_get(date_create_from_format('m.d.Y  H:i:s', $user['termination_date'] . ' 00:00:00'));
   // Check if the timestamp supplied from the import is larger than
@@ -213,7 +216,7 @@ function os2intra_user_import_save_user($user, $uid = '') {
     $termination_date_timestamp = 1;
     }
 
-  $user['birthdate'] = date_format(date_create_from_format('m.d.Y  H:i:s', $user['birthdate'] . ' 00:00:00'), 'Y-m-d H:i:s');
+  $user['birthdate'] = date_format(date_create_from_format('d-m-Y  H:i:s', $user['birthdate'] . ' 00:00:00'), 'Y-m-d H:i:s');
 
 //  list($dd,$mm,$yyyy) = explode('.', $user['birthdate'] );
 //  $user['birthdate'] = date('Y-m-d H:i:s', mktime(0, 0, 0, (int)$mm, (int)$dd, (int)$yyyy));  
@@ -323,11 +326,12 @@ function os2intra_user_import_save_user($user, $uid = '') {
   os2intra_user_import_add_user_to_parent_departments($account);
 
   // Write log entry
+  
   if ( $uid )
     {
-    os2intra_user_import_save_log($user['employee_id'], 'update user: ' . $user['employee_id'] . ' ' . $user['first_name'] . ' ' . $user['last_name'] . 'status: ' . $user['status']);
+       os2intra_user_import_save_log($user['ad_id'], 'update user: ' . $user['ad_id'] . ' ' . $user['first_name'] . ' ' . $user['last_name'] . ' status: ' . $account->status);
     } else
     {
-    os2intra_user_import_save_log($user['employee_id'], 'create user: ' . $user['first_name'] . 'status: ' . $user['status']);
+       os2intra_user_import_save_log($user['ad_id'], 'create user: ' . $user['first_name'] . ' status: ' . $user['status']);
     }
 }
