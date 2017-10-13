@@ -300,3 +300,19 @@ function os2intra_user_import_run_with_drush() {
   }
 
 }
+
+function os2intra_user_import_user_insert(&$edit, $account, $category) {
+  //user create manually by admin
+  if (isset($_POST['form_id']) && $_POST['form_id'] == 'user_register_form' ){
+
+   // Create authmap for user
+    $authmap = array(
+        'authname_simplesamlphp_auth' => $account->name . variable_get('os2intra_user_import_authmap_name_suffix'),
+    );
+
+    if ( !user_get_authmaps($authmap) )
+      {
+      user_set_authmaps($account, $authmap);
+      }
+  }
+}
