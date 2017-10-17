@@ -29,9 +29,6 @@ function _os2intra_user_import_process_file($file_path) {
     return str_getcsv($d, variable_get('os2intra_user_import_delimiter'));
   }, file($file_path));
   $at_content = FALSE;
-//  print('**********' . "\n\r");
-//  print_r($csv);
-//  print('********' . "\n\r");
   foreach ($csv as $row) {
 
     // Look for where headings start and ignore everything before the headings.
@@ -60,8 +57,6 @@ function _os2intra_user_import_process_file($file_path) {
   // Skip first row, headers
   //unset($rows[0]);
   
-    print_r($rows);
-
   
   return $rows;
 

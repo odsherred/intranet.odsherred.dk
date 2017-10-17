@@ -3,7 +3,6 @@
  * Give department managers 'manager-role' to the departments children
  */
 function os2intra_user_import_add_managers_to_departments($form, &$form_state) {
-  print_r('os2intra_user_import_add_managers_to_departments');
 //  $department = entity_metadata_wrapper('taxonomy_term', $form['#term']['tid']);
 //
 //  // Get department children

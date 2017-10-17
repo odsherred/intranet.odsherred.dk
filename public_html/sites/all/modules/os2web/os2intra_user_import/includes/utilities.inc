@@ -4,7 +4,6 @@
  * Convert numeric values into integers, else return the string as utf8.
  */
 function _os2intra_user_import_sanitize_int($str) {
-  print_r("\r\n" . '_os2intra_user_import_sanitize_int' . "\r\n");
 
   if (is_numeric($str)) {
     return (int) $str;
@@ -17,7 +16,6 @@ function _os2intra_user_import_sanitize_int($str) {
  * Helper for user title
  */
 function os2intra_user_import_user_title($job_description) {
-  print_r("\r\n" . 'os2intra_user_import_user_title' . "\r\n");
 
   $term = reset(taxonomy_get_term_by_name($job_description));
   // Create new taxonomy term
@@ -38,7 +36,6 @@ function os2intra_user_import_user_title($job_description) {
  * Searches for terms by department id and resturns an EntityFieldQuery result.
  */
 function os2intra_user_import_query_term_by_department($department_id) {
-  print_r("\r\n" . 'os2intra_user_import_query_term_by_department: ' . $department_id . "\r\n");
 
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'taxonomy_term');
@@ -60,7 +57,6 @@ function os2intra_user_import_query_term_by_department($department_id) {
  * Get department NID from department ID.
  */
 function _os2intra_user_import_get_department_nid($department) {
-  print_r("\r\n" . '_os2intra_user_import_get_department_nid: ============================================================' . $department . "\r\n");
 
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'taxonomy_term');

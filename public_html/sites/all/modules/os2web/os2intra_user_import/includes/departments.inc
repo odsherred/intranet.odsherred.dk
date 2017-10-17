@@ -7,8 +7,6 @@
  *  array of users with organisations
  */
 function os2intra_user_import_groups($users) {
-  print_r("\r\n" . 'os2intra_user_import_groups' . "\r\n");
-
   // Array holding created terms. For email use later.
   $created_terms = array();
 
@@ -50,8 +48,7 @@ function os2intra_user_import_groups($users) {
       // Rename group term if needed
       $term = taxonomy_term_load(key($result['taxonomy_term']));
 
-      print_r("\r\n" . 'found term: ' . $term->tid . "\r\n");
-      
+        
       $department_name = empty($user['department_name']) ? $user['department'] : $user['department_name'];
       if (empty($user['department_name'])) {
         os2intra_user_import_save_log('', 'Department name is missing. AD_ID:' . $user['department'] . ' User ' . $user['first_name'] . ' ' . $user['last_name']);
@@ -68,7 +65,6 @@ function os2intra_user_import_groups($users) {
          $parent_term = taxonomy_term_load(key($result_parent['taxonomy_term']));
          $parent_tid = $parent_term->tid;
          $term->parent = $parent_tid;
-         print_r("\r\n" . 'found parent' .  $parent_tid . "\r\n");
       }
        else {
         $parent_term = new stdClass();
@@ -82,11 +78,8 @@ function os2intra_user_import_groups($users) {
         os2intra_user_import_create_department($parent_term->tid, $user['centre']);
       }
       }
-      print_r("\r\n" . print_r($term,1) . ' ' .  "\r\n");
       taxonomy_term_save($term);
-      print_r("\r\n" . 'term saved' .  $parent_tid . "\r\n");
     } else {
-      print_r("\r\n" . '2' . "\r\n");
       // Create taxonomy terms
       os2intra_user_import_save_log('', 'Create department: ' . $group);
        if ($user['centre'] != $group) {
@@ -94,7 +87,6 @@ function os2intra_user_import_groups($users) {
       $result = os2intra_user_import_query_term_by_department($user['centre']);
 
       if (!empty($result)) {
-        print_r("\r\n" . 'os2intra_user_import_query_term_by_department: result' . "\r\n");
         $parent_term = taxonomy_term_load(key($result['taxonomy_term']));
         $parent_tid = $parent_term->tid;
       }
@@ -129,7 +121,6 @@ function os2intra_user_import_groups($users) {
       os2intra_user_import_create_department($term->tid, $user['department'], $department_name);
     }
   }
-  print_r("\r\n" . '3' . "\r\n");
   os2intra_user_import_save_log('', 'Finished importing groups');
 
   // Send email that new groups has been created
@@ -142,7 +133,6 @@ function os2intra_user_import_groups($users) {
  * Create department nodes
  */
 function os2intra_user_import_create_department($tid, $department, $department_name) {
-  print_r("\r\n" . 'os2intra_user_import_create_department' . "\r\n");
 
   // Check if department node already exists.
   $nid = _os2intra_user_import_get_department_nid($department);
@@ -204,7 +194,6 @@ function os2intra_user_import_create_department($tid, $department, $department_n
  * Add user to parent departments
  */
 function os2intra_user_import_add_user_to_parent_departments($account) {
-  print_r("\r\n" . 'os2intra_user_import_add_user_to_parent_departments' . "\r\n");
 //
 //  $og_department_node = node_load(field_get_items('user', $account, 'og_user_node')[0]['target_id']);
 //  if (empty($og_department_node)) {

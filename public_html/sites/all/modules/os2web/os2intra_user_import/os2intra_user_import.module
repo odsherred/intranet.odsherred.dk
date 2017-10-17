@@ -21,14 +21,6 @@ module_load_include('inc', 'os2intra_user_import', 'includes/utilities');
 /**
  * Implements hook_menu()
  */
-function _os2intra_user_import_o($text, $value = NULL) {
-print("\r\n" . $text . ': ' . "\r\n");
-print_r($value);
-print("\r\n");
-}
-/**
- * Implements hook_menu()
- */
 function os2intra_user_import_menu() {
   $items = array();
 
@@ -163,7 +155,6 @@ function os2intra_user_import_overview() {
  * User import wrapper function
  */
 function os2intra_user_import_run_with_drush() {
-  print_r("\r\n" . 'os2intra_user_import_run_with_drush' . "\r\n");
   
   if (variable_get('os2intra_user_import_enable', FALSE)) {
     // Check if import has run successfully in 1.5 day
@@ -254,8 +245,7 @@ function os2intra_user_import_run_with_drush() {
 // Loop over users and create
          os2intra_user_import_save_log('', 'Start Creating Users');
         foreach ($users as $user) {
-          _os2intra_user_import_o('save user = = = = = = = = = = = = = = = = = = = = = =', $user); 
-          os2intra_user_import_save_user($user);
+         os2intra_user_import_save_user($user);
          }
         os2intra_user_import_save_log('', 'End Creating Users');
          // Update users

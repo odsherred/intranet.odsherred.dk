@@ -4,8 +4,6 @@
  * Disable users according to termination date
  */
 function os2intra_user_import_disable_users() {
-  print_r("\r\n" . 'os2intra_user_import_disable_users' . "\r\n");
-
   os2intra_user_import_save_log('', 'Start disabling users');
   $timestamp = strtotime('midnight tomorrow');
 
@@ -35,23 +33,17 @@ function os2intra_user_import_disable_users() {
  * Check if the user is already created in the system
  */
 function os2intra_user_import_check_users(&$users, $duplicate_emails, $duplicate_ids) {
-  print_r("\r\n" . 'os2intra_user_import_check_users' . "\r\n");
-  _os2intra_user_import_o('users', $users);
-  _os2intra_user_import_o('e-mail', $duplicate_emails);
-  _os2intra_user_import_o('id', $duplicate_ids);
   $update_users = array();
   foreach ($users as $key => $user) {
     if ( array_search($user['email'], $duplicate_emails) !== false )
       {
       unset($users[$key]);
-      _os2intra_user_import_o('unset1');
       continue;
       }
 
     if ( array_search($user['ad_id'], $duplicate_ids) !== false )
       {
       unset($users[$key]);
-      _os2intra_user_import_o('unset2');
       continue;
       }
 
@@ -68,15 +60,9 @@ function os2intra_user_import_check_users(&$users, $duplicate_emails, $duplicate
       $update_users[key(array_shift($result))] = $user;
 
       unset($users[$key]);
-      _os2intra_user_import_o('unset3');
       }
 
-//    if (!$user['first_name'] || !$user['employee_id']) {
-//      unset($users[$key]);
-//            _os2intra_user_import_o('unset4'); 
-//    }
   }
-  _os2intra_user_import_o('update users', $update_users);
   return $update_users;
 }
 
@@ -99,7 +85,6 @@ function os2intra_user_import_check_users(&$users, $duplicate_emails, $duplicate
  *
  */
 function os2intra_user_import_save_user($user, $uid = '') {
-  print_r("\r\n" . 'os2intra_user_import_save_user' . "\r\n");
 
   // Load users account, if any
   $account = user_load($uid);
@@ -291,7 +276,6 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
     $fields['name'] = $user['ad_id'];
     $fields['pass'] = $password;
     }
-  _os2intra_user_import_o('Create user = = = = = = = = = = = = = = = = = = = = = = = = = =', $fields);
   // Save user
   $account = user_save($account, $fields);
 
