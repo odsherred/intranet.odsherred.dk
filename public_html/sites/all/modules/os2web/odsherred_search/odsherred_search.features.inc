@@ -56,6 +56,8 @@ function odsherred_search_default_search_api_index() {
         "field_os2intra_canteen_menu_date" : { "type" : "date" },
         "field_os2intra_grouptype" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_os2intra_message_sticky" : { "type" : "boolean" },
+        "field_os2web_base_field_edi_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_os2web_base_field_edi_tags:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_topics" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "og_group_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },

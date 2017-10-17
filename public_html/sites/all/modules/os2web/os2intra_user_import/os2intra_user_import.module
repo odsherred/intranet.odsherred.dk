@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * @author Thomas Thune Hansen <tth@bellcom.dk>
@@ -288,7 +289,6 @@ function os2intra_user_import_run_with_drush() {
       os2intra_user_import_save_log('', 'File does not exist');
     }
   }
-
 }
 
 function os2intra_user_import_user_insert(&$edit, $account, $category) {
