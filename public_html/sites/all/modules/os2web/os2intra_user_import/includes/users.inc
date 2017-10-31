@@ -85,7 +85,6 @@ function os2intra_user_import_check_users(&$users, $duplicate_emails, $duplicate
  *
  */
 function os2intra_user_import_save_user($user, $uid = '') {
-
   // Load users account, if any
   $account = user_load($uid);
 
@@ -219,6 +218,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
       'field_name_first' => array(LANGUAGE_NONE => array(0 => array('value' => $user['first_name']))),
       // Last Name
       'field_name_last' => array(LANGUAGE_NONE => array(0 => array('value' => $user['last_name']))),
+      'field_os2intra_ad_name'   => array(LANGUAGE_NONE => array(0 => array('value' => $user['ad_name']))),
       // Phone
       //'field_os2intra_phone' => array(LANGUAGE_NONE => array(0 => array('value' => $user['phone']))),
       // Mobile
@@ -276,6 +276,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
     $fields['name'] = $user['ad_id'];
     $fields['pass'] = $password;
     }
+    
   // Save user
   $account = user_save($account, $fields);
 
@@ -296,19 +297,19 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
   og_group('node', $department_nid, $values);
   og_role_grant('node', $department_nid, $account->uid, variable_get('os2intra_user_import_og_role_id_primary', 16));
 
+  if(!empty($user['ad_name'])) {
   // Create authmap for user
   $authmap = array(
-      'authname_simplesamlphp_auth' => $user['ad_id'] . variable_get('os2intra_user_import_authmap_name_suffix'),
+      'authname_simplesamlphp_auth' => $user['ad_name'] . variable_get('os2intra_user_import_authmap_name_suffix'),
   );
 
   if ( !user_get_authmaps($authmap) )
     {
     user_set_authmaps($account, $authmap);
     }
-
+  }
   // Add users to parent departments
   os2intra_user_import_add_user_to_parent_departments($account);
-
   // Write log entry
   
   if ( $uid )

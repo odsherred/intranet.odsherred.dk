@@ -115,7 +115,13 @@ function os2intra_user_import_settings() {
     '#options'       => $csv_cols,
     '#default_value' => variable_get('os2intra_mapping_ad_id'),
   );
-
+  $form['mapping']['os2intra_mapping_ad_name'] = array(
+    '#type'          => 'select',
+    '#title'         => t('AD name'),
+    '#required'      => TRUE,
+    '#options'       => $csv_cols,
+    '#default_value' => variable_get('os2intra_mapping_ad_name'),
+  );
   $form['mapping']['os2intra_mapping_first_name'] = array(
     '#type'          => 'select',
     '#title'         => t('Firstname'),
