@@ -114,7 +114,6 @@ function os2intra_user_import_groups($users) {
       $term->field_os2intra_department_id[LANGUAGE_NONE][0]['value'] = $group;
       $term->field_os2intra_shortname[LANGUAGE_NONE][0]['value'] = $user['department_shortname'];
       $term->vid = $vocab->vid;
-
       taxonomy_term_save($term);
       $created_terms[] = $term;
 

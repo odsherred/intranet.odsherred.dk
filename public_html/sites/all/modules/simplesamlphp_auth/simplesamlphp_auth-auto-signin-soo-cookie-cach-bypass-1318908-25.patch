@@ -1,0 +1,238 @@
+diff --git a/modules/contrib/simplesamlphp_auth/simplesamlphp_auth.inc b/modules/contrib/simplesamlphp_auth/simplesamlphp_auth.inc
+new file mode 100644
+index 0000000..95d1697
+--- /dev/null
++++ b/modules/contrib/simplesamlphp_auth/simplesamlphp_auth.inc
+@@ -0,0 +1,41 @@
++<?php
++
++// Helper functions --------------------------------------
++
++/**
++ * Checks to see if authentication via SimpleSAMLphp should be activated.
++ *
++ * @param bool $show_inactive_msg
++ *   Whether to display the "module not activated" message
++ *
++ * @return bool
++ *   TRUE/FALSE
++ */
++function _simplesamlphp_auth_isEnabled($show_inactive_msg = FALSE) {
++  global $user;
++
++  $failure      = NULL;
++  $is_activated = variable_get('simplesamlphp_auth_activate');
++  $basedir      = variable_get('simplesamlphp_auth_installdir', '/var/simplesamlphp');
++
++  if ($is_activated) {
++    // Make sure we know where SimpleSAMLphp is.
++    if (!file_exists($basedir)) {
++      $failure = t('SimpleSAMLphp could not be found at %basedir . The simplesamlphp_auth module cannot function until the path to the local SimpleSAMLphp instance is configured.', array('%basedir' => $basedir));
++      watchdog('simplesamlphp_auth', $failure, NULL, WATCHDOG_WARNING);
++    }
++  }
++
++  // If there were no failures, then it should be activated.
++  if (!$failure) {
++    return TRUE;
++  }
++  else {
++
++    // Communicate but don't be too annoying.
++    if ($show_inactive_msg && (1 == $user->uid || user_access('access administration pages')) && (preg_match('/admin\/people/', request_uri()) || preg_match('/admin\/modules/', request_uri()) || preg_match('/admin\/config/', request_uri()))) {
++      drupal_set_message($failure);
++    }
++  }
++  return FALSE;
++}
+\ No newline at end of file
+diff --git a/modules/contrib/simplesamlphp_auth/simplesamlphp_auth.module b/modules/contrib/simplesamlphp_auth/simplesamlphp_auth.module
+index bb76ea9..85936d7 100644
+--- a/modules/contrib/simplesamlphp_auth/simplesamlphp_auth.module
++++ b/modules/contrib/simplesamlphp_auth/simplesamlphp_auth.module
+@@ -318,8 +318,17 @@ function simplesamlphp_auth_init() {
+     }
+     else {
+       // If we are allowing users to log in with local accounts.
++
++      // Prepare whether to attempt autologout.
++      $perform_auto_logout = FALSE;
++      $boot_cookie = variable_get('simplesamlphp_auth_cachebypass', FALSE);
++      if (variable_get('simplesamlphp_auth_autologout', FALSE) && $boot_cookie && (!isset($_COOKIE[$boot_cookie]) || $_COOKIE[$boot_cookie] != '')) {
++        $perform_auto_logout = TRUE;
++      }
++
+       // If the user has NOT been authenticated via simpleSAML.
+-      if (!$_simplesamlphp_auth_as->isAuthenticated()) {
++      // OR if auto-logout via cookie is being used and is missing (in SSO boot).
++      if (!$_simplesamlphp_auth_as->isAuthenticated() || $perform_auto_logout) {
+
+         // See if we limit this privilege to specified users.
+         $string_allow_def_log_users = variable_get('simplesamlphp_auth_allowdefaultloginusers', '');
+@@ -539,43 +548,9 @@ function simplesamlphp_auth_block_info() {
+  * Private functions ********************************************************
+  ****************************************************************************/
+
+-/**
+- * Checks to see if authentication via SimpleSAMLphp should be activated.
+- *
+- * @param bool $show_inactive_msg
+- *   Whether to display the "module not activated" message
+- *
+- * @return bool
+- *   TRUE/FALSE
+- */
+-function _simplesamlphp_auth_isEnabled($show_inactive_msg = FALSE) {
+-  global $user;
+-
+-  $failure      = NULL;
+-  $is_activated = variable_get('simplesamlphp_auth_activate');
+-  $basedir      = variable_get('simplesamlphp_auth_installdir', '/var/simplesamlphp');
+-
+-  if ($is_activated) {
+-    // Make sure we know where SimpleSAMLphp is.
+-    if (!file_exists($basedir)) {
+-      $failure = t('SimpleSAMLphp could not be found at %basedir . The simplesamlphp_auth module cannot function until the path to the local SimpleSAMLphp instance is configured.', array('%basedir' => $basedir));
+-      watchdog('simplesamlphp_auth', $failure, NULL, WATCHDOG_WARNING);
+-    }
+-  }
+-
+-  // If there were no failures, then it should be activated.
+-  if (!$failure) {
+-    return TRUE;
+-  }
+-  else {
+-
+-    // Communicate but don't be too annoying.
+-    if ($show_inactive_msg && (1 == $user->uid || user_access('access administration pages')) && (preg_match('/admin\/people/', request_uri()) || preg_match('/admin\/modules/', request_uri()) || preg_match('/admin\/config/', request_uri()))) {
+-      drupal_set_message($failure);
+-    }
+-  }
+-  return FALSE;
+-}
++// Helpers that need sharing.
++// @todo - confirm this is necessary.  Ported from patch #2.
++require_once(drupal_get_path('module', 'simplesamlphp_auth') . '/simplesamlphp_auth.inc');
+
+ /**
+  * Gets the authname attribute from the SAML assertion.
+diff --git a/modules/contrib/simplesamlphp_auth/simplesamlphp_authboot/simplesamlphp_authboot.info b/modules/contrib/simplesamlphp_auth/simplesamlphp_authboot/simplesamlphp_authboot.info
+new file mode 100644
+index 0000000..1bf1049
+--- /dev/null
++++ b/modules/contrib/simplesamlphp_auth/simplesamlphp_authboot/simplesamlphp_authboot.info
+@@ -0,0 +1,5 @@
++name = "simpleSAML Auth Cached"
++description = "Allows users to authenticate via SAML on cached pages. Only enable AFTER completely setup with simpleSAMLphp and tested with performance caching turned off."
++core = 7.x
++version = "7.x-1.0"
++dependencies[] = "simplesamlphp_auth"
+\ No newline at end of file
+diff --git a/modules/contrib/simplesamlphp_auth/simplesamlphp_authboot/simplesamlphp_authboot.module b/modules/contrib/simplesamlphp_auth/simplesamlphp_authboot/simplesamlphp_authboot.module
+new file mode 100644
+index 0000000..ca90cb5
+--- /dev/null
++++ b/modules/contrib/simplesamlphp_auth/simplesamlphp_authboot/simplesamlphp_authboot.module
+@@ -0,0 +1,101 @@
++<?php
++/**
++ * @file
++ * Provide detenction of SSO cookie for cache bypass and autologin.
++ */
++
++// Helpers that need sharing.
++require_once(dirname(drupal_get_filename('module', 'simplesamlphp_auth')) . '/simplesamlphp_auth.inc');
++
++/**
++ * Allow simpleSAMLphp SSO login attempt even on cached pages.
++ */
++function simplesamlphp_authboot_boot() {
++
++  $cache_enabled = variable_get('cache', 1);
++  $boot_cookie = variable_get('simplesamlphp_auth_cachebypass', FALSE);
++  $boot_cookie_present = FALSE;
++
++  if (($boot_cookie && isset($_COOKIE[$boot_cookie]) && $_COOKIE[$boot_cookie] != '')) {
++    $boot_cookie_present = TRUE;
++  }
++
++  // Recreate beginning of simplesamlphp_auth_init().
++  global $user;
++  global $_simplesamlphp_auth_as;
++
++  if (!_simplesamlphp_auth_isEnabled() && !$cache_enabled) {
++    // Exit without initializing.
++    return;
++  }
++
++  // Get the simplesamlphp session.
++  $basedir = variable_get('simplesamlphp_auth_installdir', '/var/simplesamlphp');
++  require_once($basedir . '/lib/_autoload.php');
++
++  // Load simpleSAMLphp, configuration and metadata.
++  $_simplesamlphp_auth_as = new SimpleSAML_Auth_Simple(variable_get('simplesamlphp_auth_authsource', 'default-sp'));
++
++  // If not logged into Drupal.
++  if ($user->uid == 0) {
++
++    // If SSO cookie is present we want to restart uncached so simpleSAMLphp can take over.
++    if ($boot_cookie_present) {
++      // Log this bypass.
++      watchdog('simplesamlphp_auth', 'Cache bypass login performed for %name.', array('%name' => $user->name));
++      // Continue the bootstrap process.
++      drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
++      // Execute the page callback and exit.
++      menu_execute_active_handler();
++      // Send them back through Drupal again.
++      $host = $_SERVER['HTTP_HOST'];
++      $uri = $_SERVER['REQUEST_URI'];
++      header("Location: http://$host$uri", TRUE, 301);
++      drupal_exit();
++    }
++    else {
++      // Nevermind, this person is totally anonymous or this feature isn't in use.
++      return;
++    }
++
++  }
++  else { // Logged into Drupal.
++
++    // Force simpleSAMLphp login if Drupal and SSO is present, and this is turned on.
++    // @todo: Merge this with the simplesamlphp_auth_loginpage function once dynamic redirect is in place.
++    if ($boot_cookie_present && variable_get('simplesamlphp_auth_autologin')) {
++      if ($_simplesamlphp_auth_as->isAuthenticated()) {
++        $_simplesamlphp_auth_as->requireAuth();
++      }
++    }
++
++  } // End user test.
++}
++
++/**
++ * Provide some admin choices within SimpleSAMLphp Auth settings page.
++ */
++function simplesamlphp_authboot_form_simplesamlphp_auth_settings_alter(&$form, &$form_state, $form_id) {
++
++  $form['simplesamlphp_auth_cachebypass'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Cache bypass cookie'),
++    '#default_value' => variable_get('simplesamlphp_auth_bootcookie', ''),
++    '#description' => t('If this cookie it present, the user will be given a cache bypass cookie (at Drupal boot) and reloaded.
++      This is useful for enabling auto-login even with performance caching turned on.'),
++  );
++  $form['simplesamlphp_auth_autologin'] = array(
++    '#type' => 'checkbox',
++    '#title' => t('Auto LOGIN users with SSO cookie'),
++    '#default_value' => variable_get('simplesamlphp_auth_bootcookie', 0),
++    '#description' => t('If the "cache bypass cookie" is present, the system will attempt to automatically log them in.'),
++  );
++  $form['simplesamlphp_auth_autologout'] = array(
++    '#type' => 'checkbox',
++    '#title' => t('Auto LOGOUT users without SSO cookie'),
++    '#default_value' => variable_get('simplesamlphp_auth_autologin', 0),
++    '#description' => t('If the "cache bypass cookie" is not present, the system will attempt to automatically log them out of Drupal. Useful if SAML session is not destroyed by other systems.'),
++  );
++
++}
++  
+\ No newline at end of file

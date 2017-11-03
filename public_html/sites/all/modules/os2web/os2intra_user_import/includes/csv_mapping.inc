@@ -9,6 +9,7 @@ function _os2intra_user_import_process_file($file_path) {
   // rewrite for settings page?
   $map = array(
       variable_get('os2intra_mapping_ad_id') => 'ad_id',
+      variable_get('os2intra_mapping_ad_name') => 'ad_name',
       variable_get('os2intra_mapping_employee_id') => 'employee_id',
       variable_get('os2intra_mapping_first_name') => 'first_name',
       variable_get('os2intra_mapping_last_name') => 'last_name',
@@ -56,7 +57,6 @@ function _os2intra_user_import_process_file($file_path) {
 
   // Skip first row, headers
   //unset($rows[0]);
-  
   
   return $rows;
 

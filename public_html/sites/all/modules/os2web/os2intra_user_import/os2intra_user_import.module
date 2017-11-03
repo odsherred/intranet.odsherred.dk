@@ -297,7 +297,7 @@ function os2intra_user_import_user_insert(&$edit, $account, $category) {
 
    // Create authmap for user
     $authmap = array(
-        'authname_simplesamlphp_auth' => $account->name . variable_get('os2intra_user_import_authmap_name_suffix'),
+        'authname_simplesamlphp_auth' => $account->field_os2intra_ad_name[LANGUAGE_NONE][0]['value'] . variable_get('os2intra_user_import_authmap_name_suffix'),
     );
 
     if ( !user_get_authmaps($authmap) )
