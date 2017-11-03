@@ -1,0 +1,5 @@
+name = "simpleSAML Auth Cached"
+description = "Allows users to authenticate via SAML on cached pages. Only enable AFTER completely setup with simpleSAMLphp and tested with performance caching turned off."
+core = 7.x
+version = "7.x-1.0"
+dependencies[] = "simplesamlphp_auth"
