@@ -7,5 +7,5 @@ public_html_old
 public_html/sites/sites.php
 public_html/sites/odsherred-intra.dd
 public_html/sites/odsherredintra.dd
-simplesamlphp/log/*.log
+simplesamlphp
 samltest
