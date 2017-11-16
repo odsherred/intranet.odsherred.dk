@@ -55,6 +55,12 @@ function os2intra_user_import_settings() {
     '#description'   => t('The delimiter used to separate values in the CSV, ex. a semicolon, a comma or \t (tab)'),
     '#default_value' => variable_get('os2intra_user_import_delimiter', ';'),
   );
+  $form['os2intra_user_import_date_format'] = array(
+    '#title'         => t('Date format'),
+    '#type'          => 'textfield',
+    '#description'   => t('Date format in CSV filr. See possible values in the target="_blank">PHP manual</a>.'),
+    '#default_value' => variable_get('os2intra_user_import_date_format', 'd.m.y H:i:s'),
+  );
 
   $form['os2intra_user_default_groups'] = array(
     '#title'         => t('Node ids (nid) of default OG groups, that should be added to every imported used'),

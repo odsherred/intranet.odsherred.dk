@@ -192,7 +192,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
     unset($user_groups[LANGUAGE_NONE][$key]);
 }
   // @todo: check that timestamp is not today
-  $termination_date_timestamp = date_timestamp_get(date_create_from_format('d.m.y  H:i:s', $user['termination_date'] . ' 00:00:00'));
+  $termination_date_timestamp = date_timestamp_get(date_create_from_format(variable_get('os2intra_user_import_date_format', 'd.m.y H:i:s') , $user['termination_date'] . ' 00:00:00'));
   // Check if the timestamp supplied from the import is larger than
   // what unix timestamps can be.
   if ( $termination_date_timestamp > 2147483647 or $termination_date_timestamp == FALSE )
@@ -200,7 +200,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
     $termination_date_timestamp = 1;
     }
 
-  $user['birthdate'] = date_format(date_create_from_format('d.m.y  H:i:s', $user['birthdate'] . ' 00:00:00'), 'Y-m-d H:i:s');
+  $user['birthdate'] = date_format(date_create_from_format(variable_get('os2intra_user_import_date_format', 'd.m.y H:i:s'), $user['birthdate'] . ' 00:00:00'), 'Y-m-d H:i:s');
 
 //  list($dd,$mm,$yyyy) = explode('.', $user['birthdate'] );
 //  $user['birthdate'] = date('Y-m-d H:i:s', mktime(0, 0, 0, (int)$mm, (int)$dd, (int)$yyyy));  

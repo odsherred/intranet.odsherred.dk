@@ -36,7 +36,6 @@ function os2intra_user_import_groups($users) {
       os2intra_user_import_save_log('', 'Skipping group. department is missing. AD_ID:' . $user['ad_id'] . ' User ' . $user['first_name'] . ' ' . $user['last_name']);
       continue;
     }
-
     $group = $user['department'];
     $parent_tid = $default_parent_tid;
 
@@ -54,17 +53,15 @@ function os2intra_user_import_groups($users) {
         os2intra_user_import_save_log('', 'Department name is missing. AD_ID:' . $user['department'] . ' User ' . $user['first_name'] . ' ' . $user['last_name']);
       }
       $term->name = $department_name;
-
       os2intra_user_import_create_department($term->tid, $user['department'], $department_name);
 
       if ($user['centre'] != $group) {
       // Search for parent tid for department
-      $result_parent = os2intra_user_import_query_term_by_department($user['centre']);
-      
+      $result_parent = os2intra_user_import_query_term_by_department($user['centre']); 
       if (!empty($result_parent)) {
          $parent_term = taxonomy_term_load(key($result_parent['taxonomy_term']));
          $parent_tid = $parent_term->tid;
-         $term->parent = $parent_tid;
+         $term->parent = array($parent_tid);
       }
        else {
         $parent_term = new stdClass();
@@ -137,7 +134,7 @@ function os2intra_user_import_create_department($tid, $department, $department_n
   $nid = _os2intra_user_import_get_department_nid($department);
   if ($nid) {
     // Rename group node name if needed
-    $nid = _os2intra_user_import_get_department_nid($department);
+    //$nid = _os2intra_user_import_get_department_nid($department);
     $node = node_load($nid);
     $node->title = $department_name;
     node_save($node);
