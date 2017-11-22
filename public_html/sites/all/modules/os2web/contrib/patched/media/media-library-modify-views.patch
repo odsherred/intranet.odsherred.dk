@@ -1,6 +1,6 @@
 index 5407465..d1722b1 100644
---- a/public_html/sites/all/modules/os2web/contrib/patched/media/views/media_default.view.inc
-+++ b/public_html/sites/all/modules/os2web/contrib/patched/media/views/media_default.view.inc
+--- views/media_default.view.inc
++++ views/media_default.view.inc
 @@ -24,9 +24,6 @@ $handler->display->display_options['access']['type'] = 'perm';
  $handler->display->display_options['access']['perm'] = 'view files';
  $handler->display->display_options['cache']['type'] = 'none';
