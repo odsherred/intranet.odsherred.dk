@@ -1,0 +1,13 @@
+index 5407465..d1722b1 100644
+--- a/public_html/sites/all/modules/os2web/contrib/patched/media/views/media_default.view.inc
++++ b/public_html/sites/all/modules/os2web/contrib/patched/media/views/media_default.view.inc
+@@ -24,9 +24,6 @@ $handler->display->display_options['access']['type'] = 'perm';
+ $handler->display->display_options['access']['perm'] = 'view files';
+ $handler->display->display_options['cache']['type'] = 'none';
+ $handler->display->display_options['query']['type'] = 'views_query';
+-$handler->display->display_options['query']['options']['query_tags'] = array(
+-  0 => 'media_browser',
+-);
+ $handler->display->display_options['exposed_form']['type'] = 'basic';
+ $handler->display->display_options['exposed_form']['options']['reset_button'] = FALSE;
+ $handler->display->display_options['pager']['type'] = 'full';

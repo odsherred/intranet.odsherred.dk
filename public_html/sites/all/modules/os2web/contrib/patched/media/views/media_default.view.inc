@@ -24,9 +24,6 @@ $handler->display->display_options['access']['type'] = 'perm';
 $handler->display->display_options['access']['perm'] = 'view files';
 $handler->display->display_options['cache']['type'] = 'none';
 $handler->display->display_options['query']['type'] = 'views_query';
-$handler->display->display_options['query']['options']['query_tags'] = array(
-  0 => 'media_browser',
-);
 $handler->display->display_options['exposed_form']['type'] = 'basic';
 $handler->display->display_options['exposed_form']['options']['reset_button'] = FALSE;
 $handler->display->display_options['pager']['type'] = 'full';
