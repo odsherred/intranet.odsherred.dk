@@ -51,7 +51,7 @@ function os2intra_user_import_check_users(&$users, $duplicate_emails, $duplicate
 
     $query = new EntityFieldQuery;
     $query->entityCondition('entity_type', 'user');
-    $query->propertyCondition('name', $ad_id);
+    $query->fieldCondition('field_os2intra_employee_id', 'value', $ad_id);
     $result = $query->execute();
 
     // Unset users already created
@@ -273,7 +273,24 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
     $password = user_password(8);
 
     // Generate username
-    $fields['name'] = $user['ad_id'];
+    // Generate username
+    // Todo: make configurable
+    $cln_first_name = preg_replace('/[^A-Za-z0-9\-]/', '', $user['first_name']);
+    $cln_last_name = preg_replace('/[^A-Za-z0-9\-]/', '', $user['last_name']);
+    $cln_department = preg_replace('/[^A-Za-z0-9\-]/', '', $user['department']);
+
+    $username = strtolower(substr($cln_department, 0, 3)) . '-';
+    $username .= strtolower(substr($cln_first_name, 0, 3));
+    $username .= strtolower(substr($cln_last_name, 0, 3));
+var_dump($username);
+    $users_query = db_query('SELECT u.name FROM {users} u WHERE u.name LIKE :name', array(':name' => $username.'%'));
+    $count = count($users_query->fetchAll());
+
+    if($count){
+      $username .= $count + 1;
+    }
+
+    $fields['name'] = $username;
     $fields['pass'] = $password;
     }
     

@@ -156,7 +156,7 @@ function os2intra_user_import_overview() {
  * User import wrapper function
  */
 function os2intra_user_import_run_with_drush() {
-  
+
   if (variable_get('os2intra_user_import_enable', FALSE)) {
     // Check if import has run successfully in 1.5 day
     $last_import_epoch = variable_get('os2intra_user_import_epoch', time());
@@ -237,11 +237,11 @@ function os2intra_user_import_run_with_drush() {
          variable_set('os2intra_user_import_epoch', time());
          exit();
        }
- 
+
        // Check and update users
        if($last_import_temp != $last_import_temp_users or TRUE) {
          os2intra_user_import_save_log('', 'Starting User Loop');
-         $update_users = os2intra_user_import_check_users($users, $dup_emails, $dup_id);        
+         $update_users = os2intra_user_import_check_users($users, $dup_emails, $dup_id);
 
 // Loop over users and create
          os2intra_user_import_save_log('', 'Start Creating Users');
