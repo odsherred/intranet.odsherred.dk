@@ -25,7 +25,5 @@ foreach ($results as $record) {
   foreach ($result as $user) {
     user_delete($user->uid);
     print 'deleted user: ' . $user->uid . PHP_EOL;
-    error_log('deleted user: ' . $user->uid);
   }
 }
-var_dump($count);
