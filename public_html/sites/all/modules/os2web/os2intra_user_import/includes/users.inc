@@ -51,7 +51,7 @@ function os2intra_user_import_check_users(&$users, $duplicate_emails, $duplicate
 
     $query = new EntityFieldQuery;
     $query->entityCondition('entity_type', 'user');
-    $query->propertyCondition('name', $ad_id);
+    $query->fieldCondition('field_os2intra_employee_id', 'value', $ad_id);
     $result = $query->execute();
 
     // Unset users already created
@@ -129,7 +129,7 @@ function os2intra_user_import_save_user($user, $uid = '') {
   $query->entityCondition('entity_type', 'node');
   $query->fieldCondition('field_os2intra_department_id', 'value', $user['centre'], '=');
   $result = $query->execute();
-  
+
   if ( !empty($result['node']) )
     {
     $new_group_nid = key(array_shift($result));
@@ -203,7 +203,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
   $user['birthdate'] = date_format(date_create_from_format(variable_get('os2intra_user_import_date_format', 'd.m.y H:i:s'), $user['birthdate'] . ' 00:00:00'), 'Y-m-d H:i:s');
 
 //  list($dd,$mm,$yyyy) = explode('.', $user['birthdate'] );
-//  $user['birthdate'] = date('Y-m-d H:i:s', mktime(0, 0, 0, (int)$mm, (int)$dd, (int)$yyyy));  
+//  $user['birthdate'] = date('Y-m-d H:i:s', mktime(0, 0, 0, (int)$mm, (int)$dd, (int)$yyyy));
 // User title tid
   $title_tid = os2intra_user_import_user_title($user['job_description']);
 
@@ -268,15 +268,22 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
 
   // Handle whether we're updating or creating a new user
   // if we're updating we don't generate username and sets password
-  if ( !is_numeric($uid) )
-    {
+  if ( !is_numeric($uid) ) {
     $password = user_password(8);
 
     // Generate username
-    $fields['name'] = $user['ad_id'];
+    $fields['name'] = os2intra_user_import_generate_username($user);
     $fields['pass'] = $password;
-    }
-    
+   }
+   else {
+     // we need that to fix wrong usernames 
+     // previous errors, when employee_id was using as username
+     if ($account->name == $user['ad_id']) {
+      $fields['name'] = os2intra_user_import_generate_username($user);
+     }
+   }
+
+
   // Save user
   $account = user_save($account, $fields);
 
@@ -311,7 +318,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
   // Add users to parent departments
   os2intra_user_import_add_user_to_parent_departments($account);
   // Write log entry
-  
+
   if ( $uid )
     {
        os2intra_user_import_save_log($user['ad_id'], 'update user: ' . $user['ad_id'] . ' ' . $user['first_name'] . ' ' . $user['last_name'] . ' status: ' . $account->status);
@@ -320,3 +327,25 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
        os2intra_user_import_save_log($user['ad_id'], 'create user: ' . $user['first_name'] . ' status: ' . $user['status']);
     }
 }
+
+/*
+ * helper function for generate username
+ */
+function os2intra_user_import_generate_username($user) {
+   // Generate username
+    // Todo: make configurable
+    $cln_first_name = preg_replace('/[^A-Za-z0-9\-]/', '', $user['first_name']);
+    $cln_last_name = preg_replace('/[^A-Za-z0-9\-]/', '', $user['last_name']);
+    $cln_department = preg_replace('/[^A-Za-z0-9\-]/', '', $user['department']);
+
+    $username = strtolower(substr($cln_department, 0, 3)) . '-';
+    $username .= strtolower(substr($cln_first_name, 0, 3));
+    $username .= strtolower(substr($cln_last_name, 0, 3));
+    $users_query = db_query('SELECT u.name FROM {users} u WHERE u.name LIKE :name', array(':name' => $username.'%'));
+    $count = count($users_query->fetchAll());
+
+    if($count){
+      $username .= $count + 1;
+    }
+  return $username;
+ }
