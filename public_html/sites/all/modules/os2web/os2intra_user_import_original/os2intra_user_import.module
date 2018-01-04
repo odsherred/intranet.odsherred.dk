@@ -181,6 +181,7 @@ function os2intra_user_import_run_with_drush() {
     $filename = variable_get('os2intra_user_import_file_name', 'FK-user_import');
 
     $dir = reset(file_scan_directory($import_dir, '/' . $filename . '.csv/'));
+    print_r($dir);
     if ($dir) {
       $realpath = drupal_realpath($dir->uri);
     }
