@@ -1,0 +1,3 @@
+name = Users cleanup
+description = Module to cleanup users data.
+core = 7.x
