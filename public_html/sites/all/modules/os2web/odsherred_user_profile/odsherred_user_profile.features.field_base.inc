@@ -122,6 +122,21 @@ function odsherred_user_profile_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_os2intra_import_timestamp'
+  $field_bases['field_os2intra_import_timestamp'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_os2intra_import_timestamp',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_os2intra_termination_date'
   $field_bases['field_os2intra_termination_date'] = array(
     'active' => 1,

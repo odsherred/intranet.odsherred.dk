@@ -21,7 +21,7 @@ function odsherred_user_profile_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 13,
       ),
       'search_preview' => array(
         'label' => 'above',
@@ -74,7 +74,7 @@ function odsherred_user_profile_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 11,
       ),
       'search_preview' => array(
         'label' => 'above',
@@ -160,7 +160,7 @@ function odsherred_user_profile_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'search_preview' => array(
         'label' => 'above',
@@ -212,7 +212,7 @@ function odsherred_user_profile_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'search_preview' => array(
         'label' => 'above',
@@ -301,7 +301,7 @@ function odsherred_user_profile_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 20,
+        'weight' => 10,
       ),
       'search_preview' => array(
         'label' => 'above',
@@ -340,6 +340,53 @@ function odsherred_user_profile_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_os2intra_import_timestamp'
+  $field_instances['user-user-field_os2intra_import_timestamp'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'search_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_results' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_in_partial_form' => 0,
+    'entity_type' => 'user',
+    'field_name' => 'field_os2intra_import_timestamp',
+    'label' => 'Last import timestamp',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 20,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_os2intra_termination_date'
   $field_instances['user-user-field_os2intra_termination_date'] = array(
     'bundle' => 'user',
@@ -350,7 +397,7 @@ function odsherred_user_profile_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 18,
       ),
       'search_preview' => array(
         'label' => 'above',
@@ -546,7 +593,7 @@ function odsherred_user_profile_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 14,
       ),
       'search_preview' => array(
         'label' => 'above',
@@ -606,6 +653,7 @@ function odsherred_user_profile_field_default_field_instances() {
   t('Interesser');
   t('Jobtitel');
   t('Kompetencer');
+  t('Last import timestamp');
   t('MedarbejderID');
   t('References');
   t('import groups');
