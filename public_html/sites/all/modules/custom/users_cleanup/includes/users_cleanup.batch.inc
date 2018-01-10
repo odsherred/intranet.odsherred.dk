@@ -55,7 +55,8 @@ function batch_users_cleanup_grab($operation_callback) {
 function batch_users_cleanup_grab_finished($success, $results, $operations) {
   if ($success) {
     drupal_set_message(t('@count users processed.', array('@count' => array_pop($results))));
-    drupal_goto('/users_cleanup');
+    unset($_SESSION['excluded_users']);
+    drupal_goto('admin/people/users_cleanup');
   }
   else {
     $error_operation = reset($operations);
@@ -73,7 +74,7 @@ function batch_users_cleanup_grab_finished($success, $results, $operations) {
 /**
  * Name is equal to Employee id function for users_cleanup_grab batch process.
  */
-function users_cleanup_name_equal_employee_id($users, $progress, $limit, $max, &$context) {
+function batch_users_cleanup_name_equal_employee_id($users, $progress, $limit, $max, &$context) {
   // Set default starting values.
   if (empty($context['sandbox'])) {
     $context['sandbox'] = array();
@@ -121,6 +122,25 @@ function users_cleanup_name_equal_employee_id($users, $progress, $limit, $max, &
 }
 
 /**
+ * Outdated timestamp function for users_cleanup_grab batch process.
+ */
+function users_cleanup_name_by_import_timestamp() {
+  $matched_users = &$_SESSION['matched_users'];
+  $last_import_time_stamp = variable_get('os2intra_user_import_epoch');
+  $query = _get_query();
+  $db_or = db_or();
+  $db_or->isNull('uit.field_os2intra_import_timestamp_value');
+  $db_or->condition('uit.field_os2intra_import_timestamp_value', $last_import_time_stamp, '<');
+  $query->condition($db_or);
+  $res = $query->execute()->fetchAll();
+  if (!empty($res)) {
+    foreach ($res as $row) {
+      $matched_users[$row->uid] = (array) $row;
+    }
+  }
+}
+
+/**
  * Getter function to define query for grabbing user process.
  */
 function _get_query() {
@@ -135,6 +155,9 @@ function _get_query() {
 
   $query->join('field_data_field_os2intra_employee_id', 'uma', 'u.uid = uma.entity_id');
   $query->addField('uma', 'field_os2intra_employee_id_value', 'employee_id');
+
+  $query->join('field_data_field_os2intra_import_timestamp', 'uit', 'u.uid = uit.entity_id');
+  $query->addField('uit', 'field_os2intra_import_timestamp_value', 'import_timestamp');
 
   $query->addField('u', 'created');
   $query->addField('u', 'login');

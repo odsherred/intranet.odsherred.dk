@@ -14,10 +14,10 @@ module_load_include('inc', 'user', 'user.admin');
  */
 function users_cleanup_menu() {
   $items = array();
-  $items['users_cleanup'] = array(
+  $items['admin/people/users_cleanup'] = array(
     'title' => 'Cleanup users',
     'page callback' => 'users_cleanup_page',
-    'type' => MENU_CALLBACK,
+    'type' => MENU_LOCAL_TASK,
     'access arguments' => array('administer users'),
   );
 
@@ -41,6 +41,8 @@ function users_cleanup_page() {
  */
 function users_cleanup_form($form, &$form_state) {
   $matched_users = $_SESSION['matched_users'];
+  $testing_amount = variable_get('users_cleanup_testing_amount', 0);
+
   if (empty($matched_users)) {
     $form['description'] = array(
       '#type' => 'markup',
@@ -49,8 +51,13 @@ function users_cleanup_form($form, &$form_state) {
 
     $options = array(
       '' => t('Empty'),
-      'users_cleanup_name_equal_employee_id' => t('Name is equal to Employee id'),
+      'batch_users_cleanup_name_equal_employee_id' => t('Name is equal to Employee id'),
     );
+
+    $user_fields = field_info_instances('user');
+    if (!empty($user_fields['user']['field_os2intra_import_timestamp'])) {
+      $options['users_cleanup_name_by_import_timestamp'] = t('Timestamp is outdated');
+    }
     $form['condition'] = array(
       '#type' => 'select',
       '#title' => t('Grabbing condition'),
@@ -67,43 +74,41 @@ function users_cleanup_form($form, &$form_state) {
     return $form;
   }
 
-  $form['description'] = array(
-    '#type' => 'markup',
-    '#markup' => t('You are going to cleanup listed below users.'),
-  );
   $options = array();
   $default_values = array();
   $destination = drupal_get_destination();
 
-  foreach ($matched_users as $uid => $row) {
-    foreach ($row as $user) {
-      if ($user['name'] == $user['employee_id']) {
-        $option = array(
-          'name' => $user['name'],
-          'employee_id' => $user['employee_id'],
-          'realname' => $user['first_name'] . ' ' . $user['last_name'],
-          'mail' => $user['mail'],
-          'last_login' => $user['login'],
-          'operations' => array(
-            'data' => array(
-              '#type' => 'link',
-              '#title' => t('edit'),
-              '#href' => "user/" . $user['uid'] . "/edit",
-              '#options' => array('query' => $destination),
-            ),
-          ),
-        );
+  $i = 0;
+  foreach ($matched_users as $uid => $user) {
+    $i++;
+    if ($testing_amount && $i > $testing_amount) {
+      break;
+    }
+    $option = array(
+      'name' => $user['name'],
+      'employee_id' => $user['employee_id'],
+      'realname' => $user['first_name'] . ' ' . $user['last_name'],
+      'mail' => $user['mail'],
+      'last_login' => $user['login'],
+      'import_timestamp' => $user['import_timestamp'],
+      'operations' => array(
+        'data' => array(
+          '#type' => 'link',
+          '#title' => t('edit'),
+          '#href' => "user/" . $uid . "/edit",
+          '#options' => array('query' => $destination),
+        ),
+      ),
+    );
 
-        // Mark user to delete if user didn't have login process yet.
-        if ($user['login'] == 0) {
-          $default_values[$user['uid']] = TRUE;
-          $options[$user['uid']] = $option;
-        }
-        else {
-          // Put unchecked users on top.
-          $options = array($user['uid'] => $option) + $options;
-        }
-      }
+    // Mark user to delete if user didn't have login process yet.
+    if ($user->login == 0) {
+      $default_values[$uid] = TRUE;
+      $options[$uid] = $option;
+    }
+    else {
+      // Put unchecked users on top.
+      $options = array($uid => $option) + $options;
     }
   }
 
@@ -113,8 +118,14 @@ function users_cleanup_form($form, &$form_state) {
     'realname' => t('Realname'),
     'mail' => t('Email'),
     'last_login' => t('Last login'),
+    'import_timestamp' => t('Import timestamp'),
     'operations' => t('Operations'),
+  );
 
+  $form['description'] = array(
+    '#type' => 'markup',
+    '#markup' => t('You are going to cleanup @count users listed below.',
+      array('@count' => count($options))),
   );
 
   $form['accounts'] = array(
@@ -143,6 +154,12 @@ function users_cleanup_form($form, &$form_state) {
     '#name' => 'cleanup',
     '#value' => 'Submit',
   );
+
+  $form['reset'] = array(
+    '#type' => 'submit',
+    '#name' => 'reset',
+    '#value' => 'Reset',
+  );
   return $form;
 }
 
@@ -166,11 +183,21 @@ function users_cleanup_form_validate($form, &$form_state) {
  */
 function users_cleanup_form_submit($form, &$form_state) {
   if (isset($form_state['values']['grab'])) {
-    batch_users_cleanup_grab($form_state['values']['condition']);
+    $condition = $form_state['values']['condition'];
+    if (strpos($condition, 'batch') !== FALSE) {
+      batch_users_cleanup_grab($condition);
+    }
+    else {
+      call_user_func($condition);
+    }
   }
 
   if (isset($form_state['values']['cleanup'])) {
     unset($_SESSION['matched_users']);
     user_admin_account_submit($form, $form_state);
+  }
+
+  if (isset($form_state['values']['reset'])) {
+    unset($_SESSION['matched_users']);
   }
 }
