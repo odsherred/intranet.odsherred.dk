@@ -68,7 +68,6 @@ function users_cleanup_form($form, &$form_state) {
 
     $form['submit'] = array(
       '#type' => 'submit',
-      '#name' => 'grab',
       '#value' => 'Start',
     );
     return $form;
@@ -149,17 +148,15 @@ function users_cleanup_form($form, &$form_state) {
     '#default_value' => 'unblock',
   );
 
-  $form['submit'] = array(
+  $form['cleanup'] = array(
     '#type' => 'submit',
-    '#name' => 'cleanup',
     '#value' => 'Submit',
   );
 
   $form['reset'] = array(
     '#type' => 'submit',
-    '#name' => 'reset',
     '#value' => 'Reset',
-    '#submit' => 'users_cleanup_form_reset_submit',
+    '#submit' => array('users_cleanup_form_reset_submit'),
   );
   return $form;
 }
@@ -174,7 +171,7 @@ function users_cleanup_form_validate($form, &$form_state) {
     }
   }
 
-  if (($form_state['values']['cleanup'])) {
+  if (!empty($form_state['values']['cleanup'])) {
     user_admin_account_validate($form, $form_state);
   }
 }
@@ -183,7 +180,7 @@ function users_cleanup_form_validate($form, &$form_state) {
  * Submit handler.
  */
 function users_cleanup_form_submit($form, &$form_state) {
-  if (isset($form_state['values']['grab'])) {
+  if (isset($form_state['values']['condition'])) {
     $condition = $form_state['values']['condition'];
     if (strpos($condition, 'batch') !== FALSE) {
       batch_users_cleanup_grab($condition);
