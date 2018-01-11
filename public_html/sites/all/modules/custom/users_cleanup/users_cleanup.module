@@ -159,6 +159,7 @@ function users_cleanup_form($form, &$form_state) {
     '#type' => 'submit',
     '#name' => 'reset',
     '#value' => 'Reset',
+    '#submit' => 'users_cleanup_form_reset_submit',
   );
   return $form;
 }
@@ -196,8 +197,11 @@ function users_cleanup_form_submit($form, &$form_state) {
     unset($_SESSION['matched_users']);
     user_admin_account_submit($form, $form_state);
   }
+}
 
-  if (isset($form_state['values']['reset'])) {
-    unset($_SESSION['matched_users']);
-  }
+/**
+ * Reset submit handler.
+ */
+function users_cleanup_form_reset_submit($form, &$form_state) {
+  unset($_SESSION['matched_users']);
 }
