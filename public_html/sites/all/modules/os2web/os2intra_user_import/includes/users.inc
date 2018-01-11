@@ -210,6 +210,10 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
   // Get user membership to department
   $department_nid = _os2intra_user_import_get_department_nid($user['department']);
 
+  $current_timestamp = &drupal_static('os2intra_user_import_current_timestamp');
+  if (empty($current_timestamp)) {
+    $current_timestamp = time();
+  }
   // Populate fields
   $fields = array(
       // Set employee_id
@@ -235,7 +239,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
       'timezone' => 'Europe/Copenhagen',
       // The organisational ids from this import
       'field_os2intra_import_groups' => $import_groups,
-      'field_os2intra_import_timestamp' => array(LANGUAGE_NONE => array(0 => array('value' => variable_get('os2intra_user_import_epoch')))),
+      'field_os2intra_import_timestamp' => array(LANGUAGE_NONE => array(0 => array('value' => $current_timestamp))),
   );
   if ( isset($user['email']) )
     {
