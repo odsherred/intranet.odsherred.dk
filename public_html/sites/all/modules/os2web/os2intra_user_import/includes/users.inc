@@ -84,7 +84,7 @@ function os2intra_user_import_check_users(&$users, $duplicate_emails, $duplicate
  *  user array from file parser
  *
  */
-function os2intra_user_import_save_user($user, $current_import_time, $uid = '') {
+function os2intra_user_import_save_user($user, $uid = '') {
   // Load users account, if any
   $account = user_load($uid);
 
@@ -235,7 +235,7 @@ foreach ($user_groups[LANGUAGE_NONE] as $key => $value) {
       'timezone' => 'Europe/Copenhagen',
       // The organisational ids from this import
       'field_os2intra_import_groups' => $import_groups,
-      'field_os2intra_import_timestamp' => array(LANGUAGE_NONE => array(0 => array('value' => $current_import_time))),
+      'field_os2intra_import_timestamp' => array(LANGUAGE_NONE => array(0 => array('value' => variable_get('os2intra_user_import_epoch')))),
   );
   if ( isset($user['email']) )
     {

@@ -201,7 +201,7 @@ function os2intra_user_import_run_with_drush() {
 
       // Parse file, map data accordingly
       $users = _os2intra_user_import_process_file($realpath);
-      $current_import_time = time();
+
        // Check and create groups
       if ($last_import_temp != $last_import_temp_groups or TRUE) {
         os2intra_user_import_save_log('', 'Starting groups. Last import different than the main import' . $last_import_temp . ' / ' . $last_import_temp_groups);
@@ -246,13 +246,13 @@ function os2intra_user_import_run_with_drush() {
 // Loop over users and create
          os2intra_user_import_save_log('', 'Start Creating Users');
         foreach ($users as $user) {
-         os2intra_user_import_save_user($user, $current_import_time);
+         os2intra_user_import_save_user($user);
          }
         os2intra_user_import_save_log('', 'End Creating Users');
          // Update users
          os2intra_user_import_save_log('', 'Start Update Users');
          foreach ($update_users as $uid => $user) {
-           os2intra_user_import_save_user($user, $current_import_time, $uid);
+           os2intra_user_import_save_user($user, $uid);
          }
 
          os2intra_user_import_save_log('', 'End Update Users');
@@ -281,7 +281,7 @@ function os2intra_user_import_run_with_drush() {
       if (time() >= $last_import_epoch + 86400 or TRUE) {
          os2intra_user_import_save_log('', 'Last import updated changed - older than one day:');
          // Timestamp to check if import has run successfully
-         variable_set('os2intra_user_import_epoch', $current_import_time);
+         variable_set('os2intra_user_import_epoch', time());
        } else
          os2intra_user_import_save_log('', 'Last import time NOT updated - under one day old');
        }
