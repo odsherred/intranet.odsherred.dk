@@ -147,20 +147,22 @@ function _get_query() {
   $query = db_select('users', 'u');
   $query->fields('u', ['uid', 'name', 'mail']);
 
-  $query->join('field_data_field_name_first', 'unf', 'u.uid = unf.entity_id');
+  $query->leftJoin('field_data_field_name_first', 'unf', 'u.uid = unf.entity_id');
   $query->addField('unf', 'field_name_first_value', 'first_name');
 
-  $query->join('field_data_field_name_last', 'unl', 'u.uid = unl.entity_id');
+  $query->leftJoin('field_data_field_name_last', 'unl', 'u.uid = unl.entity_id');
   $query->addField('unl', 'field_name_last_value', 'last_name');
 
-  $query->join('field_data_field_os2intra_employee_id', 'uma', 'u.uid = uma.entity_id');
+  $query->leftJoin('field_data_field_os2intra_employee_id', 'uma', 'u.uid = uma.entity_id');
   $query->addField('uma', 'field_os2intra_employee_id_value', 'employee_id');
 
-  $query->join('field_data_field_os2intra_import_timestamp', 'uit', 'u.uid = uit.entity_id');
+  $query->leftJoin('field_data_field_os2intra_import_timestamp', 'uit', 'u.uid = uit.entity_id');
   $query->addField('uit', 'field_os2intra_import_timestamp_value', 'import_timestamp');
 
   $query->addField('u', 'created');
   $query->addField('u', 'login');
+
+  $query->condition('u.uid', array(0, 1), 'NOT IN');
 
   $query->orderBy('u.uid');
   return $query;
