@@ -78,11 +78,19 @@ function users_cleanup_form($form, &$form_state) {
   $destination = drupal_get_destination();
 
   $i = 0;
+  $max_items_limit = FALSE;
   foreach ($matched_users as $uid => $user) {
     $i++;
     if ($testing_amount && $i > $testing_amount) {
       break;
     }
+
+    // To prevent long form results we are going to limit it to 500.
+    if ($i > variable_get('users_cleanup_max_items', 500)) {
+      $max_items_limit = TRUE;
+      break;
+    }
+
     $option = array(
       'name' => $user['name'],
       'employee_id' => $user['employee_id'],
@@ -123,9 +131,25 @@ function users_cleanup_form($form, &$form_state) {
 
   $form['description'] = array(
     '#type' => 'markup',
+    '#prefix' => '<p>',
+    '#suffix' => '</p>',
     '#markup' => t('You are going to cleanup @count users listed below.',
-      array('@count' => count($options))),
+      array('@count' => count($matched_users))),
   );
+
+  // Show message when we have reached max amount of results.
+  if ($max_items_limit) {
+    $form['max_items_limit'] = array(
+      '#type' => 'markup',
+      '#prefix' => '<p>',
+      '#suffix' => '</p>',
+      '#markup' => t('Below you can see first @max_items_limit results of @count. To process rest part of results please repeat cleanup process.',
+        array(
+          '@max_items_limit' => variable_get('users_cleanup_max_items', 500),
+          '@count' => count($matched_users),
+        )),
+    );
+  }
 
   $form['accounts'] = array(
     '#type' => 'tableselect',
