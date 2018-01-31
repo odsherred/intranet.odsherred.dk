@@ -109,7 +109,7 @@ function batch_users_cleanup_name_equal_employee_id($users, $progress, $limit, $
         }
         // Add to matched users all users with employee_id equal to username.
         if ($row->name == $row->employee_id) {
-          $matched_users[$user->uid] = (array) $row;
+          $matched_users[$row->uid] = (array) $row;
         }
       }
     }
