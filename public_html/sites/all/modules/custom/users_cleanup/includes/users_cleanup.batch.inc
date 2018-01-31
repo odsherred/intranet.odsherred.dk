@@ -99,13 +99,17 @@ function batch_users_cleanup_name_equal_employee_id($users, $progress, $limit, $
       $ma_db_or->condition('uma.field_os2intra_employee_id_value', $user->name);
       $query->condition($ma_db_or);
       $res = $query->execute()->fetchAll();
-      if (!empty($res)) {
-        $matched_users[$user->uid][] = (array) $user;
-        foreach ($res as $row) {
-          if (!isset($excluded_users[$row->uid])) {
-            $excluded_users[$row->uid] = $row->uid;
-          }
-          $matched_users[$user->uid][] = (array) $row;
+      if (empty($res)) {
+        $res = array();
+      }
+      $res[] = $user;
+      foreach ($res as $row) {
+        if (!isset($excluded_users[$row->uid])) {
+          $excluded_users[$row->uid] = $row->uid;
+        }
+        // Add to matched users all users with employee_id equal to username.
+        if ($row->name == $row->employee_id) {
+          $matched_users[$user->uid] = (array) $row;
         }
       }
     }
