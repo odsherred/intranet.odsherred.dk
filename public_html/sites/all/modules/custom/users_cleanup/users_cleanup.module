@@ -40,7 +40,7 @@ function users_cleanup_page() {
  * Form builder function to allow choice of which batch to run.
  */
 function users_cleanup_form($form, &$form_state) {
-  $matched_users = $_SESSION['matched_users'];
+  $matched_users = !empty($_SESSION['matched_users']) ? $_SESSION['matched_users'] : array();
   $testing_amount = variable_get('users_cleanup_testing_amount', 0);
 
   if (empty($matched_users)) {
@@ -109,7 +109,7 @@ function users_cleanup_form($form, &$form_state) {
     );
 
     // Mark user to delete if user didn't have login process yet.
-    if ($user->login == 0) {
+    if (isset($user['login']) && $user['login'] == 0) {
       $default_values[$uid] = TRUE;
       $options[$uid] = $option;
     }
