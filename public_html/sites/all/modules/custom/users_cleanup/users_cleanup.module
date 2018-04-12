@@ -91,6 +91,12 @@ function users_cleanup_form($form, &$form_state) {
       break;
     }
 
+    $content_items = db_select('node', 'n')
+      ->fields('n', ['nid'])
+      ->condition('n.uid', $uid)
+      ->countQuery()
+      ->execute()
+      ->fetchField();
     $option = array(
       'name' => $user['name'],
       'employee_id' => $user['employee_id'],
@@ -98,6 +104,7 @@ function users_cleanup_form($form, &$form_state) {
       'mail' => $user['mail'],
       'last_login' => $user['login'],
       'import_timestamp' => $user['import_timestamp'],
+      'content_items' => $content_items,
       'operations' => array(
         'data' => array(
           '#type' => 'link',
@@ -126,6 +133,7 @@ function users_cleanup_form($form, &$form_state) {
     'mail' => t('Email'),
     'last_login' => t('Last login'),
     'import_timestamp' => t('Import timestamp'),
+    'content_items' => t('Amount of content items'),
     'operations' => t('Operations'),
   );
 
