@@ -40,7 +40,7 @@ function users_cleanup_page() {
  * Form builder function to allow choice of which batch to run.
  */
 function users_cleanup_form($form, &$form_state) {
-  $matched_users = $_SESSION['matched_users'];
+  $matched_users = !empty($_SESSION['matched_users']) ? $_SESSION['matched_users'] : array();
   $testing_amount = variable_get('users_cleanup_testing_amount', 0);
 
   if (empty($matched_users)) {
@@ -91,6 +91,12 @@ function users_cleanup_form($form, &$form_state) {
       break;
     }
 
+    $content_items = db_select('node', 'n')
+      ->fields('n', ['nid'])
+      ->condition('n.uid', $uid)
+      ->countQuery()
+      ->execute()
+      ->fetchField();
     $option = array(
       'name' => $user['name'],
       'employee_id' => $user['employee_id'],
@@ -98,6 +104,7 @@ function users_cleanup_form($form, &$form_state) {
       'mail' => $user['mail'],
       'last_login' => $user['login'],
       'import_timestamp' => $user['import_timestamp'],
+      'content_items' => $content_items,
       'operations' => array(
         'data' => array(
           '#type' => 'link',
@@ -109,7 +116,7 @@ function users_cleanup_form($form, &$form_state) {
     );
 
     // Mark user to delete if user didn't have login process yet.
-    if ($user->login == 0) {
+    if (isset($user['login']) && $user['login'] == 0) {
       $default_values[$uid] = TRUE;
       $options[$uid] = $option;
     }
@@ -126,6 +133,7 @@ function users_cleanup_form($form, &$form_state) {
     'mail' => t('Email'),
     'last_login' => t('Last login'),
     'import_timestamp' => t('Import timestamp'),
+    'content_items' => t('Amount of content items'),
     'operations' => t('Operations'),
   );
 
