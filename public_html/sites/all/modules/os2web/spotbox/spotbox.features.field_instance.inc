@@ -53,6 +53,52 @@ function spotbox_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-spotbox-field_spotbox_frontpage_weight'
+  $field_instances['node-spotbox-field_spotbox_frontpage_weight'] = array(
+    'bundle' => 'spotbox',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_spotbox_frontpage_weight',
+    'label' => 'Weight',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 42,
+    ),
+  );
+
   // Exported field_instance: 'node-spotbox-field_spotbox_image'
   $field_instances['node-spotbox-field_spotbox_image'] = array(
     'bundle' => 'spotbox',
@@ -219,6 +265,7 @@ function spotbox_field_default_field_instances() {
   t('Link til side');
   t('Spotbillede');
   t('Vis på forside');
+  t('Weight');
 
   return $field_instances;
 }

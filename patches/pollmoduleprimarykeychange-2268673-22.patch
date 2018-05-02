@@ -1,0 +1,18 @@
+diff --git a/modules/poll/poll.install b/modules/poll/poll.install
+index 8c58025..61f67bc 100644
+--- a/modules/poll/poll.install
++++ b/modules/poll/poll.install
+@@ -213,3 +213,13 @@ function poll_update_7004() {
+ /**
+  * @} End of "addtogroup updates-7.x-extra".
+  */
++ 
++/**
++ * Add the timestamp field to the primary key.
++ */
++function poll_update_7005() {
++  // Drop the present primary key.
++  db_drop_primary_key('poll_vote');
++  // Add a new primary key.
++  db_add_primary_key('poll_vote', array('nid','uid','hostname','timestamp'));
++}
