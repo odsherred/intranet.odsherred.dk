@@ -61,25 +61,26 @@ function os2web_intra_user_menu_block_view($delta = ''){
       if (isset($user_entity->field_os2intra_import_groups['und']) && is_array($user_entity->field_os2intra_import_groups['und'])){
         $user_group = reset(field_get_items('user', $user_entity, 'field_os2intra_import_groups'));
         $user_department = node_load($user_group['target_id']);
-        $term = reset(field_get_items('node', $user_department, 'field_os2intra_organization'));
-        $parent_term = reset(taxonomy_get_parents($term['tid']));
+        if (!empty($user_department)) {
+          $term = reset(field_get_items('node', $user_department, 'field_os2intra_organization'));
+          $parent_term = reset(taxonomy_get_parents($term['tid']));
 
-        if ($parent_term->tid == $top_org_tid ){
-          $user_group = $user_department;
-        }
-        else {
-          $department_id = taxonomy_term_load($parent_term->tid)->field_os2intra_department_id['und'][0]['value'];
-          $query = new EntityFieldQuery;
-          $query->entityCondition('entity_type', 'node');
-          $query->entityCondition('bundle', 'group');
-          $query->fieldCondition('field_os2intra_department_id', 'value', $department_id);
-          $results = $query->execute();
-          if (isset($results['node'])) {
-            $node= reset($results['node']);
-            $user_group = node_load($node->nid);
+          if ($parent_term->tid == $top_org_tid ){
+            $user_group = $user_department;
+          }
+          else {
+            $department_id = taxonomy_term_load($parent_term->tid)->field_os2intra_department_id['und'][0]['value'];
+            $query = new EntityFieldQuery;
+            $query->entityCondition('entity_type', 'node');
+            $query->entityCondition('bundle', 'group');
+            $query->fieldCondition('field_os2intra_department_id', 'value', $department_id);
+            $results = $query->execute();
+            if (isset($results['node'])) {
+              $node= reset($results['node']);
+              $user_group = node_load($node->nid);
+            }
           }
         }
-
       }
       else {
         // Get users OG group memberships
