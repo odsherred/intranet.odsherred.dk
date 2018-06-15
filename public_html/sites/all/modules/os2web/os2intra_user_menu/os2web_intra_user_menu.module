@@ -65,7 +65,7 @@ function os2web_intra_user_menu_block_view($delta = ''){
           $term = reset(field_get_items('node', $user_department, 'field_os2intra_organization'));
           $parent_term = reset(taxonomy_get_parents($term['tid']));
 
-          if ($parent_term->tid == $top_org_tid ){
+          if (empty($parent_term) || $parent_term->tid == $top_org_tid){
             $user_group = $user_department;
           }
           else {
