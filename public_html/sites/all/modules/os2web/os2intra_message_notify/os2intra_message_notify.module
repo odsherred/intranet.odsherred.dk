@@ -121,3 +121,12 @@ function os2intra_message_notify_ajax_callback($id){
   }
   return TRUE;
 }
+
+/*
+ * Implements hook_node_update()
+ */
+function os2intra_message_notify_node_update($node) {
+  if ($node->original->status == 0 && $node->status == 1) {
+    drupal_register_shutdown_function('commons_notify_send_message_on_shutdown', $node);
+  }
+}
