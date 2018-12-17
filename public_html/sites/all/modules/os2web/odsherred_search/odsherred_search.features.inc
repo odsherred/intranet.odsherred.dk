@@ -59,6 +59,7 @@ function odsherred_search_default_search_api_index() {
         "field_os2web_base_field_edi_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_os2web_base_field_edi_tags:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_topics" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "nid" : { "type" : "integer" },
         "og_group_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },
@@ -289,7 +290,7 @@ function odsherred_search_default_search_api_index() {
       }
     },
     "enabled" : "1",
-    "read_only" : "0",
+    "read_only" : "1",
     "rdf_mapping" : []
   }');
   return $items;
@@ -305,7 +306,7 @@ function odsherred_search_default_search_api_server() {
     "machine_name" : "odsherred_intra",
     "description" : "",
     "class" : "search_api_elasticsearch_connector",
-    "options" : { "cluster" : "", "facet_limit" : 10 },
+    "options" : { "cluster" : "odsherred_intra", "facet_limit" : "10" },
     "enabled" : "1",
     "rdf_mapping" : []
   }');
