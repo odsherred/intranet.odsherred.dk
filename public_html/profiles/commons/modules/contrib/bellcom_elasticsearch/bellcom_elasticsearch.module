@@ -54,6 +54,13 @@ function bellcom_elasticsearch_menu() {
     'page arguments' => array(1),
     'file' => 'bellcom_elasticsearch.admin.inc',
   );
+  $items['phrase/%/delete'] = array(
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('administer search_api'),
+    'page callback' => 'bellcom_elasticsearch_delete_phrase',
+    'page arguments' => array(1),
+    'file' => 'bellcom_elasticsearch.admin.inc',
+  );
 
   $items['admin/config/search/synonyms_indices'] = array(
     'title' => 'Synonyms set up',
@@ -73,6 +80,16 @@ function bellcom_elasticsearch_menu() {
     'file' => 'bellcom_elasticsearch.admin.synonyms.inc',
   );
 
+  $items['admin/config/search/content_types_weight'] = array(
+    'title' => 'Content type weight',
+    'description' => 'Configure weight for individual content types',
+    'type' => MENU_NORMAL_ITEM | MENU_LOCAL_TASK,
+    'access arguments' => array('administer search_api'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('bellcom_elasticsearch_content_type_weight_settings_page'),
+    'file' => 'bellcom_elasticsearch.admin.inc',
+  );
+
   return $items;
 }
 
@@ -85,6 +102,8 @@ function bellcom_elasticsearch_menu() {
  * @param $params
  */
 function bellcom_elasticsearch_elasticsearch_connector_search_api_query_alter(&$query, &$params) {
+  $is_multi_type_index = ($query->getIndex()->item_type == 'multiple')? TRUE : FALSE;
+
   if (isset($params['body']['query'])) {
     if (bellcom_elasticsearch_synonyms_active($params['index'])) {
       if (isset($params['body']['query']['bool'])) {
@@ -92,8 +111,8 @@ function bellcom_elasticsearch_elasticsearch_connector_search_api_query_alter(&$
         $query_fields = $params['body']['query']['bool']['must'][0]['multi_match']['fields'];
         $params['body']['query'] = array(
           'function_score' => array(
-            'functions' => _bellcom_elasticsearch_get_boosting($query_str),
-            'query' => _bellcom_elasticsearch_get_query($query_str, $query_fields)
+            'functions' => _bellcom_elasticsearch_get_boosting($query_str, $is_multi_type_index),
+            'query' => _bellcom_elasticsearch_get_query($query_str, $query_fields, $is_multi_type_index)
           )
         );
 
@@ -104,8 +123,8 @@ function bellcom_elasticsearch_elasticsearch_connector_search_api_query_alter(&$
           $query_fields = $params['body']['query']['filtered']['query']['bool']['must'][0]['multi_match']['fields'];
           $params['body']['query']['filtered']['query'] = array(
             'function_score' => array(
-              'functions' => _bellcom_elasticsearch_get_boosting($query_str),
-              'query' => _bellcom_elasticsearch_get_query($query_str, $query_fields)
+              'functions' => _bellcom_elasticsearch_get_boosting($query_str, $is_multi_type_index),
+              'query' => _bellcom_elasticsearch_get_query($query_str, $query_fields, $is_multi_type_index)
             )
           );
         }
@@ -130,9 +149,10 @@ function bellcom_elasticsearch_elasticsearch_connector_search_api_query_alter(&$
  * Retuns the boosting setting for the search query.
  *
  * @param null $query_string
+ * @param bool $is_multi_type_index
  * @return array
  */
-function _bellcom_elasticsearch_get_boosting($query_string = NULL) {
+function _bellcom_elasticsearch_get_boosting($query_string = NULL, $is_multi_type_index = TRUE) {
   $now = date('Y-m-d H:i:s', time());
   $fromDateCondition = db_or();
   $fromDateCondition->condition('from_date', $now, "<=");
@@ -158,7 +178,12 @@ function _bellcom_elasticsearch_get_boosting($query_string = NULL) {
   $fields_query = array();
   foreach ($results as $kle_term) {
     foreach ($fields as $key => $value) {
-      $fields_query['node:' . $key] = $kle_term->tid;
+      if ($is_multi_type_index) {
+        $fields_query['node:' . $key] = $kle_term->tid;
+      }
+      else {
+        $fields_query[$key] = $kle_term->tid;
+      }
     }
     $boosting[] = array(
       'weight' => $kle_term->weight,
@@ -175,12 +200,35 @@ function _bellcom_elasticsearch_get_boosting($query_string = NULL) {
     array(':phrase' => $query_string, ':now' => $now))->fetchAll();
 
   foreach ($results as $phrase) {
-    $boosting[] = array(
-      'weight' => intval($phrase->weight) * 100,
-      'filter' => array(
-        'term' => array('node:nid' => $phrase->nid)
-      ),
-    );
+    if ($is_multi_type_index) {
+      $boosting[] = array(
+        'weight' => intval($phrase->weight) * 100,
+        'filter' => array(
+          'term' => array('node:nid' => $phrase->nid)
+        ),
+      );
+    }
+    else {
+      $boosting[] = array(
+        'weight' => intval($phrase->weight) * 100,
+        'filter' => array(
+          'term' => array('nid' => $phrase->nid)
+        ),
+      );
+    }
+
+  }
+
+  //adding node custom weight
+  foreach (node_type_get_types() as $type) {
+    if ($weight = variable_get('bellcom_elasticsearch_content_type_weight_' . $type->type)) {
+      $boosting[] = array(
+        'weight' => $weight,
+        'filter' => array(
+          'term' => array('node:type' => $type->type)
+        ),
+      );
+    }
   }
 
   return $boosting;
@@ -191,9 +239,10 @@ function _bellcom_elasticsearch_get_boosting($query_string = NULL) {
  *
  * @param $query_fields
  * @param $query_string
+ * @param bool $is_multi_type_index
  * @return array
  */
-function _bellcom_elasticsearch_get_query($query_string, $query_fields) {
+function _bellcom_elasticsearch_get_query($query_string, $query_fields, $is_multi_type_index = TRUE) {
   $synonym_active = variable_get('bellcom_elasticsearch_synonyms_active', FALSE);
   $query = array(
     'bool' => array(
@@ -215,9 +264,16 @@ function _bellcom_elasticsearch_get_query($query_string, $query_fields) {
 			AND  (i.until_date IS NULL or i.until_date >= :now) order by i.weight DESC',
     array(':phrase' => $query_string, ':now' => date('Y-m-d H:i:s', time())))->fetchAll();
   foreach ($results as $phrase) {
-    $query['bool']['should'][] = array(
-      'term' => array('node:nid' => $phrase->nid)
-    );
+    if ($is_multi_type_index) {
+      $query['bool']['should'][] = array(
+        'term' => array('node:nid' => $phrase->nid)
+      );
+    }
+    else {
+      $query['bool']['should'][] = array(
+        'term' => array('nid' => $phrase->nid)
+      );
+    }
   }
 
   return $query;
