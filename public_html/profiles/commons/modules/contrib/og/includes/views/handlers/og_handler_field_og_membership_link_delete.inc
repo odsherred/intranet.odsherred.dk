@@ -2,15 +2,15 @@
 
 /**
  * @file
- * Definition of og_handler_field_og_membership_link_edit.
+ * Definition of og_handler_field_og_membership_link_delete.
  */
 
 /**
- * Field handler to present a link to edit membership.
+ * Field handler to present a link to delete membership.
  *
  * @ingroup views_field_handlers
  */
-class og_handler_field_og_membership_link_edit extends views_handler_field_entity {
+class og_handler_field_og_membership_link_delete extends views_handler_field_entity {
 
   function construct() {
     parent::construct();
@@ -54,22 +54,29 @@ class og_handler_field_og_membership_link_edit extends views_handler_field_entit
     $this->options['alter']['make_link'] = TRUE;
     $this->options['alter']['html'] = TRUE;
 
-    // Ensure user has access to edit this membership.
+    // Ensure user has access to delete this membership.
     $og_membership = $this->get_value($values);
     $group_type = $og_membership->group_type;
     $gid = $og_membership->gid;
-    if (!og_ui_user_access_group('manage members', $group_type, $gid)) {
+    $group = entity_load_single($group_type, $gid);
+
+    if (!og_user_access($group_type, $gid, 'manage members')) {
+      // User is a group manager, and may not be removed.
+      return;
+    }
+    if (isset($group->uid) && $group->uid == $og_membership->etid) {
+      // User created the group, and may not be removed.
       return;
     }
 
-    $text = !empty($this->options['text']) ? $this->options['text'] : t('edit');
+    $text = !empty($this->options['text']) ? $this->options['text'] : t('remove');
     unset($this->options['alter']['fragment']);
 
     if (!empty($this->options['destination'])) {
       $this->options['alter']['query'] = drupal_get_destination();
     }
 
-    $this->options['alter']['path'] = "group/" . $group_type . "/" . $gid  . "/admin/people/edit-membership/" . $og_membership->id;
+    $this->options['alter']['path'] = "group/" . $group_type . "/" . $gid  . "/admin/people/delete-membership/" . $og_membership->id;
 
     return $text;
   }
