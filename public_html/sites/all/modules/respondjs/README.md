@@ -33,9 +33,8 @@ of the JS library when you enable the module.
 
 ## Credits
 
-Module maintained by:
-- Chris Ruppel, Four Kitchens (https://drupal.org/user/411999)
-- Carwin Young, Lullabot (https://drupal.org/user/487058)
+Module maintained by Chris Ruppel at Four Kitchens
+http://drupal.org/project/respondjs
 
 Full list of contributors
 http://drupal.org/node/1238970/committers

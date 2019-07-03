@@ -35,7 +35,9 @@ function l10n_update_available_releases($refresh = FALSE) {
   else {
     $projects = l10n_update_get_projects(TRUE);
     $languages = l10n_update_language_list();
-    $available = l10n_update_check_projects($projects, array_keys($languages));
+    $local = variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_LOCAL;
+    $remote = variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_REMOTE;
+    $available = l10n_update_check_projects($projects, array_keys($languages), $local, $remote);
     cache_set('l10n_update_available_releases', $available, 'cache_l10n_update', $frequency ? REQUEST_TIME + $frequency : CACHE_PERMANENT);
     return $available;
   }
@@ -56,14 +58,7 @@ function l10n_update_available_releases($refresh = FALSE) {
  * @return array
  *   Available sources indexed by project, language.
  */
-function l10n_update_check_projects($projects, $languages = NULL, $check_local = NULL, $check_remote = NULL) {
-  if (!isset($check_local)) {
-    $check_local = (bool) (variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_LOCAL);
-  }
-  if (!isset($check_remote)) {
-    $check_remote = (bool) (variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_REMOTE);
-  }
-
+function l10n_update_check_projects($projects, $languages = NULL, $check_local = TRUE, $check_remote = TRUE) {
   $languages = $languages ? $languages : array_keys(l10n_update_language_list());
   $result = array();
   foreach ($projects as $name => $project) {
@@ -137,8 +132,8 @@ function l10n_update_check_translations($count, $before, $limit = 1) {
   $result = $q->execute();
 
   if ($result) {
-    $local = (bool) (variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_LOCAL);
-    $remote = (bool) (variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_REMOTE);
+    $local = variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_LOCAL;
+    $remote = variable_get('l10n_update_check_mode', L10N_UPDATE_CHECK_ALL) & L10N_UPDATE_CHECK_REMOTE;
     foreach ($result as $check) {
       if (count($updated) >= $limit) {
         break;
@@ -235,6 +230,7 @@ function l10n_update_source_check($source, $check_local = TRUE, $check_remote = 
       $remote = $check;
     }
   }
+
   // Get remote if newer than local only, they both can be empty
   return _l10n_update_source_compare($local, $remote) < 0 ? $remote : $local;
 }

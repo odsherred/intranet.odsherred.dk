@@ -1,13 +1,7 @@
 <?php
-/**
- * @file
- * Semantic Views demo view.
- *
- * A simple demo view to show how Semantic Views Fields and Rows style works.
- */
 
 /**
- * Implements hook_views_default_views().
+ * Implementation of hook_views_default_views().
  */
 function semanticviews_views_default_views() {
   $view = new view;
