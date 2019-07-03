@@ -41,23 +41,100 @@ function commons_homepage_user_register_login_submit($form, &$form_state) {
  */
 function commons_site_homepage_block_info() {
   $blocks['commons_site_homepage'] = array(
-    'info' => t('Commons anonymous homepage Sign up/login buttons'),
+    'info' => t('Commons anonymous homepage sign up/log in buttons'),
     'cache' => DRUPAL_NO_CACHE,
   );
+
   return $blocks;
 }
 
 /**
  * Implements hook_block_view().
- *  Defines a simple "Signup or Login" block for use
- *  on the anonymous site homepage.
  */
-function commons_site_homepage_block_view() {
-  $block['content'] = '';
-  if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
-    $block['content'] .= l(t('Signup'), 'user/register', array('attributes' => array('class' => 'commons-sign-up', 'title' => t('Sign up')))) . ' ';
+function commons_site_homepage_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'commons_site_homepage':
+      // The block does not have a default title.
+      $block['subject'] = NULL;
+
+      $links = array();
+
+      // Display a 'sign up' link if visitors can create accounts.
+      if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
+        $links[] = array(
+          'title' => t('Sign up'),
+          'href' => 'user/register',
+          'attributes' => array(
+            'class' => array('commons-sign-up'),
+          ),
+        );
+      }
+
+      // Always display a 'log in' link.
+      $links[] = array(
+        'title' => t('Log in'),
+        'href' => 'user/login',
+        'attributes' => array(
+          'class' => array('commons-login'),
+        ),
+      );
+
+      $block['content'] = array(
+        '#theme' => 'links',
+        '#links' => $links,
+        '#attributes' => array(
+          'class' => array('links', 'inline'),
+        ),
+      );
+      break;
   }
-  $block['content'] .= l(t('Login'), 'user/login', array('attributes' => array('class' => 'commons-login')));
-  $block['subject'] = '';
+
   return $block;
+}
+
+/**
+ * Implements hook_default_page_manager_pages_alter().
+ */
+function commons_site_homepage_default_page_manager_pages_alter(&$items) {
+  if (isset($items['commons_home'])) {
+    $items['commons_home']->default_handlers['page_commons_home_panel_context_2']->conf['display']->content['new-2ab570f0-8498-44f4-e9d0-9977e3d8d4df']->configuration['title'] = variable_get('commons_anonymous_welcome_title', t('The open-source alternative for enterprise-scale business software'));
+    $items['commons_home']->default_handlers['page_commons_home_panel_context_2']->conf['display']->content['new-2ab570f0-8498-44f4-e9d0-9977e3d8d4df']->configuration['body'] = variable_get('commons_anonymous_welcome_body', t('Enable social networking to create productive interactions. Whether your community is public or private, Commons does it!'));
+
+    $pane = new stdClass();
+    $pane->pid = 'new-94106ddd-1278-0954-c5ba-b59ff1b9bf49';
+    $pane->panel = 'three_33_first';
+    $pane->type = 'views';
+    $pane->subtype = 'commons_events_upcoming';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '5',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'commons_events_upcoming_global_block',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '94106ddd-1278-0954-c5ba-b59ff1b9bf49';
+    $items['commons_home']->default_handlers['page_commons_home_panel_context_2']->conf['display']->content['new-94106ddd-1278-0954-c5ba-b59ff1b9bf49'] = $pane;
+    $items['commons_home']->default_handlers['page_commons_home_panel_context_2']->conf['display']->panels['three_33_first'][1] = 'new-94106ddd-1278-0954-c5ba-b59ff1b9bf49';
+  }
 }

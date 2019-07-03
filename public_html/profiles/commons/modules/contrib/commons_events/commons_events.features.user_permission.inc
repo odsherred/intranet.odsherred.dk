@@ -14,7 +14,7 @@ function commons_events_user_default_permissions() {
   $permissions['create event content'] = array(
     'name' => 'create event content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
@@ -24,7 +24,7 @@ function commons_events_user_default_permissions() {
   $permissions['create event registration'] = array(
     'name' => 'create event registration',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'registration',
@@ -34,7 +34,7 @@ function commons_events_user_default_permissions() {
   $permissions['delete own event content'] = array(
     'name' => 'delete own event content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
@@ -44,7 +44,7 @@ function commons_events_user_default_permissions() {
   $permissions['delete own event registration'] = array(
     'name' => 'delete own event registration',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'registration',
@@ -54,7 +54,7 @@ function commons_events_user_default_permissions() {
   $permissions['edit own event content'] = array(
     'name' => 'edit own event content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
@@ -64,7 +64,7 @@ function commons_events_user_default_permissions() {
   $permissions['update own event registration'] = array(
     'name' => 'update own event registration',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'registration',
@@ -74,7 +74,7 @@ function commons_events_user_default_permissions() {
   $permissions['view event registration'] = array(
     'name' => 'view event registration',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'registration',
@@ -84,7 +84,7 @@ function commons_events_user_default_permissions() {
   $permissions['view own event registration'] = array(
     'name' => 'view own event registration',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'registration',

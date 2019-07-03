@@ -12,13 +12,13 @@ function commons_profile_social_field_default_field_bases() {
 
   // Exported field_base: 'field_facebook_url'
   $field_bases['field_facebook_url'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(),
     'field_name' => 'field_facebook_url',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -35,19 +35,19 @@ function commons_profile_social_field_default_field_bases() {
       'title_value' => '',
       'url' => 0,
     ),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'link_field',
   );
 
   // Exported field_base: 'field_linkedin_url'
   $field_bases['field_linkedin_url'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(),
     'field_name' => 'field_linkedin_url',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -64,19 +64,19 @@ function commons_profile_social_field_default_field_bases() {
       'title_value' => '',
       'url' => 0,
     ),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'link_field',
   );
 
   // Exported field_base: 'field_twitter_url'
   $field_bases['field_twitter_url'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(),
     'field_name' => 'field_twitter_url',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -93,7 +93,7 @@ function commons_profile_social_field_default_field_bases() {
       'title_value' => '',
       'url' => 0,
     ),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'link_field',
   );
 

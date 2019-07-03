@@ -1,15 +1,20 @@
 name = Commons Radioactivity Groups
-description = Views integration for Group radioactivity
+description = Provides Groups integration to the Commons Radioactivity module.
+package = Commons - Building blocks
 core = 7.x
-package = Commons - Building Blocks
-version = 7.x-3.4
-project = commons_radioactivity
+
 dependencies[] = commons_radioactivity
 dependencies[] = og
 dependencies[] = views_content
 dependencies[] = views_field_view
-datestamp = 1376677596
+
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = commons_radioactivity_groups_active_in_group
 features[views_view][] = commons_radioactivity_groups_most_active
+
+; Information added by Drupal.org packaging script on 2018-05-09
+version = "7.x-3.50"
+core = "7.x"
+project = "commons"
+datestamp = "1525879535"

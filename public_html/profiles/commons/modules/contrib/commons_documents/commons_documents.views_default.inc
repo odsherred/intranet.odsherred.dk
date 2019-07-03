@@ -12,16 +12,17 @@ function commons_documents_views_default_views() {
 
   $view = new view();
   $view->name = 'commons_bw_documents';
-  $view->description = '';
-  $view->tag = 'default';
+  $view->description = 'Commons Documents listing for the group browsing widget.';
+  $view->tag = 'Commons Documents, Commons Browsing Widget';
   $view->base_table = 'node';
-  $view->human_name = 'commons_bw_documents';
+  $view->human_name = 'Commons Browsing Widget - Documents';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -29,9 +30,12 @@ function commons_documents_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'lite';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '5';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['links'] = FALSE;
   /* Header: Global: Node partial form */
   $handler->display->display_options['header']['commons_bw_node_partial_form']['id'] = 'commons_bw_node_partial_form';
   $handler->display->display_options['header']['commons_bw_node_partial_form']['table'] = 'views';
@@ -41,19 +45,25 @@ function commons_documents_views_default_views() {
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No documents have been added to this group.';
-  $handler->display->display_options['empty']['area']['format'] = 'plain_text';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
+  $handler->display->display_options['relationships']['og_membership_rel']['required'] = TRUE;
   /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -84,7 +94,16 @@ function commons_documents_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'document' => 'document',
   );
-
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: OG membership: Group_type */
+  $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
+  $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['group_type']['field'] = 'group_type';
+  $handler->display->display_options['filters']['group_type']['relationship'] = 'og_membership_rel';
+  $handler->display->display_options['filters']['group_type']['value'] = array(
+    'node' => 'node',
+  );
+  $handler->display->display_options['filters']['group_type']['group'] = 1;
   $translatables['commons_bw_documents'] = array(
     t('Master'),
     t('more'),
@@ -102,11 +121,25 @@ function commons_documents_views_default_views() {
     t('last »'),
     t('No documents have been added to this group.'),
     t('OG membership from node'),
+    t('following'),
     t('Post date'),
     t('most active'),
     t('All'),
+    t('Following'),
   );
+
   $export['commons_bw_documents'] = $view;
 
   return $export;
+}
+
+/**
+ * Implements hook_views_default_views_alter().
+ *
+ * Display documents on the browsing widget main view.
+ */
+function commons_documents_views_default_views_alter(&$views) {
+  if (!empty($views['commons_bw_all'])) {
+    $views['commons_bw_all']->display['default']->display_options['filters']['type']['value']['document'] = 'document';
+  }
 }

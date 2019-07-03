@@ -19,21 +19,15 @@ function commons_profile_social_field_default_field_instances() {
         'url' => '',
       ),
     ),
-    'deleted' => 0,
+    'deleted' => '0',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 3,
-      ),
-      'search_results' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'user',
@@ -41,6 +35,7 @@ function commons_profile_social_field_default_field_instances() {
     'label' => 'Facebook URL',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'facebook-url',
         'configurable_title' => 0,
@@ -49,11 +44,11 @@ function commons_profile_social_field_default_field_instances() {
         'title' => '',
       ),
       'display' => array(
-        'url_cutoff' => 80,
+        'url_cutoff' => '80',
       ),
       'enable_tokens' => 0,
       'title' => 'none',
-      'title_maxlength' => 128,
+      'title_maxlength' => '128',
       'title_value' => '',
       'url' => 0,
       'user_register_form' => 0,
@@ -64,7 +59,7 @@ function commons_profile_social_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 6,
+      'weight' => '6',
     ),
   );
 
@@ -76,21 +71,15 @@ function commons_profile_social_field_default_field_instances() {
         'url' => '',
       ),
     ),
-    'deleted' => 0,
+    'deleted' => '0',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 2,
-      ),
-      'search_results' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'user',
@@ -98,6 +87,7 @@ function commons_profile_social_field_default_field_instances() {
     'label' => 'LinkedIn URL',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'linkedin-url',
         'configurable_title' => 0,
@@ -106,11 +96,11 @@ function commons_profile_social_field_default_field_instances() {
         'title' => '',
       ),
       'display' => array(
-        'url_cutoff' => 80,
+        'url_cutoff' => '80',
       ),
       'enable_tokens' => 0,
       'title' => 'none',
-      'title_maxlength' => 128,
+      'title_maxlength' => '128',
       'title_value' => '',
       'url' => 0,
       'user_register_form' => 0,
@@ -121,7 +111,7 @@ function commons_profile_social_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 7,
+      'weight' => '7',
     ),
   );
 
@@ -134,21 +124,15 @@ function commons_profile_social_field_default_field_instances() {
         'url' => '',
       ),
     ),
-    'deleted' => 0,
+    'deleted' => '0',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 4,
-      ),
-      'search_results' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'user',
@@ -156,6 +140,7 @@ function commons_profile_social_field_default_field_instances() {
     'label' => 'Twitter URL',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'twitter-url',
         'configurable_title' => 0,
@@ -164,11 +149,11 @@ function commons_profile_social_field_default_field_instances() {
         'title' => '',
       ),
       'display' => array(
-        'url_cutoff' => 80,
+        'url_cutoff' => '80',
       ),
       'enable_tokens' => 1,
       'title' => 'none',
-      'title_maxlength' => 128,
+      'title_maxlength' => '128',
       'title_value' => '',
       'url' => 0,
       'user_register_form' => 0,
@@ -179,7 +164,7 @@ function commons_profile_social_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 8,
+      'weight' => '8',
     ),
   );
 

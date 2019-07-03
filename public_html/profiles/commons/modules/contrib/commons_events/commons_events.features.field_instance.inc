@@ -10,6 +10,12 @@
 function commons_events_field_default_field_instances() {
   $field_instances = array();
 
+  // Because the 'site_default_country' variable gets set, but is empty when no
+  // default country is set, we'll need to do some checks to see if its empty
+  // and display a default country on our own.
+  // See https://drupal.org/node/2068957#comment-7773019 for more info.
+  $default_country = variable_get('site_default_country', 'US');
+
   // Exported field_instance: 'node-event-body'
   $field_instances['node-event-body'] = array(
     'bundle' => 'event',
@@ -22,14 +28,7 @@ function commons_events_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'print' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
+        'weight' => -49,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -38,7 +37,7 @@ function commons_events_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 3,
+        'weight' => -49,
       ),
     ),
     'entity_type' => 'node',
@@ -58,93 +57,81 @@ function commons_events_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => -49,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_addresse'
-  $field_instances['node-event-field_addresse'] = array(
+  // Exported field_instance: 'node-event-field_address'
+  $field_instances['node-event-field_address'] = array(
     'bundle' => 'event',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'element_key' => 'node|event|field_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'locality' => '',
+        'administrative_area' => '',
+        'postal_code' => '',
+        'country' => !empty($default_country) ? $default_country : 'US',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 17,
-      ),
-      'print' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'addressfield_tokens',
+        'settings' => array(
+          'components' => array(
+            'administrative_area' => 'administrative_area',
+            'locality' => 'locality',
+            'postal_code' => 'postal_code',
+            'thoroughfare' => 'thoroughfare',
+          ),
+          'separator' => ', ',
+        ),
+        'type' => 'addressfield_components',
+        'weight' => 2,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'addressfield_tokens',
+        'settings' => array(
+          'components' => array(
+            'administrative_area' => 'administrative_area',
+            'locality' => 'locality',
+            'postal_code' => 'postal_code',
+            'thoroughfare' => 'thoroughfare',
+          ),
+          'separator' => ', ',
+        ),
+        'type' => 'addressfield_components',
+        'weight' => 2,
       ),
     ),
-    'display_in_partial_form' => 0,
     'entity_type' => 'node',
-    'field_name' => 'field_addresse',
-    'label' => 'Adresse',
+    'field_name' => 'field_address',
+    'label' => 'Address',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'blokindhold' => 'blokindhold',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-          'raw' => 'raw',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'blokindhold' => array(
-              'weight' => -8,
-            ),
-            'filtered_html' => array(
-              'weight' => -10,
-            ),
-            'full_html' => array(
-              'weight' => -5,
-            ),
-            'php_code' => array(
-              'weight' => -7,
-            ),
-            'plain_text' => array(
-              'weight' => -9,
-            ),
-            'raw' => array(
-              'weight' => -6,
-            ),
-          ),
-        ),
-      ),
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'addressfield',
       'settings' => array(
-        'rows' => 5,
+        'available_countries' => array(),
+        'default_country' => 'site_default',
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-country' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+        ),
       ),
-      'type' => 'text_textarea',
-      'weight' => 21,
+      'type' => 'addressfield_standard',
+      'weight' => 8,
     ),
   );
 
@@ -167,19 +154,6 @@ function commons_events_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 1,
       ),
-      'print' => array(
-        'label' => 'hidden',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'event_datetime',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 1,
-      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'date',
@@ -194,16 +168,15 @@ function commons_events_field_default_field_instances() {
         'weight' => 1,
       ),
     ),
-    'display_in_partial_form' => 0,
     'entity_type' => 'node',
     'field_name' => 'field_date',
     'label' => 'Date',
     'required' => 1,
     'settings' => array(
       'default_value' => 'now',
-      'default_value2' => 'strtotime',
+      'default_value2' => 'same',
       'default_value_code' => '',
-      'default_value_code2' => '+1 days',
+      'default_value_code2' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -211,14 +184,14 @@ function commons_events_field_default_field_instances() {
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
-        'input_format' => 'd/m/Y - H:i:s',
-        'input_format_custom' => '',
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => 'd M Y - h:i:s a',
         'label_position' => 'above',
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 8,
+      'weight' => 5,
     ),
   );
 
@@ -234,12 +207,6 @@ function commons_events_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -262,11 +229,9 @@ function commons_events_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
-      ),
+      'settings' => array(),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 7,
     ),
   );
 
@@ -277,16 +242,6 @@ function commons_events_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '50x50',
-        ),
-        'type' => 'image',
-        'weight' => 0,
-      ),
-      'print' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
@@ -313,7 +268,6 @@ function commons_events_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'alt_field_required' => 0,
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -321,7 +275,6 @@ function commons_events_field_default_field_instances() {
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
-      'title_field_required' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -332,7 +285,7 @@ function commons_events_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -348,12 +301,6 @@ function commons_events_field_default_field_instances() {
     'description' => 'Enter 0 for unlimited',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -382,7 +329,7 @@ function commons_events_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 15,
+      'weight' => 12,
     ),
   );
 
@@ -394,13 +341,6 @@ function commons_events_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'print' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
@@ -429,7 +369,7 @@ function commons_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 3,
     ),
   );
 
@@ -443,13 +383,10 @@ function commons_events_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'print' => array(
-        'label' => 'above',
-        'settings' => array(),
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
         'type' => 'hidden',
         'weight' => 12,
       ),
@@ -481,7 +418,7 @@ function commons_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -497,15 +434,6 @@ function commons_events_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'registration',
-        'settings' => array(
-          'label' => ' ',
-        ),
-        'type' => 'registration_link',
-        'weight' => 2,
-      ),
-      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -549,7 +477,7 @@ function commons_events_field_default_field_instances() {
       'module' => 'registration',
       'settings' => array(),
       'type' => 'registration_select',
-      'weight' => 13,
+      'weight' => 10,
     ),
   );
 
@@ -561,12 +489,6 @@ function commons_events_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -589,80 +511,221 @@ function commons_events_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
-      ),
+      'settings' => array(),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-event-group_content_access'
-  $field_instances['node-event-group_content_access'] = array(
-    'bundle' => 'event',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    // Exported field_instance: 'message-commons_events_event_node_created-field_message_rendered_body'
+  $field_instances['message-commons_events_event_node_created-field_message_rendered_body'] = array(
+    'bundle' => 'commons_events_event_node_created',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'message_notify_email_body' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 4,
       ),
-      'print' => array(
-        'label' => 'hidden',
+      'message_notify_email_subject' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'message',
+    'field_name' => 'field_message_rendered_body',
+    'label' => 'Body',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'message-commons_events_event_node_created-field_message_rendered_subject'
+  $field_instances['message-commons_events_event_node_created-field_message_rendered_subject'] = array(
+    'bundle' => 'commons_events_event_node_created',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'message_notify_email_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'message_notify_email_subject' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'message',
+    'field_name' => 'field_message_rendered_subject',
+    'label' => 'Subject',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+
+  // Exported field_instance: 'message-commons_events_event_node_created-field_target_comments'
+  $field_instances['message-commons_events_event_node_created-field_target_comments'] = array(
+    'bundle' => 'commons_events_event_node_created',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+      'message_notify_email_body' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
       ),
-      'teaser' => array(
-        'label' => 'hidden',
+      'message_notify_email_subject' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
     ),
-    'entity_type' => 'node',
-    'field_name' => 'group_content_access',
-    'label' => 'Group content visibility',
-    'required' => TRUE,
+    'entity_type' => 'message',
+    'field_name' => 'field_target_comments',
+    'label' => 'Target comment',
+    'required' => 1,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
-    'view modes' => array(
-      'full' => array(
-        'label' => 'above',
-        'type' => 'list_default',
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
       ),
-      'teaser' => array(
+      'type' => 'entityreference_autocomplete',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'message-commons_events_event_node_created-field_target_nodes'
+  $field_instances['message-commons_events_event_node_created-field_target_nodes'] = array(
+    'bundle' => 'commons_events_event_node_created',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
         'label' => 'above',
-        'type' => 'list_default',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
       ),
+      'message_notify_email_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'message_notify_email_subject' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'message',
+    'field_name' => 'field_target_nodes',
+    'label' => 'Target nodes',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'module' => 'options',
+      'active' => 1,
+      'module' => 'entityreference',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
       ),
-      'type' => 'options_select',
-      'weight' => 20,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 2,
     ),
-    'widget_type' => 'options_select',
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Adresse');
+  t('Address');
   t('Date');
   t('Description');
   t('Enter 0 for unlimited');
   t('Event logo');
-  t('Group content visibility');
   t('Location');
   t('Maximum number of attendees');
   t('Organizers');

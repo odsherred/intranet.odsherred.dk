@@ -10,8 +10,7 @@
 function commons_like_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'message-commons_like_user_likes_node-field_target_nodes'
+  // Exported field_instance: 'message-commons_like_user_likes_node-field_target_nodes'
   $field_instances['message-commons_like_user_likes_node-field_target_nodes'] = array(
     'bundle' => 'commons_like_user_likes_node',
     'default_value' => NULL,

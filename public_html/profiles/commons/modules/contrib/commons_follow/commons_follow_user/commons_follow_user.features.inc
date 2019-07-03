@@ -25,9 +25,10 @@ function commons_follow_user_views_api($module = NULL, $api = NULL) {
  */
 function commons_follow_user_flag_default_flags() {
   $flags = array();
-  // Exported flag: "Personer".
+
+  // Exported flag: "People".
   $flags['commons_follow_user'] = array(
-    'content_type' => 'user',
+    'entity_type' => 'user',
     'title' => 'People',
     'global' => 0,
     'types' => array(),
@@ -39,16 +40,7 @@ function commons_follow_user_flag_default_flags() {
     'unflag_message' => 'Not following',
     'unflag_denied_text' => '',
     'link_type' => 'toggle',
-    'roles' => array(
-      'flag' => array(
-        0 => 2,
-      ),
-      'unflag' => array(
-        0 => 2,
-      ),
-    ),
     'weight' => -13,
-    'show_on_entity' => FALSE,
     'show_on_form' => 0,
     'access_author' => '',
     'show_on_profile' => 1,
@@ -57,44 +49,20 @@ function commons_follow_user_flag_default_flags() {
     'locked' => array(
       0 => 'name',
     ),
-    'api_version' => 2,
+    'api_version' => 3,
   );
-  // Exported flag: "Email user".
-  $flags['email_user'] = array(
-    'content_type' => 'user',
-    'title' => 'Email user',
-    'global' => 0,
-    'types' => array(),
-    'flag_short' => 'Send Email',
-    'flag_long' => '',
-    'flag_message' => '',
-    'unflag_short' => 'Don\'t send Email',
-    'unflag_long' => '',
-    'unflag_message' => '',
-    'unflag_denied_text' => '',
-    'link_type' => 'toggle',
-    'roles' => array(
-      'flag' => array(
-        0 => 2,
-      ),
-      'unflag' => array(
-        0 => 2,
-      ),
-    ),
-    'weight' => 0,
-    'show_on_entity' => FALSE,
-    'show_on_form' => 0,
-    'access_author' => '',
-    'show_on_profile' => 0,
-    'access_uid' => '',
-    'module' => 'commons_follow_user',
-    'locked' => array(
-      0 => 'name',
-    ),
-    'api_version' => 2,
-  );
-  return $flags;
 
+  return $flags;
+}
+
+/**
+ * Implements hook_flag_default_flags_alter().
+ */
+function commons_follow_user_flag_default_flags_alter(&$flags) {
+  // Enable the default email_user flag provided by Message Subscribe Email.
+  if (!empty($flags['email_user'])) {
+    $flags['email_user']['status'] = TRUE;
+  }
 }
 
 /**
@@ -108,32 +76,18 @@ function commons_follow_user_default_message_type() {
     "argument_keys" : [],
     "argument" : [],
     "category" : "message_type",
-    "data" : { "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" } },
+    "data" : {
+      "token options" : { "clear" : 1 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
     "language" : "",
     "arguments" : null,
-    "message_text" : {
-      "da" : [
+    "message_text" : { "und" : [
+        { "value" : "[message:user:picture]", "format" : "filtered_html" },
         {
-          "value" : "[message:user:picture]",
-          "format" : "filtered_html",
-          "safe_value" : "[message:user:picture]"
-        },
-        {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E f\\u00f8lger nu \\u003Ca href=\\u0022[message:field-target-users:0:url]\\u0022\\u003E[message:field-target-users:0:name]\\u003C\\/a\\u003E",
+          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E is now following \\u003Ca href=\\u0022[message:field-target-users:0:url]\\u0022\\u003E[message:field-target-users:0:name]\\u003C\\/a\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E f\\u00f8lger nu \\u003Ca href=\\u0022[message:field-target-users:0:url]\\u0022\\u003E[message:field-target-users:0:name]\\u003C\\/a\\u003E"
-        }
-      ],
-      "und" : [
-        {
-          "value" : "[message:user:picture]",
-          "format" : "filtered_html",
-          "safe_value" : "[message:user:picture]"
-        },
-        {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E f\\u00f8lger nu \\u003Ca href=\\u0022[message:field-target-users:0:url]\\u0022\\u003E[message:field-target-users:0:name]\\u003C\\/a\\u003E",
-          "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E f\\u00f8lger nu \\u003Ca href=\\u0022[message:field-target-users:0:url]\\u0022\\u003E[message:field-target-users:0:name]\\u003C\\/a\\u003E"
+          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E is now following \\u003Ca href=\\u0022[message:field-target-users:0:url]\\u0022\\u003E[message:field-target-users:0:name]\\u003C\\/a\\u003E"
         }
       ]
     },

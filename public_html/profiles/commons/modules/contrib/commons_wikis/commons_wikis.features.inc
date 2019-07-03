@@ -34,54 +34,22 @@ function commons_wikis_default_message_type() {
     "argument_keys" : [],
     "argument" : [],
     "category" : "message_type",
-    "data" : { "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" } },
+    "data" : {
+      "token options" : { "clear" : 1 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
     "language" : "",
     "arguments" : null,
-    "message_text" : {
-      "da" : [
+    "message_text" : { "und" : [
         {
           "value" : "[message:user:picture:35x35]",
           "format" : "full_html",
           "safe_value" : "[message:user:picture:35x35]"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E har opdateret wiki siden \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E",
+          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E has updated the \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title_field]\\u003C\\/a\\u003E wiki page",
           "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E har opdateret wiki siden \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E"
-        },
-        {
-          "value" : "[commons-groups:in-groups-text]",
-          "format" : "full_html",
-          "safe_value" : "[commons-groups:in-groups-text]"
-        }
-      ],
-      "en" : [
-        {
-          "value" : "[message:user:picture:35x35]",
-          "format" : "full_html",
-          "safe_value" : "[message:user:picture:35x35]"
-        },
-        {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E har opdateret wiki siden \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E",
-          "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E har opdateret wiki siden \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E"
-        },
-        {
-          "value" : "[commons-groups:in-groups-text]",
-          "format" : "full_html",
-          "safe_value" : "[commons-groups:in-groups-text]"
-        }
-      ],
-      "und" : [
-        {
-          "value" : "[message:user:picture:35x35]",
-          "format" : "full_html",
-          "safe_value" : "[message:user:picture:35x35]"
-        },
-        {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E har opdateret wiki siden \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E",
-          "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E har opdateret wiki siden \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E"
+          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E has updated the \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title_field]\\u003C\\/a\\u003E wiki page"
         },
         {
           "value" : "[commons-groups:in-groups-text]",
@@ -103,12 +71,11 @@ function commons_wikis_node_info() {
     'wiki' => array(
       'name' => t('Wiki'),
       'base' => 'node_content',
-      'description' => t('Indhold hvor flere kan redigere indholdet.'),
+      'description' => t('Create a collaborative document, allowing users to add, delete, or revise content. Provides document version controls.'),
       'has_title' => '1',
-      'title_label' => t('Titel'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
-  drupal_alter('node_info', $items);
   return $items;
 }

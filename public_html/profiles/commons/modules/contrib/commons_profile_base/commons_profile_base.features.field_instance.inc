@@ -14,21 +14,15 @@ function commons_profile_base_field_default_field_instances() {
   $field_instances['user-user-field_bio'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
-    'deleted' => 0,
+    'deleted' => '0',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
-      ),
-      'search_results' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'user',
@@ -36,17 +30,17 @@ function commons_profile_base_field_default_field_instances() {
     'label' => 'Bio',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => '0',
       'user_register_form' => 0,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 5,
+        'rows' => '5',
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => '5',
     ),
   );
 
@@ -54,20 +48,14 @@ function commons_profile_base_field_default_field_instances() {
   $field_instances['user-user-field_name_first'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
-    'deleted' => 0,
+    'deleted' => '0',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'search_results' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
         'weight' => 2,
       ),
     ),
@@ -76,17 +64,17 @@ function commons_profile_base_field_default_field_instances() {
     'label' => 'First Name',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => '0',
       'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => '60',
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => '3',
     ),
   );
 
@@ -94,21 +82,15 @@ function commons_profile_base_field_default_field_instances() {
   $field_instances['user-user-field_name_last'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
-    'deleted' => 0,
+    'deleted' => '0',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'search_results' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'user',
@@ -116,17 +98,17 @@ function commons_profile_base_field_default_field_instances() {
     'label' => 'Last Name',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => '0',
       'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => '60',
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => '4',
     ),
   );
 

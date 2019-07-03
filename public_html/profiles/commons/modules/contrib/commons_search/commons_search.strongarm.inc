@@ -168,7 +168,7 @@ function commons_search_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_label_visibility';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['custom_search_label_visibility'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -183,27 +183,13 @@ function commons_search_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_node_types';
   $strongarm->value = array(
-    'poll' => 0,
+    'document' => 0,
     'event' => 0,
-    'os2web_base_rotating_image' => 0,
-    'os2intra_canteen_menu' => 0,
-    'os2web_base_gallery' => 0,
     'group' => 0,
-    'node_basket' => 0,
-    'os2web_base_contentpage' => 0,
-    'post' => 0,
-    'os2intra_message_notification' => 0,
-    'os2intra_base_page' => 0,
-    'media' => 0,
-    'os2web_base_news' => 0,
-    'os2web_base_selfservice_link' => 0,
+    'notice' => 0,
     'page' => 0,
-    'question' => 0,
-    'answer' => 0,
-    'webform' => 0,
+    'post' => 0,
     'wiki' => 0,
-    'os2web_base_iframe' => 0,
-    'spotbox' => 0,
   );
   $export['custom_search_node_types'] = $strongarm;
 
@@ -212,27 +198,13 @@ function commons_search_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'custom_search_node_types_excluded';
   $strongarm->value = array(
-    'poll' => 0,
+    'document' => 0,
     'event' => 0,
-    'os2web_base_rotating_image' => 0,
-    'os2intra_canteen_menu' => 0,
-    'os2web_base_gallery' => 0,
     'group' => 0,
-    'node_basket' => 0,
-    'os2web_base_contentpage' => 0,
-    'post' => 0,
-    'os2intra_message_notification' => 0,
-    'os2intra_base_page' => 0,
-    'media' => 0,
-    'os2web_base_news' => 0,
-    'os2web_base_selfservice_link' => 0,
+    'notice' => 0,
     'page' => 0,
-    'question' => 0,
-    'answer' => 0,
-    'webform' => 0,
+    'post' => 0,
     'wiki' => 0,
-    'os2web_base_iframe' => 0,
-    'spotbox' => 0,
   );
   $export['custom_search_node_types_excluded'] = $strongarm;
 
