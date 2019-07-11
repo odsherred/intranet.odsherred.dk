@@ -5,17 +5,19 @@ core = 7.x
 
 dependencies[] = ctools
 
+configure = admin/structure/radioactivity
+
 files[] = includes/RadioactivityDeferredIncidentStorage.inc
 files[] = includes/RadioactivityIncidentStorage.inc
 files[] = includes/RadioactivityLiveIncidentStorage.inc
 files[] = includes/RadioactivityFileIncidentStorage.inc
 files[] = includes/RadioactivityMemcachedIncidentStorage.inc
+files[] = includes/RadioactivityRedisIncidentStorage.inc
 files[] = includes/RadioactivityIncident.inc
 
-
-; Information added by drush on 2013-08-19
-version = "7.x-2.8+1-dev"
+; Information added by Drupal.org packaging script on 2018-02-01
+version = "7.x-2.12"
 core = "7.x"
 project = "radioactivity"
-datestamp = "1376951294"
+datestamp = "1517515385"
 

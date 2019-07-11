@@ -25,46 +25,48 @@ function commons_notify_default_message_type() {
     "argument" : [],
     "category" : "commons_notify",
     "data" : {
-      "token options" : { "clear" : 0 },
+       "token options" : { "clear" : 1 },
+       "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "",
+    "arguments" : null,
+    "message_text" : { "und" : [
+        {
+          "value" : "New comment on [message:field-target-nodes:0:title_field] in [message:field-target-nodes:0:og-group-ref:0:title]: [message:field-target-nodes:0:title_field]",
+          "format" : "plain_text",
+          "safe_value" : "\\u003Cp\\u003ENew comment on [message:field-target-nodes:0:title_field] in [message:field-target-nodes:0:og-group-ref:0:title]: [message:field-target-nodes:0:title_field]\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "Hi [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] commented on [message:field-target-nodes:0:title_field] [commons-groups:in-groups-text]:\\r\\n\\r\\n[message:field-target-comments:0:body]\\r\\n\\r\\nRead \\u0026 respond: [message:field-target-comments:0:url]\\r\\nUpdate your notification settings: [site:url]\\/user\\/[message:user:uid]\\/notification-settings",
+          "format" : "plain_text",
+          "safe_value" : "\\u003Cp\\u003EHi [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:author] commented on [message:field-target-nodes:0:title_field] [commons-groups:in-groups-text]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003ERead \\u0026amp; respond: [message:field-target-comments:0:url]\\u003Cbr \\/\\u003E\\nUpdate your notification settings: [site:url]\\/user\\/[message:user:uid]\\/notification-settings\\u003C\\/p\\u003E\\n"
+        }
+      ]
+    },
+    "rdf_mapping" : []
+  }');
+  $items['commons_notify_comment_created_no_groups'] = entity_import('message_type', '{
+    "name" : "commons_notify_comment_created_no_groups",
+    "description" : "Commons Notify: Comment created no groups",
+    "argument_keys" : [],
+    "argument" : [],
+    "category" : "commons_notify",
+    "data" : {
+      "token options" : { "clear" : 1 },
       "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
     },
-    "language" : "en",
+    "language" : "",
     "arguments" : null,
-    "message_text" : {
-      "da" : [
+    "message_text" : { "und" : [
         {
-          "value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]",
+          "value" : "New comment on [message:field-target-nodes:0:title_field] ",
           "format" : "plain_text",
-          "safe_value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]"
+          "safe_value" : "\\u003Cp\\u003ENew comment on [message:field-target-nodes:0:title_field]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\r\\n\\r\\n[message:field-target-comments:0:body]\\r\\n\\r\\nBesvar: [message:field-target-comments:0:url]\\r\\nOpdater dine indstillinger: [site:url]\\/notification-settings",
+          "value" : "Hi [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] commented on [message:field-target-nodes:0:title_field]:\\r\\n\\r\\n[message:field-target-comments:0:body]\\r\\n\\r\\nRead \\u0026 respond: [message:field-target-comments:0:url]\\r\\nUpdate your notification settings: [site:url]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\n\\n[message:field-target-comments:0:body]\\n\\nBesvar: [message:field-target-comments:0:url]\\nOpdater dine indstillinger: [site:url]\\/notification-settings"
-        }
-      ],
-      "en" : [
-        {
-          "value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]",
-          "format" : "plain_text",
-          "safe_value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]"
-        },
-        {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\r\\n\\r\\n[message:field-target-comments:0:body]\\r\\n\\r\\nBesvar: [message:field-target-comments:0:url]\\r\\nOpdater dine indstillinger: [site:url]\\/notification-settings",
-          "format" : "plain_text",
-          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:\\n\\n[message:field-target-comments:0:body]\\n\\nBesvar: [message:field-target-comments:0:url]\\nOpdater dine indstillinger: [site:url]\\/notification-settings"
-        }
-      ],
-      "und" : [
-        {
-          "value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]",
-          "format" : "plain_text",
-          "safe_value" : "Ny kommentar p\\u00e5 [message:field-target-nodes:0:title] i [message:field-target-nodes:0:og-group-ref:0:title]"
-        },
-        {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:[message:field-target-comments:0:body]\\r\\n\\r\\nBesvar: [message:field-target-comments:0:url]\\r\\nOpdater dine indstillinger: [site:url]\\/notification-settings",
-          "format" : "plain_text",
-          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-comments:0:author] kommenterede p\\u00e5 [message:field-target-nodes:0:title] [commons-groups:in-groups-text]:[message:field-target-comments:0:body]\\n\\nBesvar: [message:field-target-comments:0:url]\\nOpdater dine indstillinger: [site:url]\\/notification-settings"
+          "safe_value" : "\\u003Cp\\u003EHi [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:author] commented on [message:field-target-nodes:0:title_field]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-comments:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003ERead \\u0026amp; respond: [message:field-target-comments:0:url]\\u003Cbr \\/\\u003E\\nUpdate your notification settings: [site:url]\\/notification-settings\\u003C\\/p\\u003E\\n"
         }
       ]
     },
@@ -77,34 +79,21 @@ function commons_notify_default_message_type() {
     "argument" : [],
     "category" : "commons_notify",
     "data" : {
-      "token options" : { "clear" : 0 },
+      "token options" : { "clear" : 1 },
       "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
     },
-    "language" : "da",
+    "language" : "",
     "arguments" : null,
-    "message_text" : {
-      "da" : [
+    "message_text" : { "und" : [
         {
-          "value" : "Nyt [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]",
+          "value" : "New [message:field-target-nodes:0:content-type] in [message:field-target-nodes:0:og-group-ref:0:title]: [message:field-target-nodes:0:title_field]",
           "format" : "plain_text",
-          "safe_value" : "Nyt [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]"
+          "safe_value" : "\\u003Cp\\u003ENew [message:field-target-nodes:0:content-type] in [message:field-target-nodes:0:og-group-ref:0:title]: [message:field-target-nodes:0:title_field]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\nLink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater e-mail-indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
+          "value" : "Hi [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] created the [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title_field]\\u201d on [site:name] [commons-groups:in-groups-text] on [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nAdd a comment at [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nChange email notifications at [site:url]user\\/[message:user:uid]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\nLink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater e-mail-indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
-        }
-      ],
-      "und" : [
-        {
-          "value" : "Ny [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]",
-          "format" : "plain_text",
-          "safe_value" : "Ny [message:field-target-nodes:0:content-type] i [message:field-target-nodes:0:og-group-ref:0:title]"
-        },
-        {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
-          "format" : "plain_text",
-          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\n\\nPermalink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar: [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
+          "safe_value" : "\\u003Cp\\u003EHi [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:author] created the [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title_field]\\u201d on [site:name] [commons-groups:in-groups-text] on [message:field-target-nodes:0:created]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPermalink: [message:field-target-nodes:0:url]\\u003Cbr \\/\\u003E\\nAdd a comment at [message:field-target-nodes:0:url]#comment-form\\u003C\\/p\\u003E\\n\\u003Cp\\u003EChange email notifications at [site:url]user\\/[message:user:uid]\\/notification-settings\\u003C\\/p\\u003E\\n"
         }
       ]
     },
@@ -117,34 +106,21 @@ function commons_notify_default_message_type() {
     "argument" : [],
     "category" : "commons_notify",
     "data" : {
-      "token options" : { "clear" : 0 },
+      "token options" : { "clear" : 1 },
       "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
     },
-    "language" : "da",
+    "language" : "",
     "arguments" : null,
-    "message_text" : {
-      "da" : [
+    "message_text" : { "und" : [
         {
-          "value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]",
+          "value" : "New [message:field-target-nodes:0:content-type] on [site:name]: [message:field-target-nodes:0:title_field]",
           "format" : "plain_text",
-          "safe_value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]"
+          "safe_value" : "\\u003Cp\\u003ENew [message:field-target-nodes:0:content-type] on [site:name]: [message:field-target-nodes:0:title_field]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
+          "value" : "Hi [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] created the [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title_field]\\u201d on [site:name] [commons-groups:in-groups-text] on [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nAdd a comment at [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nChange email notifications at [site:url]user\\/[message:user:uid]\\/notification-settings",
           "format" : "plain_text",
-          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\n\\nPermalink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
-        }
-      ],
-      "und" : [
-        {
-          "value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]",
-          "format" : "plain_text",
-          "safe_value" : "Ny [message:field-target-nodes:0:content-type] p\\u00e5 [site:name]: [message:field-target-nodes:0:title]"
-        },
-        {
-          "value" : "Hej [message:user:name],\\r\\n\\r\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\r\\n\\r\\n[message:field-target-nodes:0:body]\\r\\n\\r\\n\\r\\nPermalink: [message:field-target-nodes:0:url]\\r\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\r\\n\\r\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings",
-          "format" : "plain_text",
-          "safe_value" : "Hej [message:user:name],\\n\\n[message:field-target-nodes:0:author] oprettede [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title]\\u201d p\\u00e5 [site:name] [commons-groups:in-groups-text] i [message:field-target-nodes:0:created]:\\n\\n[message:field-target-nodes:0:body]\\n\\n\\nPermalink: [message:field-target-nodes:0:url]\\nTilf\\u00f8j kommentar [message:field-target-nodes:0:url]#comment-form\\n\\nOpdater email indstillinger [site:url]user\\/[message:user:uid]\\/notification-settings"
+          "safe_value" : "\\u003Cp\\u003EHi [message:user:name],\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:author] created the [message:field-target-nodes:0:content-type] \\u201c[message:field-target-nodes:0:title_field]\\u201d on [site:name] [commons-groups:in-groups-text] on [message:field-target-nodes:0:created]:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-target-nodes:0:body]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPermalink: [message:field-target-nodes:0:url]\\u003Cbr \\/\\u003E\\nAdd a comment at [message:field-target-nodes:0:url]#comment-form\\u003C\\/p\\u003E\\n\\u003Cp\\u003EChange email notifications at [site:url]user\\/[message:user:uid]\\/notification-settings\\u003C\\/p\\u003E\\n"
         }
       ]
     },

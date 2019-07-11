@@ -144,7 +144,7 @@ var {
 #header ul li a {
   border-right: 1px solid #224567;
 }
-img.site-logo.image-style-none {
+img.site-logo {
   display: none;
 }
 @media only screen and (max-width: 768px) {
@@ -2868,11 +2868,11 @@ ul.commons-utility-links li.last a {
 /* =============================================================================
  *    Bruger menu
  * =============================================================================*/
-#menu-bar nav#block-os2web-intra-user-menu-top-menu {
+#menu-bar div#block-os2web-intra-user-menu-top-menu {
   float: right;
   width: 80%;
 }
-#menu-bar nav#block-os2web-intra-user-menu-top-menu ul li {
+#menu-bar div#block-os2web-intra-user-menu-top-menu ul li {
   display: inline;
   float: left;
   list-style-type: none;

@@ -32,61 +32,21 @@ function commons_posts_default_message_type() {
     "argument" : [],
     "category" : "message_type",
     "data" : {
-      "token options" : { "clear" : 0 },
-      "purge" : { "override" : 0, "enabled" : 1, "quota" : "", "days" : "" }
+      "token options" : { "clear" : 1 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
     },
-    "language" : "da",
+    "language" : "",
     "arguments" : null,
-    "message_text" : {
-      "da" : [
+    "message_text" : { "und" : [
+        { "value" : "[message:user:picture:35x35]", "format" : "filtered_html" },
         {
-          "value" : "[message:user:picture:35x35]",
-          "format" : "filtered_html",
-          "safe_value" : "[message:user:picture:35x35]"
-        },
-        {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E oprettede\\u0026nbsp;\\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E",
+          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E posted \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title_field]\\u003C\\/a\\u003E",
           "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E oprettede\\u0026nbsp;\\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E"
+          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E posted \\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title_field]\\u003C\\/a\\u003E"
         },
         {
           "value" : "[commons-groups:in-groups-text]",
-          "format" : "full_html",
-          "safe_value" : "[commons-groups:in-groups-text]"
-        }
-      ],
-      "en" : [
-        {
-          "value" : "[message:user:picture:35x35]",
-          "format" : "filtered_html",
-          "safe_value" : "[message:user:picture:35x35]"
-        },
-        {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E oprettede\\u0026nbsp;\\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E",
-          "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E oprettede\\u0026nbsp;\\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E"
-        },
-        {
-          "value" : "[commons-groups:in-groups-text]",
-          "format" : "full_html",
-          "safe_value" : "[commons-groups:in-groups-text]"
-        }
-      ],
-      "und" : [
-        {
-          "value" : "[message:user:picture:35x35]",
-          "format" : "filtered_html",
-          "safe_value" : "[message:user:picture:35x35]"
-        },
-        {
-          "value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E oprettede\\u0026nbsp;\\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E",
-          "format" : "full_html",
-          "safe_value" : "\\u003Ca href=\\u0022[message:user:url:absolute]\\u0022\\u003E[message:user:name]\\u003C\\/a\\u003E oprettede\\u0026nbsp;\\u003Ca href=\\u0022[message:field-target-nodes:0:url]\\u0022\\u003E[message:field-target-nodes:0:title]\\u003C\\/a\\u003E"
-        },
-        {
-          "value" : "[commons-groups:in-groups-text]",
-          "format" : "full_html",
-          "safe_value" : "[commons-groups:in-groups-text]"
+          "format" : "filtered_html"
         }
       ]
     },
@@ -101,14 +61,13 @@ function commons_posts_default_message_type() {
 function commons_posts_node_info() {
   $items = array(
     'post' => array(
-      'name' => t('Indlæg'),
+      'name' => t('Post'),
       'base' => 'node_content',
-      'description' => t('Nyheder og informationer som er relateret til grupper.'),
+      'description' => t('Start a conversation or share some information.'),
       'has_title' => '1',
-      'title_label' => t('Titel'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
-  drupal_alter('node_info', $items);
   return $items;
 }

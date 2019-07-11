@@ -22,14 +22,7 @@ function commons_polls_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'print' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'weight' => -49,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -38,7 +31,7 @@ function commons_polls_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 1,
+        'weight' => -49,
       ),
     ),
     'display_in_partial_form' => 1,
@@ -59,7 +52,7 @@ function commons_polls_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => -49,
     ),
   );
 

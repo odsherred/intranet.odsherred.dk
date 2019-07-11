@@ -1,27 +1,18 @@
-name = Commons Wikis
-description = Provides the wiki functionality for Drupal Commons
-core = 7.x
+name = Commons Wiki
+description = Provides a Wiki content type for collaboratively revising content.
 package = Commons - Content types
-version = 7.x-3.4
-project = commons_wikis
+core = 7.x
+
 dependencies[] = commons_body
-dependencies[] = commons_bw
-dependencies[] = commons_groups
 dependencies[] = commons_topics
 dependencies[] = ctools
-dependencies[] = date
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
-dependencies[] = file
-dependencies[] = list
-dependencies[] = media
 dependencies[] = message
 dependencies[] = node
 dependencies[] = og
 dependencies[] = og_ui
-dependencies[] = options
-dependencies[] = os2web_base
 dependencies[] = page_manager
 dependencies[] = radioactivity
 dependencies[] = strongarm
@@ -30,16 +21,14 @@ dependencies[] = text
 dependencies[] = views
 dependencies[] = views_content
 dependencies[] = views_litepager
-datestamp = 1376677600
+
 features[ctools][] = page_manager:pages_default:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[field_instance][] = message-commons_wikis_wiki_updated-field_target_nodes
 features[field_instance][] = node-wiki-body
-features[field_instance][] = node-wiki-field_os2intra_outdated_date
-features[field_instance][] = node-wiki-field_os2web_base_field_media
-features[field_instance][] = node-wiki-group_content_access
+features[field_instance][] = node-wiki-title_field
 features[message_type][] = commons_wikis_wiki_updated
 features[node][] = wiki
 features[og_features_permission][] = node:group:create wiki content
@@ -62,7 +51,6 @@ features[variable][] = comment_wiki
 features[variable][] = enable_revisions_page_wiki
 features[variable][] = field_bundle_settings_message__commons_wikis_wiki_updated
 features[variable][] = field_bundle_settings_node__wiki
-features[variable][] = language_content_type_wiki
 features[variable][] = menu_options_wiki
 features[variable][] = menu_parent_wiki
 features[variable][] = node_options_wiki
@@ -73,13 +61,19 @@ features[variable][] = show_diff_inline_wiki
 features[variable][] = show_preview_changes_wiki
 features[views_view][] = commons_bw_wikis
 features[views_view][] = commons_wikis_contributor_list
-features_exclude[dependencies][commons_follow] = commons_follow
-features_exclude[field][node-wiki-title_field] = node-wiki-title_field
-features_exclude[field][node-wiki-field_topics] = node-wiki-field_topics
-features_exclude[field][node-wiki-og_group_ref] = node-wiki-og_group_ref
-features_exclude[field][node-wiki-group_content_access] = node-wiki-group_content_access
-features_exclude[field][node-wiki-field_radioactivity] = node-wiki-field_radioactivity
-features_exclude[field][node-wiki-body] = node-wiki-body
-features_exclude[field][node-wiki-field_os2web_base_field_media] = node-wiki-field_os2web_base_field_media
-features_exclude[field][node-wiki-field_os2intra_outdated_date] = node-wiki-field_os2intra_outdated_date
-features_exclude[field][message-commons_wikis_wiki_updated-field_target_nodes] = message-commons_wikis_wiki_updated-field_target_nodes
+
+; Manually remove the Commons Browsing Widget module as a dependency as Commons
+; Wikis views currently triggers features to auto-detect it as a dependency.
+
+; The other Commons content modules do not need to do this because Commons
+; Browsing Widget automatically removes itself as a dependency for any module
+; that supports automatic title replacement (currently every content type except
+; for wikis).
+features_exclude[dependencies][commons_bw] = commons_bw
+features_exclude[dependencies][commons_trusted_contacts] = commons_trusted_contacts
+
+; Information added by Drupal.org packaging script on 2018-05-09
+version = "7.x-3.50"
+core = "7.x"
+project = "commons"
+datestamp = "1525879535"

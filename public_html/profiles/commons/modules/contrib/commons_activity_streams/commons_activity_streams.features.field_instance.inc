@@ -10,8 +10,7 @@
 function commons_activity_streams_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'message-commons_activity_streams_comment_created-field_target_comments'
+  // Exported field_instance: 'message-commons_activity_streams_comment_created-field_target_comments'
   $field_instances['message-commons_activity_streams_comment_created-field_target_comments'] = array(
     'bundle' => 'commons_activity_streams_comment_created',
     'default_value' => NULL,
@@ -57,8 +56,7 @@ function commons_activity_streams_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'message-commons_activity_streams_comment_created-field_target_nodes'
+  // Exported field_instance: 'message-commons_activity_streams_comment_created-field_target_nodes'
   $field_instances['message-commons_activity_streams_comment_created-field_target_nodes'] = array(
     'bundle' => 'commons_activity_streams_comment_created',
     'default_value' => NULL,
@@ -104,8 +102,7 @@ function commons_activity_streams_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'message-commons_activity_streams_node_created-field_target_nodes'
+  // Exported field_instance: 'message-commons_activity_streams_node_created-field_target_nodes'
   $field_instances['message-commons_activity_streams_node_created-field_target_nodes'] = array(
     'bundle' => 'commons_activity_streams_node_created',
     'default_value' => NULL,
@@ -151,8 +148,7 @@ function commons_activity_streams_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'message-commons_activity_streams_user_profile_updated-field_target_users'
+  // Exported field_instance: 'message-commons_activity_streams_user_profile_updated-field_target_users'
   $field_instances['message-commons_activity_streams_user_profile_updated-field_target_users'] = array(
     'bundle' => 'commons_activity_streams_user_profile_updated',
     'default_value' => NULL,

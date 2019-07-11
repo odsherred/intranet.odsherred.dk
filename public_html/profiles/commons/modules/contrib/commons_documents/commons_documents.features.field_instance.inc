@@ -22,7 +22,7 @@ function commons_documents_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => -49,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -31,7 +31,7 @@ function commons_documents_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 1,
+        'weight' => -49,
       ),
     ),
     'display_in_partial_form' => 1,
@@ -51,7 +51,7 @@ function commons_documents_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => -49,
     ),
   );
 
@@ -66,13 +66,13 @@ function commons_documents_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 4,
+        'weight' => -48,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => -48,
       ),
     ),
     'display_in_partial_form' => 1,
@@ -83,7 +83,7 @@ function commons_documents_field_default_field_instances() {
     'settings' => array(
       'description_field' => 1,
       'file_directory' => '',
-      'file_extensions' => 'doc docx xls xlsx ppt pptx odt odp ods pdf',
+      'file_extensions' => 'txt doc docx xls xlsx ppt pptx odt odp ods pdf',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -94,7 +94,7 @@ function commons_documents_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 2,
+      'weight' => -48,
     ),
   );
 

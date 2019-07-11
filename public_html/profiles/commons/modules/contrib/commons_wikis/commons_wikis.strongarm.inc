@@ -14,7 +14,7 @@ function commons_wikis_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_wiki';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-workflow';
   $export['additional_settings__active_tab_wiki'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -131,39 +131,17 @@ function commons_wikis_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
-      'print' => array(
-        'custom_settings' => TRUE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
           'weight' => '0',
         ),
-        'metatags' => array(
-          'weight' => '40',
-        ),
-        'path' => array(
-          'weight' => '30',
-        ),
-        'redirect' => array(
-          'weight' => '30',
-        ),
       ),
       'display' => array(),
     ),
   );
   $export['field_bundle_settings_node__wiki'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'language_content_type_wiki';
-  $strongarm->value = '0';
-  $export['language_content_type_wiki'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

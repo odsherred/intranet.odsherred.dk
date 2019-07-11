@@ -10,8 +10,7 @@
 function commons_follow_user_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'message-commons_follow_user_user_followed-field_target_users'
+  // Exported field_instance: 'message-commons_follow_user_user_followed-field_target_users'
   $field_instances['message-commons_follow_user_user_followed-field_target_users'] = array(
     'bundle' => 'commons_follow_user_user_followed',
     'default_value' => NULL,

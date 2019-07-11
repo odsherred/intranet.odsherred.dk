@@ -12,7 +12,7 @@ function commons_wysiwyg_ckeditor_profile_defaults() {
     'Advanced' => array(
       'name' => 'Advanced',
       'settings' => array(
-        'ss' => '2',
+        'ss' => 2,
         'default' => 't',
         'show_toggle' => 't',
         'uicolor' => 'default',
@@ -71,6 +71,22 @@ function commons_wysiwyg_ckeditor_profile_defaults() {
       'input_formats' => array(
         'filtered_html' => 'Filtered HTML',
       ),
+    ),
+    'CKEditor Global Profile' => array(
+      'name' => 'CKEditor Global Profile',
+      'settings' => array(
+        'skin' => 'moono',
+        'ckeditor_path' => '%l/ckeditor',
+        'ckeditor_local_path' => '',
+        'ckeditor_plugins_path' => '%m/plugins',
+        'ckeditor_plugins_local_path' => '',
+        'ckfinder_path' => '%m/ckfinder',
+        'ckfinder_local_path' => '',
+        'ckeditor_aggregate' => 'f',
+        'toolbar_wizard' => 't',
+        'loadPlugins' => array(),
+      ),
+      'input_formats' => array(),
     ),
   );
   return $data;

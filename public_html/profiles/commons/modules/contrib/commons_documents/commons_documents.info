@@ -1,19 +1,24 @@
 name = Commons Documents
-core = 7.x
+description = Provides a Document content type for sharing files.
 package = Commons - Content types
-project = commons_documents
+core = 7.x
+
 dependencies[] = commons_body
-dependencies[] = commons_groups
 dependencies[] = commons_topics
 dependencies[] = ctools
+dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = file
+dependencies[] = node
 dependencies[] = og
 dependencies[] = og_ui
 dependencies[] = strongarm
+dependencies[] = taxonomy
+dependencies[] = text
 dependencies[] = views
 dependencies[] = views_litepager
+
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
@@ -46,9 +51,10 @@ features[variable][] = node_preview_document
 features[variable][] = node_submitted_document
 features[views_view][] = commons_bw_documents
 
-; Information added by drupal.org packaging script on 2013-08-16
-version = "7.x-3.4"
-core = "7.x"
-project = "commons_documents"
-datestamp = "1376677292"
+features_exclude[dependencies][commons_trusted_contacts] = commons_trusted_contacts
 
+; Information added by Drupal.org packaging script on 2018-05-09
+version = "7.x-3.50"
+core = "7.x"
+project = "commons"
+datestamp = "1525879535"

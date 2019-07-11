@@ -14,7 +14,7 @@ function commons_polls_user_default_permissions() {
   $permissions['cancel own vote'] = array(
     'name' => 'cancel own vote',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'poll',
@@ -24,7 +24,7 @@ function commons_polls_user_default_permissions() {
   $permissions['create poll content'] = array(
     'name' => 'create poll content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
@@ -34,9 +34,7 @@ function commons_polls_user_default_permissions() {
   $permissions['delete any poll content'] = array(
     'name' => 'delete any poll content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'Intramaster' => 'Intramaster',
-      'Webmaster' => 'Webmaster',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -45,7 +43,7 @@ function commons_polls_user_default_permissions() {
   $permissions['delete own poll content'] = array(
     'name' => 'delete own poll content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
@@ -55,7 +53,7 @@ function commons_polls_user_default_permissions() {
   $permissions['edit any poll content'] = array(
     'name' => 'edit any poll content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -64,7 +62,7 @@ function commons_polls_user_default_permissions() {
   $permissions['edit own poll content'] = array(
     'name' => 'edit own poll content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
@@ -74,7 +72,7 @@ function commons_polls_user_default_permissions() {
   $permissions['vote on polls'] = array(
     'name' => 'vote on polls',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'poll',

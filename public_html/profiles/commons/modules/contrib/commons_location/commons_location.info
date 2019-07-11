@@ -1,11 +1,17 @@
 name = Commons Location
-description = Provide a field definition for locations.
+description = Provides a simple address field for re-use by various Commons content types.
+package = Commons - Building blocks
 core = 7.x
-package = Commons - Building Blocks
-version = 7.x-3.0
-project = commons_location
+
 dependencies[] = addressfield
 dependencies[] = features
 dependencies[] = field_sql_storage
-datestamp = 1361820327
+
 features[features_api][] = api:2
+features[field_base][] = field_address
+
+; Information added by Drupal.org packaging script on 2018-05-09
+version = "7.x-3.50"
+core = "7.x"
+project = "commons"
+datestamp = "1525879535"

@@ -24,28 +24,16 @@ function commons_follow_term_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'lite';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '6';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'name' => 'name',
@@ -73,73 +61,94 @@ function commons_follow_term_views_default_views() {
     ),
   );
   $handler->display->display_options['style_options']['sticky'] = TRUE;
-  /* Opførsel ved ingen resultater: Global: Text area */
+  /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Du følger ingen emner.';
+  $handler->display->display_options['empty']['area']['content'] = 'You aren\'t following any topics.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Forbindelse: Flags: commons_follow_term */
+  /* Relationship: Flags: commons_follow_term */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'commons_follow_term';
-  /* Forbindelse: Flags: email_term */
+  $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
+  /* Relationship: Flags: email_term */
   $handler->display->display_options['relationships']['flag_content_rel_1']['id'] = 'flag_content_rel_1';
   $handler->display->display_options['relationships']['flag_content_rel_1']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['relationships']['flag_content_rel_1']['field'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel_1']['label'] = 'email_flag';
   $handler->display->display_options['relationships']['flag_content_rel_1']['required'] = 0;
   $handler->display->display_options['relationships']['flag_content_rel_1']['flag'] = 'email_term';
-  /* Felt: Taxonomy term: Name */
+  $handler->display->display_options['relationships']['flag_content_rel_1']['user_scope'] = 'any';
+  /* Relationship: Flags: User */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'flagging';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['relationship'] = 'flag_content_rel';
+  /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['label'] = 'Emne';
+  $handler->display->display_options['fields']['name']['label'] = 'Topic';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Felt: Flags: Flag link */
+  /* Field: Flags: Flag link */
   $handler->display->display_options['fields']['ops_1']['id'] = 'ops_1';
-  $handler->display->display_options['fields']['ops_1']['table'] = 'flag_content';
+  $handler->display->display_options['fields']['ops_1']['table'] = 'flagging';
   $handler->display->display_options['fields']['ops_1']['field'] = 'ops';
   $handler->display->display_options['fields']['ops_1']['relationship'] = 'flag_content_rel_1';
   $handler->display->display_options['fields']['ops_1']['label'] = 'Send email?';
-  /* Felt: Flags: Flag link */
+  /* Field: Flags: Flag link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
-  $handler->display->display_options['fields']['ops']['table'] = 'flag_content';
+  $handler->display->display_options['fields']['ops']['table'] = 'flagging';
   $handler->display->display_options['fields']['ops']['field'] = 'ops';
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
-  /* Sorteringskriterie: Flags: Flagged time */
+  /* Sort criterion: Flags: Flagged time */
   $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
-  $handler->display->display_options['sorts']['timestamp']['table'] = 'flag_content';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'flagging';
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
   $translatables['commons_follow_taxonomy_term'] = array(
+  /* Contextual filter: User: Uid */
     t('Master'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
-    t('Antal elementer'),
-    t('- Alle -'),
-    t('Forskydning'),
-    t('« første'),
-    t('‹ forrige'),
-    t('næste ›'),
-    t('sidste »'),
-    t('Du følger ingen emner.'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('You aren\'t following any topics.'),
     t('flag'),
     t('email_flag'),
-    t('Emne'),
+    t('Topic'),
     t('Send email?'),
   );
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'users';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'user';
+  $handler->display->display_options['arguments']['uid']['default_argument_options']['user'] = FALSE;
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['uid']['validate']['type'] = 'user';
+  $handler->display->display_options['arguments']['uid']['validate_options']['type'] = 'either';
   $export['commons_follow_taxonomy_term'] = $view;
 
   return $export;

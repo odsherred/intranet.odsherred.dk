@@ -31,7 +31,7 @@ function commons_topics_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
-      'options_list_callback' => '_taxonomy_access_term_options',
+      'options_list_callback' => 'title_taxonomy_allowed_values',
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',

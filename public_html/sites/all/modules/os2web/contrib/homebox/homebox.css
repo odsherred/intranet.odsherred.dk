@@ -22,33 +22,6 @@
 #homebox .homebox-maximized {
   width: 100%;
 }
-#homebox.column-count-1 .homebox-column-wrapper {
-  width: 100%;
-}
-#homebox.column-count-2 .homebox-column-wrapper {
-  width: 50%;
-}
-#homebox.column-count-3 .homebox-column-wrapper {
-  width: 33.3%;
-}
-#homebox.column-count-4 .homebox-column-wrapper {
-  width: 25%;
-}
-#homebox.column-count-5 .homebox-column-wrapper {
-  width: 20%;
-}
-#homebox.column-count-6 .homebox-column-wrapper {
-  width: 16.6%;
-}
-#homebox.column-count-7 .homebox-column-wrapper {
-  width: 14.2%;
-}
-#homebox.column-count-8 .homebox-column-wrapper {
-  width: 12.5%;
-}
-#homebox.column-count-9 .homebox-column-wrapper {
-  width: 11.1%;
-}
 /*
 ** Portlets/boxes
 */
@@ -91,9 +64,6 @@
 }
 #homebox .homebox-portlet div.views-exposed-widgets {
   padding: 0 7px;
-}
-#homebox div.view-header {
-  text-align: right;
 }
 #homebox .portlet-maximized {
   clear: both;
@@ -143,7 +113,6 @@
   visibility: visible !important;
   margin: 5px 0;
   padding: 0;
-  /*background: #FFFFDD;*/
   border: 3px dashed #ccc;
 }
 #homebox .homebox-placeholder * {
@@ -195,8 +164,6 @@ div.homebox-colors {
 }
 #homebox-add a {
   display: block;
-  width: 130px;
-  height: 40px;
   background: #f4f4f4 url("images/stripe.png");
   padding: 5px;
   overflow: hidden;

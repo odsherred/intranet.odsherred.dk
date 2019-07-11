@@ -22,7 +22,7 @@ function commons_pages_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => -49,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -31,7 +31,7 @@ function commons_pages_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'weight' => -49,
       ),
     ),
     'entity_type' => 'node',
@@ -50,60 +50,13 @@ function commons_pages_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => -4,
-    ),
-  );
-
-  // Exported field_instance: 'node-page-field_spotbokse'
-  $field_instances['node-page-field_spotbokse'] = array(
-    'bundle' => 'page',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_spotbokse',
-    'label' => 'Spotbokse',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete_tags',
-      'weight' => 41,
+      'weight' => -49,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Spotbokse');
 
   return $field_instances;
 }

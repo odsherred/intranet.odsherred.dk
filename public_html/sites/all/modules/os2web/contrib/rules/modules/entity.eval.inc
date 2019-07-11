@@ -5,6 +5,7 @@
  * Contains rules integration for entities needed during evaluation.
  *
  * @addtogroup rules
+ *
  * @{
  */
 
@@ -65,10 +66,16 @@ function rules_action_entity_query_info_alter(&$element_info, RulesAbstractPlugi
     $element_info['parameter']['property']['options list'] = 'rules_action_entity_query_property_options_list';
 
     if ($element->settings['property']) {
-      $wrapper = entity_metadata_wrapper($element->settings['type']);
+      $wrapper = rules_get_entity_metadata_wrapper_all_properties($element);
       if (isset($wrapper->{$element->settings['property']}) && $property = $wrapper->{$element->settings['property']}) {
-        $element_info['parameter']['value']['type'] = $property->type();
-        $element_info['parameter']['value']['options list']  = $property->optionsList() ? 'rules_action_entity_query_value_options_list' : FALSE;
+        $property_type = $property->type();
+        // If the cardinality of the property > 1, i.e. of type 'list<{type}>',
+        // we will also accept a parameter of type {type}.
+        if (substr($property_type, 0, strlen('list<')) === 'list<' && substr($property_type, -strlen('>')) === '>') {
+          $property_type = array($property_type, substr($property_type, strlen('list<'), strlen($property_type) - strlen('list<>')));
+        }
+        $element_info['parameter']['value']['type'] = $property_type;
+        $element_info['parameter']['value']['options list'] = $property->optionsList() ? 'rules_action_entity_query_value_options_list' : FALSE;
       }
     }
   }
@@ -106,9 +113,10 @@ function rules_action_entity_create_info_alter(&$element_info, RulesAbstractPlug
       $info = $child->info();
       if (!empty($info['required'])) {
         $info += array('type' => 'text');
-        // Prefix parameter names to avoid name clashes with existing parameters.
+        // Prefix parameter names to avoid name clashes
+        // with existing parameters.
         $element_info['parameter']['param_' . $name] = array_intersect_key($info, array_flip(array('type', 'label', 'description')));
-        $element_info['parameter']['param_' . $name]['options list']  = $child->optionsList() ? 'rules_action_entity_parameter_options_list' : FALSE;
+        $element_info['parameter']['param_' . $name]['options list'] = $child->optionsList() ? 'rules_action_entity_parameter_options_list' : FALSE;
       }
     }
     $element_info['provides']['entity_created']['type'] = $element->settings['type'];
@@ -141,14 +149,14 @@ function rules_action_entity_delete($wrapper, $settings, $state, $element) {
  * Condition: Entity is new.
  */
 function rules_condition_entity_is_new($wrapper, $settings, $state, $element) {
-  return !$wrapper->getIdentifier() || !empty($entity->is_new);
+  return !$wrapper->getIdentifier() || !empty($wrapper->value()->is_new);
 }
 
 /**
  * Condition: Entity has field.
  */
 function rules_condition_entity_has_field($wrapper, $field_name, $settings, $state) {
-  return isset($wrapper->$field_name) || isset($entity->$field_name);
+  return isset($wrapper->$field_name) || isset($wrapper->value()->$field_name);
 }
 
 /**
@@ -157,3 +165,22 @@ function rules_condition_entity_has_field($wrapper, $field_name, $settings, $sta
 function rules_condition_entity_is_of_type($wrapper, $type) {
   return $wrapper->type() == $type;
 }
+
+/**
+ * Condition: Entity is of type and bundle.
+ */
+function rules_condition_entity_is_of_bundle($wrapper, $type, $bundles) {
+  return $wrapper->type() == $type && in_array($wrapper->getBundle(), $bundles);
+}
+
+/**
+ * Condition: User has access to field.
+ */
+function rules_condition_entity_field_access(EntityDrupalWrapper $wrapper, $field_name, $op, $account = NULL) {
+  $field = field_info_field($field_name);
+  return !empty($field) && field_access($op, $field, $wrapper->type(), $wrapper->value(), $account = NULL);
+}
+
+/**
+ * @}
+ */

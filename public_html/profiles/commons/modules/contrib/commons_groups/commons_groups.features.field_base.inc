@@ -10,33 +10,64 @@
 function commons_groups_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_group_logo'
-  $field_bases['field_group_logo'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_group_logo',
-    'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
+    // Exported field_base: 'group_access'
+    $field_bases['group_access'] = array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'group_access',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
       ),
-    ),
-    'locked' => 0,
-    'module' => 'image',
-    'settings' => array(
-      'default_image' => 0,
-      'uri_scheme' => 'public',
-    ),
-    'translatable' => 0,
-    'type' => 'image',
-  );
+      'locked' => '0',
+      'module' => 'list',
+      'no_ui' => TRUE,
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Public - accessible to all site users',
+          1 => 'Private - accessible only to group members',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    );
+
+    // Exported field_base: 'group_content_access'
+    $field_bases['group_content_access'] = array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'group_content_access',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'no_ui' => TRUE,
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Use group defaults',
+          1 => 'Public - accessible to all site users',
+          2 => 'Private - accessible only to group members',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_integer',
+    );
 
   // Exported field_base: 'field_og_access_default_value'
   $field_bases['field_og_access_default_value'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(),
     'field_name' => 'field_og_access_default_value',
     'indexes' => array(
@@ -44,7 +75,7 @@ function commons_groups_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -53,15 +84,15 @@ function commons_groups_field_default_field_bases() {
       ),
       'allowed_values_function' => '',
     ),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_og_subscribe_settings'
   $field_bases['field_og_subscribe_settings'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(),
     'field_name' => 'field_og_subscribe_settings',
     'indexes' => array(
@@ -69,7 +100,7 @@ function commons_groups_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -79,99 +110,20 @@ function commons_groups_field_default_field_bases() {
       ),
       'allowed_values_function' => '',
     ),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_os2intra_outdated_date'
-  $field_bases['field_os2intra_outdated_date'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(
-      0 => 'node',
-    ),
-    'field_name' => 'field_os2intra_outdated_date',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datetime',
-  );
-
-  // Exported field_base: 'group_access'
-  $field_bases['group_access'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'group_access',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'no_ui' => TRUE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'Public - accessible to all site users',
-        1 => 'Private - accessible only to group members',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
-  );
-
-  // Exported field_base: 'group_content_access'
-  $field_bases['group_content_access'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'group_content_access',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'no_ui' => TRUE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'Use group defaults',
-        1 => 'Public - accessible to all site users',
-        2 => 'Private - accessible only to group members',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_integer',
-  );
+  // Alter the "approval" description when og_access is on.
+  if (module_exists('og_access')) {
+    $field_bases['field_og_subscribe_settings']['settings']['allowed_values']['invitation'] = 'Joining requires an invitation. The group and content is hidden from non-members.';
+  }
 
   // Exported field_base: 'group_group'
   $field_bases['group_group'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(),
     'field_name' => 'group_group',
     'indexes' => array(
@@ -179,7 +131,7 @@ function commons_groups_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -188,24 +140,24 @@ function commons_groups_field_default_field_bases() {
       ),
       'allowed_values_function' => '',
     ),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'og_group_ref'
-  $field_bases['og_group_ref'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'description' => 'Separate group names with commas',
+// Exported field_base: 'og_group_ref'
+ $field_bases['og_group_ref'] = array(
+    'active' => '1',
+    'cardinality' => '-1',
+    'deleted' => '0',
     'entity_types' => array(),
+    'description' => 'Separate group names with commas',
     'field_name' => 'og_group_ref',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
       ),
     ),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'entityreference',
     'settings' => array(
       'handler' => 'og_commons',
@@ -220,9 +172,7 @@ function commons_groups_field_default_field_bases() {
         ),
         'membership_type' => 'og_membership_type_default',
         'sort' => array(
-          'direction' => 'ASC',
-          'field' => 'title_field:value',
-          'type' => 'field',
+          'type' => 'none',
         ),
         'target_bundles' => array(),
       ),
@@ -230,15 +180,16 @@ function commons_groups_field_default_field_bases() {
       'target_type' => 'node',
     ),
     'target_type' => 'node',
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'entityreference',
   );
 
+
   // Exported field_base: 'og_membership_request'
   $field_bases['og_membership_request'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(
       0 => 'og_membership',
     ),
@@ -248,18 +199,40 @@ function commons_groups_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'text',
     'settings' => array(),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_group_logo'
+  $field_bases['field_group_logo'] = array(
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'entity_types' => array(),
+    'field_name' => 'field_group_logo',
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => '0',
+    'module' => 'image',
+    'settings' => array(
+      'default_image' => 0,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => '0',
+    'type' => 'image',
   );
 
   // Exported field_base: 'og_roles_permissions'
   $field_bases['og_roles_permissions'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
     'entity_types' => array(),
     'field_name' => 'og_roles_permissions',
     'indexes' => array(
@@ -267,7 +240,7 @@ function commons_groups_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => '0',
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -276,7 +249,7 @@ function commons_groups_field_default_field_bases() {
       ),
       'allowed_values_function' => '',
     ),
-    'translatable' => 0,
+    'translatable' => '0',
     'type' => 'list_boolean',
   );
 
