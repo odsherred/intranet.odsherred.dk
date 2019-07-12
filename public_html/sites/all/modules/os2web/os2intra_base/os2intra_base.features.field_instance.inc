@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * os2intra_base.features.field_instance.inc
@@ -10,7 +11,7 @@
 function os2intra_base_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-event-field_os2web_base_field_image'
+  // Exported field_instance: 'node-event-field_os2web_base_field_image'.
   $field_instances['node-event-field_os2web_base_field_image'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -90,7 +91,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_os2web_base_field_media'
+  // Exported field_instance: 'node-event-field_os2web_base_field_media'.
   $field_instances['node-event-field_os2web_base_field_media'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -159,7 +160,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-group-field_os2intra_base_spotboxes'
+  // Exported field_instance: 'node-group-field_os2intra_base_spotboxes'.
   $field_instances['node-group-field_os2intra_base_spotboxes'] = array(
     'bundle' => 'group',
     'default_value' => NULL,
@@ -205,7 +206,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-group-field_os2intra_grouptype'
+  // Exported field_instance: 'node-group-field_os2intra_grouptype'.
   $field_instances['node-group-field_os2intra_grouptype'] = array(
     'bundle' => 'group',
     'default_value' => array(
@@ -246,7 +247,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-group-field_os2intra_organization'
+  // Exported field_instance: 'node-group-field_os2intra_organization'.
   $field_instances['node-group-field_os2intra_organization'] = array(
     'bundle' => 'group',
     'default_value' => NULL,
@@ -285,7 +286,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-group-field_os2web_base_field_media'
+  // Exported field_instance: 'node-group-field_os2web_base_field_media'.
   $field_instances['node-group-field_os2web_base_field_media'] = array(
     'bundle' => 'group',
     'deleted' => 0,
@@ -345,7 +346,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_os2web_base_field_image'
+  // Exported field_instance: 'node-post-field_os2web_base_field_image'.
   $field_instances['node-post-field_os2web_base_field_image'] = array(
     'bundle' => 'post',
     'deleted' => 0,
@@ -453,7 +454,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-post-field_os2web_base_field_media'
+  // Exported field_instance: 'node-post-field_os2web_base_field_media'.
   $field_instances['node-post-field_os2web_base_field_media'] = array(
     'bundle' => 'post',
     'deleted' => 0,
@@ -492,13 +493,15 @@ function os2intra_base_field_default_field_instances() {
       'file_extensions' => 'mp4 doc docx xls xlsx ppt pptx pdf txt csv odt indd png jpeg jpg docm',
       'max_filesize' => '',
       'user_register_form' => FALSE,
+      'wysiwyg_insert' => 0,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'private' => 'private',
+          'oembed' => 0,
+          'private' => 0,
           'public' => 0,
           'youtube' => 0,
         ),
@@ -514,9 +517,7 @@ function os2intra_base_field_default_field_instances() {
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
           'media_internet' => 'media_internet',
           'upload' => 'upload',
-          'youtube' => 'youtube',
         ),
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 2,
@@ -524,7 +525,7 @@ function os2intra_base_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'
+  // 'taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'.
   $field_instances['taxonomy_term-os2intra_organizaiton_tax-field_os2intra_department_id'] = array(
     'bundle' => 'os2intra_organizaiton_tax',
     'default_value' => NULL,
@@ -557,7 +558,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_os2intra_birthday'
+  // Exported field_instance: 'user-user-field_os2intra_birthday'.
   $field_instances['user-user-field_os2intra_birthday'] = array(
     'bundle' => 'user',
     'deleted' => 0,
@@ -610,7 +611,7 @@ function os2intra_base_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_os2intra_phone'
+  // Exported field_instance: 'user-user-field_os2intra_phone'.
   $field_instances['user-user-field_os2intra_phone'] = array(
     'bundle' => 'user',
     'default_value' => array(
