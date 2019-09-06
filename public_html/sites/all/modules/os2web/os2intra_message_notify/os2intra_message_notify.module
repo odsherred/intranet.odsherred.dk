@@ -123,7 +123,7 @@ function os2intra_message_notify_ajax_callback($id){
 }
 
 function os2intra_message_notify_notify_mail_alter(&$message) {
-  // First: Prevent the mail from being sent if $to is empty
+  // Prevent the mail from being sent if $to is empty
   if (empty($message['to'])) {
     $message['send'] = FALSE;
   }
