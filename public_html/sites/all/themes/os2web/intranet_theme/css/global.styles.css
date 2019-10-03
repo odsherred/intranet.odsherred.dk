@@ -6027,8 +6027,11 @@ line-height: 19px}
 }
 
 @media screen and (min-width: 768px) {
+  .view-os2intra-group-term-activity .views-field-field-os2web-base-field-image {
+    max-width: 150px; float: left; margin-right: 20px;
+  }
   .view-os2intra-group-term-activity .views-field-field-os2web-base-field-image img {
-    max-width: 25%; height: auto; float: left; margin-right: 20px; 
+    max-width: 100%;
   }
 }
 
