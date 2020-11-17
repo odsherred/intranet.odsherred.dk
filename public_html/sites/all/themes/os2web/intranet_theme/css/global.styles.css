@@ -6059,16 +6059,16 @@ line-height: 19px}
 .front .view-spotbox .views-row.views-row-even .table-wrapper {
   margin-left: 0.5em;
 }
-.front .view-spotbox .table {
+.view-spotbox .table {
   display: table;
   table-layout: fixed;
   width: 100%;
   position: relative;
 }
-.front .view-spotbox .views-row h3 {
+.view-spotbox .views-row h3 {
   height: 3em; line-height: 3em; vertical-align: middle; 
 }
-.front .view-spotbox .views-row h3 a {
+.view-spotbox .views-row h3 a {
   padding: 0.25em 0.5em;
   display: table-cell;
   line-height: 1em;
@@ -6077,15 +6077,15 @@ line-height: 19px}
   vertical-align: middle;
   width: 100%;
 }
-.front .view-spotbox .views-row.views-row-even h3,
-.front .view-spotbox .views-row.views-row-even .billede {
+ .view-spotbox .views-row.views-row-even h3,
+ .view-spotbox .views-row.views-row-even .billede {
   margin-left: 5px;
   margin-right: 0;
   display: table-row;
     width: 100%;
 }
-.front .view-spotbox .views-row.views-row-odd h3,
-.front .view-spotbox .views-row.views-row-odd .billede {
+ .view-spotbox .views-row.views-row-odd h3,
+ .view-spotbox .views-row.views-row-odd .billede {
   margin-right: 5px;
   margin-left: 0;
   display: table-row;
