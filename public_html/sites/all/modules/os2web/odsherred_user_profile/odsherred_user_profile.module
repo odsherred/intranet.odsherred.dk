@@ -3,3 +3,10 @@
  * @file
  * Drupal needs this blank file.
  */
+
+function odsherred_user_profile_mail_alter(&$message) {
+  if ($message['module'] == 'message_notify' && empty($message['to'])) {
+    // Cancel sending if send to field is empty.
+    $message['send'] = FALSE;
+  }
+}
